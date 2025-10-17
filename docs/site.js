@@ -1,0 +1,778 @@
+// Simple JavaScript for navigation and page management
+class SiteManager {
+  constructor() {
+    this.pages = new Map();
+    this.currentPage = "";
+    this.init();
+    // Make toggleForm available globally
+    window.toggleForm = this.toggleForm.bind(this);
+  }
+
+  init() {
+    // Initialize navigation
+    this.setupNavigation();
+
+    // Load initial page
+    const hash = window.location.hash.slice(1) || "home";
+    this.loadPage(hash);
+
+    // Handle hash changes
+    window.addEventListener("hashchange", () => {
+      const page = window.location.hash.slice(1) || "home";
+      this.loadPage(page);
+    });
+  }
+
+  setupNavigation() {
+    const navLinks = document.querySelectorAll(".sil-nav-link");
+    navLinks.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const page = link.getAttribute("data-page");
+        if (page) {
+          window.location.hash = page;
+        }
+      });
+    });
+
+    // Setup footer navigation
+    const footerLinks = document.querySelectorAll(".sil-footer a[data-page]");
+    footerLinks.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const page = link.getAttribute("data-page");
+        if (page) {
+          window.location.hash = page;
+        }
+      });
+    });
+  }
+
+  loadPage(pageId) {
+    // Remove active class from all nav links
+    document.querySelectorAll(".sil-nav-link").forEach((link) => {
+      link.classList.remove("active");
+    });
+
+    // Add active class to current page link
+    const currentLink = document.querySelector(`[data-page="${pageId}"]`);
+    if (currentLink) {
+      currentLink.classList.add("active");
+    }
+
+    // Handle home page vs other pages display
+    this.handlePageLayout(pageId);
+
+    // Handle Maps & Diagrams page sidebar
+    this.handleLearnNavigation(pageId);
+
+    // Load page content
+    this.displayPage(pageId);
+    this.currentPage = pageId;
+  }
+
+  handlePageLayout(pageId) {
+    const languageTechStrip = document.getElementById("language-tech-strip");
+    const breadcrumbStrip = document.getElementById("breadcrumb-strip");
+    const bannerSection = document.getElementById("banner-section");
+    const currentPageTitle = document.getElementById("current-page-title");
+
+    if (pageId === "home") {
+      // Show home page elements
+      languageTechStrip.style.display = "block";
+      bannerSection.style.display = "block";
+      breadcrumbStrip.style.display = "none";
+    } else {
+      // Show non-home page elements
+      languageTechStrip.style.display = "none";
+      bannerSection.style.display = "none";
+      breadcrumbStrip.style.display = "block";
+
+      // Update breadcrumb text
+      const pageTitles = {
+        illustrations: "Illustrations",
+        maps: "MAPS & DIAGRAMS",
+        "maps-intro": "MAPS & DIAGRAMS > INTRODUCTION",
+        "map-samples": "MAPS & DIAGRAMS > SAMPLES",
+        "map-editions": "MAPS & DIAGRAMS > EDITIONS",
+        "accessing-repo": "MAPS & DIAGRAMS > ACCESSING THE REPOSITORY",
+        "permission-rules": "MAPS & DIAGRAMS > PERMISSION RULES",
+        "map-varieties": "MAPS & DIAGRAMS > MAP VARIETIES",
+        "indesign-maps": "MAPS & DIAGRAMS > INDESIGN MAPS",
+        "map-creator-maps": "MAPS & DIAGRAMS > MAP CREATOR MAPS",
+        contact: "CONTACT",
+      };
+
+      currentPageTitle.textContent = pageTitles[pageId] || pageId.toUpperCase();
+    }
+  }
+
+  handleLearnNavigation(pageId) {
+    const sidebar = document.getElementById("maps-nav");
+    const contentWrapper = document.querySelector(".sil-content-wrapper");
+
+    const learnPages = [
+      "maps-intro",
+      "map-samples",
+      "map-editions",
+      "accessing-repo",
+      "permission-rules",
+      "map-varieties",
+      "indesign-maps",
+      "map-creator-maps",
+    ];
+
+    if (pageId === "maps" || learnPages.includes(pageId)) {
+      sidebar.style.display = "block";
+      contentWrapper.classList.add("with-sidebar");
+      this.setupLearnSidebar(pageId);
+    } else {
+      sidebar.style.display = "none";
+      contentWrapper.classList.remove("with-sidebar");
+    }
+  }
+
+  setupLearnSidebar(currentPageId) {
+    const sidebar = document.getElementById("maps-nav");
+    sidebar.innerHTML = `
+            <div class="sil-sidebar-header">
+                <img src="images/logo.png" alt="SIL Map & Illustration Repository" class="sil-sidebar-logo">
+            </div>
+            <ul class="sil-sidebar-nav">
+                <li><a href="#maps" data-page="maps" class="${currentPageId === "maps" ? "active" : ""}">Overview</a></li>
+                <li><strong>Basics</strong></li>
+                <li><a href="#maps-intro" data-page="maps-intro" class="${currentPageId === "maps-intro" ? "active" : ""}">Introduction</a></li>
+                <li><a href="#map-samples" data-page="map-samples" class="${currentPageId === "map-samples" ? "active" : ""}">Samples</a></li>
+                <li><a href="#map-editions" data-page="map-editions" class="${currentPageId === "map-editions" ? "active" : ""}">Editions</a></li>
+                <li><a href="#accessing-repo" data-page="accessing-repo" class="${currentPageId === "accessing-repo" ? "active" : ""}">Accessing the Repository</a></li>
+                <li><a href="#permission-rules" data-page="permission-rules" class="${currentPageId === "permission-rules" ? "active" : ""}">Permission Rules</a></li>
+                <li><strong>How to Use the Maps</strong></li>
+                <li><a href="#map-varieties" data-page="map-varieties" class="${currentPageId === "map-varieties" ? "active" : ""}">Map Varieties</a></li>
+                <li><a href="#indesign-maps" data-page="indesign-maps" class="${currentPageId === "indesign-maps" ? "active" : ""}">InDesign Maps</a></li>
+                <li><a href="#map-creator-maps" data-page="map-creator-maps" class="${currentPageId === "map-creator-maps" ? "active" : ""}">Map Creator Maps</a></li>
+            </ul>
+        `;  // add class="nav-subsection" to <li> for subsections
+
+    // Setup sidebar navigation
+    const sidebarLinks = sidebar.querySelectorAll("a[data-page]");
+    sidebarLinks.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const page = link.getAttribute("data-page");
+        if (page) {
+          window.location.hash = page;
+        }
+      });
+    });
+  }
+
+  displayPage(pageId) {
+    const mainContent = document.querySelector(".sil-content");
+
+    switch (pageId) {
+      case "home":
+        mainContent.innerHTML = this.getHomePage();
+        break;
+      case "illustrations":
+        mainContent.innerHTML = this.getIllustrationsPage();
+        break;
+      case "maps":
+        mainContent.innerHTML = this.getMapsOverviewPage();
+        break;
+      case "maps-intro":
+        mainContent.innerHTML = this.getMapsIntroPage();
+        break;
+      case "map-samples":
+        mainContent.innerHTML = this.getMapSamplesPage();
+        break;
+      case "map-editions":
+        mainContent.innerHTML = this.getMapEditionsPage();
+        break;
+      case "accessing-repo":
+        mainContent.innerHTML = this.getAccessingRepoPage();
+        break;
+      case "permission-rules":
+        mainContent.innerHTML = this.getPermissionRulesPage();
+        break;
+      case "map-varieties":
+        mainContent.innerHTML = this.getMapVarietiesPage();
+        break;
+      case "indesign-maps":
+        mainContent.innerHTML = this.getInDesignMapsPage();
+        break;
+      case "map-creator-maps":
+        mainContent.innerHTML = this.getMapCreatorMapsPage();
+        break;
+      case "contact":
+        mainContent.innerHTML = this.getContactPage();
+        break;
+      default:
+        mainContent.innerHTML = this.getHomePage();
+    }
+
+    // Scroll to top
+    window.scrollTo(0, 0);
+  }
+
+  toggleForm(formId) {
+    const form = document.getElementById(formId);
+    const icon = document.getElementById(formId + '-icon');
+    
+    if (form && icon) {
+      if (form.style.display === 'none' || form.style.display === '') {
+        form.style.display = 'block';
+        icon.textContent = '−';
+      } else {
+        form.style.display = 'none';
+        icon.textContent = '+';
+      }
+    }
+  }
+
+  getHomePage() {
+    return `
+
+            <div class="content-section">
+                <h2 class="section-title">Welcome to the SIL Map & Illustration Repository!</h2>
+                <p>This repository is a collection of maps, diagrams, and other Scripture illustrations.</p>
+                <p>Use the navigation links above to explore the resources and documentation, or to contact us.</p>
+            </div>
+
+        `;
+  }
+
+  getMapsIntroPage() {
+    return `
+            <div class="page-header">
+                <h1 class="page-title">Introduction</h1>
+                <p class="page-subtitle"><i>About our Maps, and Why You Need a Labeler</i></p>
+            </div>
+            <br>
+            <div class="content-section">
+                
+                <div class="info-card">
+                <p>The SIL Map Repository is a collection of maps and diagrams that may be helpful in Scripture publications. Most of the maps currently contained in the repository are owned by SIL Global, with attribution rules that credit Wycliffe Bible Translators, Inc., and where applicable, the artists. </p>
+<p>There is also a supplementary collection of 3 maps/diagrams based on artwork by Horace Knowles, owned by the British and Foreign Bible Societies. Our current licensing agreement only allows us to distribute these for use on SIL-supported projects.</p>
+<p>All of our maps and diagrams are enabled for use with data merge files. These data merge files should contain the map labels configured from your Paratext project data. While it is possible to copy and paste label text into any of our map files, this is strongly discouraged. Place-names are notorious for being spelled inconsistently in minority language Scripture projects, because they are typically transliterations, and there are always multiple ways that Hebrew or Greek terms could be transliterated into any given language. </p>
+<p>The solution is to use either the <a href="https://sites.google.com/sil.org/scripture-map-labeler/home" target="blank">Scripture Map Labeler</a> plugin for Paratext, or its successor, the <a href="https://tiny.cc/labeler" target="blank">Paratext Diagram Labeler</a>.
+Both of these can generate data merge files for Adobe InDesign (IDML maps) and for Map Creator (MAPX maps). </p>
+<p><strong>InDesign Maps</strong></p>
+<p><i>Important Note:</i> If you will be using other writing systems, other digit systems, or just other fonts, be sure to read the instructions on the best way to set this up. See <a href="#map-varieties">How to Use the Maps</a> for more details.</p>
+<p><strong>Map Creator</strong><br />
+  Several (but not yet all) of our IDML maps are also  available in MAPX format. In addition, a custom version of the Bible maps that  are built into Map Creator are available here. Use these copies rather than the  built-in templates with Paratext Diagram Labeler.</p>
+
+                </div>
+            </div>
+        `;
+  }
+
+  getMapSamplesPage() {
+    return `
+            <div class="page-header">
+                <h1 class="page-title">Samples</h1>
+            </div>
+            
+            <div class="content-section">
+                <div class="info-card">
+                <p>Samples of all maps are available at <a href="https://tiny.cc/samplemaps" target="_blank">tiny.cc/samplemaps</a>. See <a href="https://docs.google.com/document/d/1zUMQK1CoSTT1FPKTAukK4M3IXS-7jAB0NgE85AnAu-g/edit?usp=sharing" target="_blank">Tips for Using the Sample Maps</a>. Translation teams will generally only need to download this folder of samples. This is the same folder included within the <strong>SIL Map Repository</strong> folder as <strong>!All Map Samples</strong>.</p>
+                </div>
+            </div>
+        `;
+  }
+
+  getMapEditionsPage() {
+    return `
+            <div class="page-header">
+                <h1 class="page-title">Editions of the Map Repository</h1>
+            </div>
+            
+            <div class="content-section">
+                <div class="info-card">
+                <p>The map repository comes in two English editions, due to some unresolved uncertainty:</p>
+<ul type="disc">
+  <li><strong>Compact Edition: (570 MB) </strong>All the maps are directly in the &ldquo;SIL Map Repository&rdquo; folder (or the &ldquo;HK Supplementary Maps&rdquo; folder, if applicable).&nbsp;</li>
+  <li><strong>Expanded Edition: (930 MB) </strong>All the maps are in sub-folders under the &ldquo;SIL Map Repository&rdquo; folder (or under the &ldquo;HK Supplementary Maps&rdquo; folder, if applicable). <br />
+    Those sub-folders also contain:</li>
+  <ul type="circle">
+    <li>An additional version of the IDML file that has been merged with English labels, and so is no longer mergeable. English labels contain &ldquo;<strong>@en</strong>&rdquo; in the file name. E.g. <strong>065wbt - Ruth @en.idml</strong>&nbsp; This is provided as a backup for users who prefer to copy and paste labels in rather than using the data merge feature.&nbsp;</li>
+    <ul type="square">
+      <li>Note: There is some uncertainty on whether it is ever possible for the mergeable maps to feel different to the copy/paste user, such as by showing a field&rsquo;s name, for example, <strong>&lt;&lt;jerusalem_nt&gt;&gt;</strong>, without the user having explicitly specified a data merge file to use. The repository manager would request that, if possible, even copy/paste users first try the mergeable files, not the <strong>@en</strong> files, and then alert the <a href="mailto:maps-illustrationsrepository_intl@sil.org">Repository Manager</a> if any such problems occur, before resorting to using the <strong>@en</strong> files. This will help us to resolve the question of whether it&rsquo;s worth continuing to provide such files in the longer term. Thank you!</li>
+    </ul>
+    <li>An additional copy of the English data merge source file. (Also available in the <strong>DataMergeFiles</strong> folder.)</li>
+  </ul>
+</ul>
+                </div>
+            </div>
+        `;
+  }
+
+  getAccessingRepoPage() {
+    return `
+            <div class="page-header">
+                <h1 class="page-title">Accessing the Map Repository</h1>
+            </div>
+            
+            <div class="content-section">
+                <div class="info-card">
+                <p>If all you need is the main SIL Map Repository (without the supplementary maps), you can download it here:</p>
+<ul type="disc">
+  <li>SIL Map Repository Compact (English): <a href="https://tiny.cc/sil-map-repo" target="_blank">tiny.cc/sil-map-repo</a></li>
+  <li>SIL Map Repository Expanded (English): <a href="https://tiny.cc/sil-map-repo-red" target="_blank">tiny.cc/sil-map-repo-red</a></li>
+  <li>SIL Map Repository Compact (Spanish): <a href="http://tiny.cc/sil-map-repo-es" target="_blank">tiny.cc/sil-map-repo-es</a></li>
+</ul>
+<p>If you&rsquo;re a bonafide typesetter also needing access to the three HK maps for SIL-supported projects, please submit your request for access to the &ldquo;full repository&rdquo; at <a href="https://tiny.cc/requestimages" target="_blank">tiny.cc/requestimages</a>. (Maps cannot yet be requested by map ID, as you can do with Scripture illustrations.)</p>
+                </div>
+            </div>
+        `;
+  }
+
+  getPermissionRulesPage() {
+    return `
+            <div class="page-header">
+                <h1 class="page-title">Permission and Attribution Rules</h1>
+            </div>
+            
+            <div class="content-section">
+                <div class="info-card">
+                <p>The <strong>!Permission and Attribution Rules.docx</strong> file can be found in the <a href="https://tiny.cc/samplemaps" target="_blank"><strong>!All Map Samples</strong></a> folder in the repository.</p>
+                </div>
+            </div>
+        `;
+  }
+
+  // Page content methods will be implemented as we build each page
+  getIllustrationsPage() {
+    return `
+            <div class="page-header">
+                <h1 class="page-title">Illustrations</h1>
+            </div>
+            
+            <div class="content-section">
+                <div class="info-card">
+                    <h3>Illustration Sets</h3>
+                    <p>The SIL Illustration repository contains illustration sets from various owners, each with different rules regarding who may use them, in which kind of publications they may be used, what kind of attribution is required, and who SIL may share the master copies with.</p>
+                    <p>Make sure to read and understand the usage and attribution rules for each illustration set before selecting them for use.</p>
+                </div>
+            </div>
+            <div class="content-section">
+                <div class="info-card">
+                    <h3>Sample Illustrations</h3>
+                    <p>Translation teams can find low-resolution, watermarked samples of all illustrations available in the SIL Map & Illustration Repository at <a href="https://tiny.cc/sampleimages" target="_blank">tiny.cc/sampleimages</a>.
+                    (They are available with search tags in English, Spanish, French, Bahasa Indonesia, Hindi, and Swahili.)</p>
+                    <p>See <a href="https://lingtran.net/How+to+directly+insert+images%2C+illustrations%2C+and+figures+into+a+Paratext+project+from+a+searchable+database?highlight=illustrations" target="_blank">How to directly insert images, illustrations, and figures into a Paratext project from a searchable database</a>.</p>
+                </div>
+            </div>
+            <div class="content-section">
+                <div class="info-card">
+                    <h3>Master Illustrations</h3>
+                    <p>Typesetters may obtain copies of the Master Illustrations by submitting a request at <a href="https://tiny.cc/requestimages" target="_blank">tiny.cc/requestimages</a>.</p>
+                </div>
+            </div>
+        `;
+  }
+
+  getMapsAndDiagramsPage() {
+    return `
+            <div class="page-header">
+                <h1 class="page-title">Maps & Diagrams</h1>
+                <p class="page-subtitle">Get the latest version of SIL Map & Illustration Repository</p>
+            </div>
+            
+            <div class="content-section">
+                <div class="info-card">
+                    <a href="https://github.com/sillsdev/paratext-diagram-labeler/releases" target="_blank" class="btn" style="display: inline-block; padding: 12px 24px; background: #28a745; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; margin: 10px 0;">
+                        📥 Download from GitHub Releases
+                    </a>
+                    <p style="margin-top: 10px;"><small><em>Opens in a new tab</em></small></p>
+                </div>
+                
+                <div class="info-card">
+                    <h3>Installation Instructions</h3>
+                    <ol>
+                        <li>Download the <strong>SIL Map & Illustration Repository Setup</strong> program for your operating system</li>
+                        <li>Run the installer with administrator privileges if required</li>
+                        <li>Follow the setup wizard instructions</li>
+                        <li>The application will appear in your Start menu (Windows) or Applications folder (Mac)</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="content-section">
+                <h2 class="section-title">System Requirements</h2>
+                <div class="info-card">
+                    <ul>
+                        <li><strong>Windows:</strong> Windows 10 or later (primary supported platform)</li>
+                        <li><strong>Linux:</strong> Modern Linux distributions (less tested)</li>
+                        <li><strong>Mac:</strong> macOS 10.14 or later (less tested)</li>
+                    </ul>
+                    <p><em>Note: Mac and Linux versions are relatively untested. We'd appreciate help testing them out.</em></p>
+                </div>
+            </div>
+        `;
+  }
+
+  getMapVarietiesPage() {
+    return `
+            <div class="page-header">
+                <h1 class="page-title">Understanding Map Varieties</h1>
+                <p class="page-subtitle">SIL Map Repository filename conventions and options</p>
+            </div>
+            
+            <div class="content-section">
+                <h2 class="section-title">Map Grouping System</h2>
+                <p>Similar maps are grouped with the same chronology number, which the maps were grouped with for use with the predecessor system on PT9 known as "SMP". For example, 185 indicates maps relating to Philip's travels. In the SIL Map Repository (SMR), there are three separate IDML files for <code>185wbt - Philips Travels</code>:</p>
+                
+                <table style="width: 100%; margin: 1rem 0; border-collapse: collapse;">
+                    <tbody>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 0.5rem;"><code>185wbt - Philips Travels.idml</code></td>
+                            <td style="border: 1px solid #ddd; padding: 0.5rem;">Full page color map</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 0.5rem;"><code>185wbt - Philips Travels [sm].idml</code></td>
+                            <td style="border: 1px solid #ddd; padding: 0.5rem;">Shorter, more square color map</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 0.5rem;"><code>185wbt - Philips Travels [sm-bw].idml</code></td>
+                            <td style="border: 1px solid #ddd; padding: 0.5rem;">Black & white version of the shorter map</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="content-section">
+                <h2 class="section-title">Internal Map Options</h2>
+                <p>Many maps have multiple options for display all within one IDML file. As you browse through the map samples, the internal options used are indicated within parentheses. For example, options on two varieties of the World map are (bbf, riv) and (fcr):</p>
+                
+                <table style="width: 100%; margin: 1rem 0; border-collapse: collapse;">
+                    <tbody>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 0.5rem;"><code>265wbt - World [1pg] (bbf riv) @en.jpg</code></td>
+                            <td style="border: 1px solid #ddd; padding: 0.5rem;">Black & Blue, showing rivers</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 0.5rem;"><code>265wbt - World [2pg-flipped] (fcr) @en.jpg</code></td>
+                            <td style="border: 1px solid #ddd; padding: 0.5rem;">Full color relief</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="info-card">
+                    <h3>Filename Conventions</h3>
+                    <p>Please familiarize yourself with our maps' filename conventions described <a href="https://docs.google.com/spreadsheets/d/19xkEnd3x17eFAqChwzT6i9CmDxCJplLr/edit?gid=1704341479#gid=1704341479">here</a>.</p>
+                </div>
+            </div>
+        `;
+  }
+
+  getInDesignMapsPage() {
+    return `
+            <div class="page-header">
+                <h1 class="page-title">Working with InDesign Maps</h1>
+                <p class="page-subtitle">Complete guide for typesetting with IDML files</p>
+            </div>
+            
+            <div class="content-section">
+                <div class="info-card">
+                    <h3>Using InDesign Data Merge - Create the InDesign file</h3>
+                    
+                    <ol>
+                        <li>For the map you wish to typeset, open the downloaded InDesign file which does NOT have "@en" or other language code as part of the filename. (All maps are now distributed as .idml files instead of the usual .indd. This format is supported back to CS4.)</li>
+                    </ol>
+                    
+                    <p>InDesign maps in SMP1 no longer have links to separate artwork files. All content is embedded directly in the .idml file.</p>
+                    
+                    <ol start="2">
+                        <li>If your maps use a Roman-based writing system, all you'll need to do is ensure that the <a href="https://software.sil.org/charis/download/">Charis SIL</a> and <a href="https://software.sil.org/andika/download/">Andika</a> fonts are installed on your system. If you receive a message that you have missing fonts, simply install the versions of these fonts that can be found in the "Document fonts" subfolder in the top level of "SIL Maps Repository".</li>
+                        
+                        <li>Many of these InDesign maps support multiple options within one IDML file, most often the map type (such as "full color relief" or "black & white flat") and sometimes other variations (such as "complex routes" vs "simple routes" on the Exodus map). You can manually toggle layers to get the variation you're wanting. Note that some paragraph styles like "Ocean" and "Region" use color swatches named "Water color" and "Region color", and if you're wanting a black & white map, you'll need to change these paragraph styles to use the swatches named "Water BW" and "Region BW" instead. However, there's a better option: You can install the <a href="https://docs.google.com/document/d/1HjbQR9Q1zXQq_S0_xfODlRk2jovf8GHTKxWJuR5oBp4/edit?usp=sharing">MapMonkey</a> script, and run this whenever you want to "monkey" with the map options, either before or after the data merge. For example, you might want a black & white map for your print publication, but the color version of it for your Scripture app. For more information, visit the <a href="http://tiny.cc/mapmonkey">MapMonkey</a> page.</li>
+                        
+                        <li>If your maps use a non-Roman writing system, you will need to ensure that the definitions of the <code>font1</code> and <code>font2</code> paragraphs styles specify the font and any other properties that are required for proper rendering. All styles used for labels inherit the writing system properties from these two styles.
+                            <ol>
+                                <li>Example: For a map that uses Devanagari script and Western digits, in the <code>font1</code> and <code>font2</code> paragraph styles, set the font to <a href="https://software.sil.org/annapurna/download/">Annapurna SIL</a>, set the justification to "Adobe World-Ready Paragraph Composer", and set the language to "Hindi".
+                                    <ol>
+                                        <li>Alternatively, for this particular case, you may simply <a href="https://www.google.com/search?q=how+to+import+all+text+styles+in+indesign">import these paragraph definitions</a> from the <code>Deva_AnnapurnaSIL_WesternDigits.indd</code> file which can be found in the <code>!Styles</code> folder at the root of the map repository.</li>
+                                    </ol>
+                                </li>
+                                <li>If the fonts that you are using do not have native bold and/or italic faces, you will need to edit the respective paragraphs styles (e.g. <code>font1 bold italic</code>) to fake the face appropriately, such as by adding a very slight outer stroke to fake bold, and/or skew for italics.</li>
+                                <li>The <code>Regions</code> paragraph style typically employs expanded tracking in Roman-script projects, but the amount of expansion may be inappropriate in other writing systems. For this reason, you can modify the <code>expanded</code> character style to set an appropriate tracking property.</li>
+                                <li>If your writing system uses a numeral system supported natively by InDesign, (that is, Bengali, Burmese, Devanagari, Farsi, Full Farsi, Gujarati, Gurmukhi, Eastern Arabic ["Hindi"], Kannada, Khmer, Lao, Malayalam, Oriya, Tamil, Telugu, Thai, or Tibetan), it will not be necessary to manually replace the Western digits on the map (such as for the scale) with local digits. InDesign can render the normal digit characters (codepoints U+0030 to U+0039) as if they were in various other numeral systems, without needing to replace the actual numerical characters. The <code>!AllDigitStyles.indd</code> file (which can likewise be found in the <code>!Styles</code> folder) contains a paragraph style for each of these numeral systems. By loading a style from that document into your map, and basing a style in that document on this style, you can control the digit system that InDesign uses to render normal digits.
+                                    <ol>
+                                        <li>For example, for a map that uses Devanagari script and Devanagari digits, import the <code>devanagari digits</code> paragraph style into your map from the <code>!AllDigitStyles.indd</code> file, and then base the definition of <code>font1</code> and <code>font2</code> on this paragraph style.
+                                            <ol>
+                                                <li>Alternatively, for this particular case, you could import all paragraph styles from the <code>Deva_AnnapurnaSIL_DevaDigits.indd</code> file into your map.</li>
+                                            </ol>
+                                        </li>
+                                    </ol>
+                                </li>
+                                <li>Once you have set up your <code>font1</code> and <code>font2</code> styles appropriately for your writing system, save a copy of this document to be used as the import source for all maps. If it could be helpful for other typesetters who may use the same writing system, please submit a copy to the repository manager at <a href="mailto:maps-illustrationsrepository_intl@sil.org">maps-illustrationsrepository_intl@sil.org</a>.</li>
+                            </ol>
+                        </li>
+                    </ol>
+                    
+                    <ol start="5">
+                        <li>If you have all the needed fonts installed on your computer but you are still seeing a pink highlight behind your text, that is an indication that your font is still missing. Check to make sure there are no Character Styles applied. Removing them should fix your issue.</li>
+                        <li>Open the Layers panel (Windows/Layers). This panel provides a number of customization possibilities, so explore it thoroughly. There is often a layer titled "Map Choices". Click the > symbol to the left to view the variations. Toggle the layer's visibility by clicking on the eyeball symbol.</li>
+                        <li>If you choose a map that has a black & white layer available, you can either apply the bw version of the styles to the appropriate layers or redefine the "<code>Regions</code>", "<code>Water</code>", "<code>Ocean</code>", and "<code>Seas</code>" paragraph styles to use the "BW" versions of the color swatches. (e.g. Edit the style, and under Character Color, instead of the "Region color" swatch, select the "Region BW" swatch.)</li>
+                    </ol>
+                </div>
+                
+                <div class="info-card">
+                    <h3>Using InDesign Merge - Data Merging</h3>
+                    
+                    <ol>
+                        <li>Make a copy of the repository map (.idml) to work from. We recommend saving the file in the project \\local\\figures directory and prefixing the file with project name. Allow InDesign to change the extension to .indd. (If the original was named e.g. <code>155wbt - Holy Land.idml</code>, and your Paratext project was e.g. LUC_TEST, your master copy file would be <code>luctest_155wbt - Holy Land.indd</code>)</li>
+                        
+                        <li>Go to the InDesign menu item "Window" and navigate to "Utilities". Choose "Data Merge" from the fly-out menu. Go to the Panel Menu icon (stacked horizontal lines in the upper right corner of the Data Merge panel) <img src="images/image_B10.png" alt="Panel Menu Icon" style="vertical-align: middle; max-height: 20px;"> and choose "Select Data Source."</li>
+                        
+                        <li>The data source files for each map will be found in the Paratext Projects \\local\\figures folder, unless you specified another destination. It is a text (.txt) file with the same name as the map (including .idml), prefixed by the project name. For example, <code>luctest_155wbt - Holy Land.idml.txt</code> The list should populate the Data Merge panel.</li>
+                    </ol>
+                    
+                    <div class="info-card">
+                        <img src="images/image_B3.jpg" alt="Data Merge Process" style="max-width: 100%; margin: 1rem 0;">
+                    </div>
+                    
+                    <p>Choose "Preview" by checking the box in the lower left corner of the Data Merge panel. The text fields in your document should change to reflect your own data, i.e. the vernacular text from the project.</p>
+                    
+                    <div style="display: flex; align-items: flex-start; margin: 1rem 0;">
+                        <img src="images/image_B5.png" alt="Data Merge Panel" style="max-width: 200px; margin-right: 1rem;">
+                        <div>
+                            <ol start="4">
+                                <li><strong>Continuing to work in preview mode</strong>, adjust your map as follows:</li>
+                            </ol>
+                            
+                            <p>Using the Selection tool (top arrow in the toolbox), select any text boxes that have a red "X" that indicates there is overset text. You can also check for overset text by looking at the Preflight Panel indicator at the bottom of your InDesign window:</p>
+                            
+                            <img src="images/image_B2.png" alt="Preflight Panel Indicator" style="max-width: 100%; margin: 0.5rem 0;">
+                        </div>
+                    </div>
+                    
+                    <p>Reposition and resize any text boxes as needed. Resizing is most easily done with ctrl-alt-c (Fit frame to content) and the height and width menus in the control panel. Of course you can click and drag as well. You can adjust the font size of an individual entry or change the paragraph style so that you adjust the size of all of the "cities", for example. Either can be appropriate at different times.</p>
+                    
+                    <p>Any fields that appear to be surrounded by "??" are verses that contained no text in the XX book, i.e. they were overlooked or skipped by the translators. Once they enter the required text, you will need to re-merge per below, "Repeating the Merge Cycle." Whenever you see "OMIT", simply delete it and hide any corresponding information (like the Mile scale) by un-ticking that layer. In the SMP1 collection, removing dots for deliberately missing cities is easy, as there is now a separate InDesign object for each dot.</p>
+                    
+                    <p>Now is the time - still in preview mode - to make any other cosmetic changes to the map, as needed by the current project.</p>
+                    
+                    <p>The cosmetic changes in mind are changing the visibility of various layers, changing style attributes, and/or moving text labels. You should not make changes directly to the preview text, not even inserting a line break to wrap long text, as such changes will not be preserved when doing the data merge. Rather, if you need a long label to be wrapped, you should change the dimensions and/or other properties of the text frame and/or paragraph. E.g. Change the text frame's object style to "multiline". (Note that the paragraph's "Balance Ragged Lines" setting, which affects wrapping, is turned on, as inherited from the <code>font1</code> style.) It is recommended that you keep the data merge panel open so that InDesign will prevent you from mistakingly editing the preview text. Unless the data merge panel is open, the document will behave just like an already-merged document, with editable labels. (It will be possible AFTER step 6 in Repeating the Merge Cycle to edit the text and preserve the change, but it is hoped that little of that will be needed.)</p>
+                    
+                    <p>Note that we have found that it is NOT necessary to actually use the Merge button and create a second, merged InDesign file at this point. If you save and export to jpg or to pdf with Preview mode turned on, the files will be quite usable at this point. We do recommend doing the final merge step and saving that file after you are certain the team will make no more label changes. (See Repeating the Merge Cycle below).</p>
+                    
+                    <div class="info-card">
+                        <img src="images/image_B6.jpg" alt="InDesign Map Preview" style="max-width: 100%; margin: 1rem 0;">
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h3>Controlling Map Options with Map Monkey</h3>
+                    <p>The Map Monkey tool enables the  user to easily switch between various map options. It can be found at <a href="https://tiny.cc/mapmonkey">tiny.cc/mapmonkey</a>.</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Saving your InDesign map file</h3>
+                    
+                    <p>Save the map in the project \\local\\figures directory e.g. as above: <code>luctest_155wbt - Holy Land.indd</code></p>
+                    
+                    <p>Export your file as a *.jpg file at this time also and use this file to insert \\fig information into the Paratext Project at the appropriate locations. If you have editing privileges to the project, you can do this yourself or else share it with the team for them to do so.</p>
+                    
+                    <p>Now you should have two map files in your project IDENTICALLY NAMED except for their extensions. First - a master copy file (.indd) containing all your edits and the original merge keys, which you will re-use for subsequent merges. Second, a (.jpg) file placed into the Paratext project.</p>
+                </div>
+                
+                <div class="info-card">
+                    <h3>Repeating the Merge Cycle</h3>
+                    
+                    <p>After each round of team proofing, there will typically be text and spelling changes the need to be re-merged into the project maps:</p>
+                    
+                    <ol>
+                        <li>Re-export the data merge files.</li>
+                        <li>For each affected map, open the master file copy (.indd) and "Update data source" on the Merge Tool menu.</li>
+                        <li>Save each revised map according to "Export Map Merge Files", replacing the previous vernacular (.indd) file.</li>
+                        <li>When the team has fully approved the maps and no more map label changes are expected, you can complete the final step of "Merging" the document and creating a second InDesign file with the labels actually embedded in the file.</li>
+                        <li>Choose "Create Merged Document" from either the Panel Menu or the "Merge Data" icon located just below the Panel Options icon.</li>
+                        <li>The Create Merged Document dialogue box will open. The default settings will suffice; click OK when prompted. Note: While performing the Merge task, your merged data will appear to revert back to the generic data fields, but it is still there. Once the Data Merge is completed, a new InDesign file with a "-1" added to the name will be generated. <strong>We recommend your saving this file as an .idml file and removing the -1</strong>. That way the files are identically named and you have not overwritten your mergeable .indd file. The merged .idml file will preserve the data more safely for long term archiving.</li>
+                    </ol>
+                </div>
+                
+                <div class="info-card">
+                    <h3>Bringing an InDesign map into Scripture Publications</h3>
+                    
+                    <ol>
+                        <li>InDesign maps (.indd files) should be placed directly into InDesign Scripture documents. Publishing Assistant should automatically place any map which has been formatted in Paratext using the \\fig markup and is located in the Paratext project's local/figures folder. Occasionally, you may still see the jpg being placed instead of your .indd. The best way to fix this is to ascertain the exact location of the \\fig markup in Paratext and go to that location in the InDesign file. Edit the fig markup and change the filename to have the .indd extension. In PA6 jobs, you can find it using the Text Editor (ctrl-y). In PA7 jobs, figure markup is found in the Conditional Text Panel Menu. Make the "Hidden Illustration" text visible by clicking in the first column on that line, edit the markup, and turn off visibility again. In both cases, carefully verify that the hidden attributes apply to your new edits. Then use PubAssist to place the picture again.</li>
+                        <li>When maps are placed directly in the Scripture text, they should have the title layer turned off and the title should be included instead in the caption and reference sections of the Paratext markup as appropriate. Revisit all the maps after final validation to make sure they (and the gutter rule) still look ok.</li>
+                        <li>You may export the merged map to the jpg and PDF formats after final validation. The PDF is useful for archiving.</li>
+                        <li>When archiving the final publication files, make sure to archive the local/figures folder as well.</li>
+                    </ol>
+                </div>
+            </div>
+        `;
+  }
+
+  getMapCreatorMapsPage() {
+    return `
+            <div class="page-header">
+                <h1 class="page-title">Working with Map Creator Maps</h1>
+                <p class="page-subtitle">Complete guide for working with MAPX files</p>
+            </div>
+            
+            <div class="content-section">
+                <div class="info-card">
+                    <h3>Create the localized Map Creator file</h3>
+                    
+                    <ol>
+                        <li>Find the appropriate downloaded .mapx file for the map(s) you wish to prepare.</li>
+                        <li>Copy the file to the project's \\local\\figures folder. We recommend following the naming convention of the generated merge files. If the original was named e.g. <code>245wbt -Seven Churches.mapx</code>, and your Paratext project was e.g. <code>Zezi</code>, your map file would be <code>245wbt - Seven Churches @Zezi.mapx</code>.</li>
+                        <li>Open the .mapx file with Map Creator.</li>
+                        <li>Go to File > Import > Translation Data. Browse to the .txt file that was exported from the SIL Map & Illustration Repository.</li>
+                    </ol>
+                    
+                    <div class="info-card">
+                        <img src="images/image_B8.png" alt="Map Creator Import Process" style="max-width: 100%; margin: 1rem 0;">
+                    </div>
+                    
+                    <ol start="5">
+                        <li>On the "Ready to import translations" just click Finish.</li>
+                        <li>If all goes well, you will see "Import complete." The import process does, however, show conflicts with any previously imported translations for your project language. These will have to be resolved in consultation with your team.</li>
+                        <li>Finalize your translated map.
+                            <ol>
+                                <li>Don't be surprised that your map will look exactly the same after the import! Go to the Language drop down under Map Options and choose your project language. Only then will your translated map appear.</li>
+                            </ol>
+                        </li>
+                    </ol>
+                    
+                    <div style="display: flex; align-items: flex-start; margin: 1rem 0;">
+                        <img src="images/image_B7.png" alt="Map Creator Language Selection" style="max-width: 250px; margin-right: 1rem;">
+                        <div>
+                            <ol start="2" style="list-style-type: lower-alpha;">
+                                <li>Adjust location and other properties of text fields. There are many options! (Typesetters unfamiliar with Map Creator can profit from an excellent tutorial video <a href="https://vimeo.com/59357958">here</a>. For excellent support, email <a href="mailto:help@fmosoft.org">help@fmosoft.org</a>.) Any fields still displaying English within parentheses indicate missing translations, i.e. a blank verse in the corresponding Paratext XX Book chapter. (Note: It could also indicate a mismatch between the English name expected on the map and the English name in the translation data file, in which case, please report it to <a href="mailto:maps-illustrationsrepository_intl@sil.org">maps-illustrationsrepository_intl@sil.org</a>.)</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <img src="images/image_B4.png" alt="Map Creator Adjustments" style="max-width: 100%; margin: 1rem 0;">
+                    </div>
+                    
+                    <ol start="3" style="list-style-type: lower-alpha;">
+                        <li>For any label that says "OMIT" or contains only dashes, select it and uncheck the "Visible" checkbox. This should hide both the label and any associated city dot.</li>
+                    </ol>
+                </div>
+                
+                <div class="info-card">
+                    <h3>Bringing a Map Creator map into a Scripture publication</h3>
+                    
+                    <ol>
+                        <li>PDFs and jpegs can be created in Map Creator via File > Export</li>
+                        <li>PDFs of Map Creator maps should be placed directly into InDesign Scripture documents. Publishing Assistant should automatically place any map which has been formatted in Paratext using the \\fig markup and is located in the Paratext project's local/figures folder. Occasionally, you may still see the jpg being placed instead of your .pdf. The best way to fix this is to use the Text Editor in InDesign (ctrl-y) to edit the fig markup and change the filename to have the .pdf extension. Then use PubAssist to place the picture again.</li>
+                        <li>When pictures are placed directly in the Scripture text, they should have the title field turned off (un-tick visible) and the title should be included instead in the caption and reference sections of the Paratext markup as appropriate. Revisit all the maps after final validation to make sure they (and the gutter rule) still look ok.</li>
+                    </ol>
+                </div>
+                
+                <div class="info-card">
+                    <h3>More about Map Creator</h3>
+                    
+                    <div class="content-section">
+                        <ul>
+                            <li><strong>Home Page:</strong> <a href="https://fmosoft.com/map-creator">https://fmosoft.com/map-creator</a></li>
+                            <li><strong>Intro Video:</strong> <a href="https://vimeo.com/59357958">https://vimeo.com/59357958</a></li>
+                            <li><strong>Support:</strong> <a href="mailto:help@fmosoft.com">help@fmosoft.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        `;
+  }
+
+  getContactPage() {
+    return `
+            <div class="page-header">
+                <h1 class="page-title">Contact</h1>
+            </div>
+            
+            <div class="content-section">
+                <div class="info-card">
+                    <p>Please use the appropriate form below to contact us:</p>
+                    
+                    <div class="collapsible-form">
+                        <h3 onclick="toggleForm('form1')" style="cursor: pointer; user-select: none;">
+                            <span id="form1-icon" style="display: inline-block; width: 20px;">+</span> To request permissions to use maps or illustrations in publications:
+                        </h3>
+                        <div id="form1" style="display: none; margin-top: 10px;">
+                            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScGc_jhYmu2KrVzlX8oL0-Iw32-0UY6kzD6j_wm5j-VD6RsAw/viewform?embedded=true" width="100%" height="1500" frameborder="0" marginheight="0" marginwidth="0" style="border-radius: 8px; background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,0.08);">Loading…</iframe>
+                        </div>
+                    </div>
+                    
+                    <div class="collapsible-form">
+                        <h3 onclick="toggleForm('form2')" style="cursor: pointer; user-select: none;">
+                            <span id="form2-icon" style="display: inline-block; width: 20px;">+</span> To request access to master copies of maps or illustrations:
+                        </h3>
+                        <div id="form2" style="display: none; margin-top: 10px;">
+                            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScCAOsNhonkU8H9msz7eUncVVme4MvtJ7Tnzjgl9s-KAtL3oA/viewform?embedded=true" width="100%" height="1500" frameborder="0" marginheight="0" marginwidth="0" style="border-radius: 8px; background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,0.08);">Loading…</iframe>
+                        </div>
+                    </div>
+                    
+                    <div class="collapsible-form">
+                        <h3 onclick="toggleForm('form3')" style="cursor: pointer; user-select: none;">
+                            <span id="form3-icon" style="display: inline-block; width: 20px;">+</span> For all other inquiries:
+                        </h3>
+                        <div id="form3" style="display: none; margin-top: 10px;">
+                            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSedIIw87Qr1_nTgBfPG75Z7XRZdqxrCtxwT_oqTdaqNEmCStw/viewform?embedded=true" width="100%" height="1200" frameborder="0" marginheight="0" marginwidth="0" style="border-radius: 8px; background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,0.08);">Loading…</iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+  }
+
+  getMapsOverviewPage() {
+    return `
+            <div class="content-section">
+                <h1 class="page-title">Maps & Diagrams</h1>
+                <p>Create maps and diagrams to engage readers in the Scriptures.</p>
+
+                <h2>Basics</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3><span style="font-size: 36px; margin-right: 8px;">🗺️</span><a href="#maps-intro" data-page="maps-intro">Introduction</a></h3>
+                        <p>About our Maps, and Why You Need a Labeler</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3><span style="font-size: 36px; margin-right: 8px;">🖼️</span><a href="#map-samples" data-page="map-samples">Samples</a></h3>
+                        <p>View and download sample maps for your projects</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3><span style="font-size: 36px; margin-right: 8px;">📦</span><a href="#map-editions" data-page="map-editions">Editions</a></h3>
+                        <p>Learn about Compact and Expanded editions</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3><span style="font-size: 36px; margin-right: 8px;">⬇️</span><a href="#accessing-repo" data-page="accessing-repo">Accessing the Repository</a></h3>
+                        <p>Download links and access instructions</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3><span style="font-size: 36px; margin-right: 8px;">📄</span><a href="#permission-rules" data-page="permission-rules">Permission Rules</a></h3>
+                        <p>Usage rights and attribution requirements</p>
+                    </div>
+                </div>
+
+                <h2>How to Use the Maps</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3><span style="font-size: 36px; margin-right: 8px;">📂</span><a href="#map-varieties" data-page="map-varieties">Map Varieties</a></h3>
+                        <p>Understand Map Varieties in the SIL Map Repository.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3><img src="images/idml.ico" alt="InDesign" style="width: 36px; height: 36px; margin-right: 8px; vertical-align: middle;"><a href="#indesign-maps" data-page="indesign-maps">InDesign Maps</a></h3>
+                        <p>Data-merging *.idml.txt files, using the Map Monkey, and more!</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3><img src="images/mapx.ico" alt="Map Creator" style="width: 36px; height: 36px; margin-right: 8px; vertical-align: middle;"><a href="#map-creator-maps" data-page="map-creator-maps">Map Creator Maps</a></h3>
+                        <p>Importing *.mapx.txt data merge files, and more!</p>
+                    </div>
+                </div>
+            </div>
+        `;
+  }
+}
+
+// Initialize the site when DOM is loaded
+document.addEventListener("DOMContentLoaded", () => {
+  new SiteManager();
+});
