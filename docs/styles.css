@@ -207,7 +207,8 @@ body {
 
 .sil-banner {
     position: relative;
-    height: 300px;
+    height: 420px;
+    max-height: 35vh;
     overflow: hidden;
 }
 
@@ -680,7 +681,8 @@ body {
     }
     
     .sil-banner {
-        height: 250px;
+        height: 350px;
+        max-height: 30vh;
     }
     
     .sil-banner-content {
@@ -744,6 +746,11 @@ body {
     
     .feature-card {
         padding: 20px;
+    }
+    
+    .sil-banner {
+        height: 250px;
+        max-height: 25vh;
     }
     
     .sil-banner-content {

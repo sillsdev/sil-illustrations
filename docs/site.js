@@ -244,6 +244,11 @@ class SiteManager {
                 <p>Use the navigation links above to explore the resources and documentation, or to contact us.</p>
             </div>
 
+            <div class="info-card warning-card">
+                <h3>🚧 Under Construction</h3>
+                <p>This site is still under construction as we pull in documentation from various sources and attempt to update it.</p>
+                <p>Thank you for your patience!</p>
+            </div>
         `;
   }
 
@@ -426,7 +431,10 @@ Both of these can generate data merge files for Adobe InDesign (IDML maps) and f
             
             <div class="content-section">
                 <h2 class="section-title">Map Grouping System</h2>
-                <p>Similar maps are grouped with the same chronology number, which the maps were grouped with for use with the predecessor system on PT9 known as "SMP". For example, 185 indicates maps relating to Philip's travels. In the SIL Map Repository (SMR), there are three separate IDML files for <code>185wbt - Philips Travels</code>:</p>
+                <p>Similar maps are grouped with the same chronology number, such as "185" for maps relating to Philip's travels. 
+                (Scripture Map Labeler, the predecessor to Paratext Diagram Labeler, required users to build sets of map labels in a Paratext "extra" book such as XXA, 
+                using chapters and verses, and this grouping number was the "chapter" number for all maps in that set.)</p>
+                <p>In the SIL Map Repository (SMR), there are three separate IDML files for <code>185wbt - Philips Travels</code>:</p>
                 
                 <table style="width: 100%; margin: 1rem 0; border-collapse: collapse;">
                     <tbody>
@@ -483,43 +491,49 @@ Both of these can generate data merge files for Adobe InDesign (IDML maps) and f
                     <h3>Using InDesign Data Merge - Create the InDesign file</h3>
                     
                     <ol>
-                        <li>For the map you wish to typeset, open the downloaded InDesign file which does NOT have "@en" or other language code as part of the filename. (All maps are now distributed as .idml files instead of the usual .indd. This format is supported back to CS4.)</li>
+                        <li>For the map you wish to typeset, open the corresponding InDesign file. (If you downloaded the expanded edition of the repository, open the version that does NOT have "@en" or other language code as part of the filename.)</li>
                     </ol>
-                    
-                    <p>InDesign maps in SMP1 no longer have links to separate artwork files. All content is embedded directly in the .idml file.</p>
+
+                    <p><i>Note:</i> All maps are distributed as .idml files instead of the usual .indd because this format is supported back to CS4.
+                    <br>All artwork is embedded directly in the .idml file.</p>
                     
                     <ol start="2">
                         <li>If your maps use a Roman-based writing system, all you'll need to do is ensure that the <a href="https://software.sil.org/charis/download/">Charis SIL</a> and <a href="https://software.sil.org/andika/download/">Andika</a> fonts are installed on your system. If you receive a message that you have missing fonts, simply install the versions of these fonts that can be found in the "Document fonts" subfolder in the top level of "SIL Maps Repository".</li>
                         
-                        <li>Many of these InDesign maps support multiple options within one IDML file, most often the map type (such as "full color relief" or "black & white flat") and sometimes other variations (such as "complex routes" vs "simple routes" on the Exodus map). You can manually toggle layers to get the variation you're wanting. Note that some paragraph styles like "Ocean" and "Region" use color swatches named "Water color" and "Region color", and if you're wanting a black & white map, you'll need to change these paragraph styles to use the swatches named "Water BW" and "Region BW" instead. However, there's a better option: You can install the <b>MapMonkey</b> script, and run this whenever you want to "monkey" with the map options, either before or after the data merge. For example, you might want a black & white map for your print publication, but the color version of it for your Scripture app. For more information, see the <a href="#map-monkey">MapMonkey for InDesign</a> page.</li>
+                        <li>Many of these InDesign maps support multiple options within one IDML file, most often the map type (such as "full color relief" or "black & white flat") and sometimes other variations (such as "complex routes" vs "simple routes" on the Exodus map). You can manually toggle layers to get the variation you're wanting. Note that some paragraph styles like "Ocean" and "Region" use color swatches named "Water color" and "Region color", and if you're wanting a black & white map, you'll need to change these paragraph styles to use the swatches named "Water BW" and "Region BW" instead. 
+                        <br>However, there's a better option: You can install the <b>MapMonkey</b> script, and run this whenever you want to "monkey" with the map options, either before or after the data merge. For example, you might want a black & white map for your print publication, but the color version of it for your Scripture app. For more information, see the <a href="#map-monkey">MapMonkey for InDesign</a> page.</li>
                         
                         <li>If your maps use a non-Roman writing system, you will need to ensure that the definitions of the <code>font1</code> and <code>font2</code> paragraphs styles specify the font and any other properties that are required for proper rendering. All styles used for labels inherit the writing system properties from these two styles.
-                            <ol>
+                            <ul>
                                 <li>Example: For a map that uses Devanagari script and Western digits, in the <code>font1</code> and <code>font2</code> paragraph styles, set the font to <a href="https://software.sil.org/annapurna/download/">Annapurna SIL</a>, set the justification to "Adobe World-Ready Paragraph Composer", and set the language to "Hindi".
-                                    <ol>
-                                        <li>Alternatively, for this particular case, you may simply <a href="https://www.google.com/search?q=how+to+import+all+text+styles+in+indesign">import these paragraph definitions</a> from the <code>Deva_AnnapurnaSIL_WesternDigits.indd</code> file which can be found in the <code>!Styles</code> folder at the root of the map repository.</li>
-                                    </ol>
+                                    
+                                    <br>Alternatively, for this particular case, you may simply <a href="https://www.google.com/search?q=how+to+import+all+text+styles+in+indesign">import these paragraph definitions</a> from the <code>Deva_AnnapurnaSIL_WesternDigits.indd</code> file which can be found in the <code>!Styles</code> folder at the root of the map repository.
+                                    
                                 </li>
                                 <li>If the fonts that you are using do not have native bold and/or italic faces, you will need to edit the respective paragraphs styles (e.g. <code>font1 bold italic</code>) to fake the face appropriately, such as by adding a very slight outer stroke to fake bold, and/or skew for italics.</li>
                                 <li>The <code>Regions</code> paragraph style typically employs expanded tracking in Roman-script projects, but the amount of expansion may be inappropriate in other writing systems. For this reason, you can modify the <code>expanded</code> character style to set an appropriate tracking property.</li>
                                 <li>If your writing system uses a numeral system supported natively by InDesign, (that is, Bengali, Burmese, Devanagari, Farsi, Full Farsi, Gujarati, Gurmukhi, Eastern Arabic ["Hindi"], Kannada, Khmer, Lao, Malayalam, Oriya, Tamil, Telugu, Thai, or Tibetan), it will not be necessary to manually replace the Western digits on the map (such as for the scale) with local digits. InDesign can render the normal digit characters (codepoints U+0030 to U+0039) as if they were in various other numeral systems, without needing to replace the actual numerical characters. The <code>!AllDigitStyles.indd</code> file (which can likewise be found in the <code>!Styles</code> folder) contains a paragraph style for each of these numeral systems. By loading a style from that document into your map, and basing a style in that document on this style, you can control the digit system that InDesign uses to render normal digits.
-                                    <ol>
+                                    <ul>
                                         <li>For example, for a map that uses Devanagari script and Devanagari digits, import the <code>devanagari digits</code> paragraph style into your map from the <code>!AllDigitStyles.indd</code> file, and then base the definition of <code>font1</code> and <code>font2</code> on this paragraph style.
-                                            <ol>
-                                                <li>Alternatively, for this particular case, you could import all paragraph styles from the <code>Deva_AnnapurnaSIL_DevaDigits.indd</code> file into your map.</li>
-                                            </ol>
+                                        <br><br>Alternatively, for this particular case, you could import all paragraph styles from the <code>Deva_AnnapurnaSIL_DevaDigits.indd</code> file into your map.
                                         </li>
-                                    </ol>
+                                    </ul>
                                 </li>
-                                <li>Once you have set up your <code>font1</code> and <code>font2</code> styles appropriately for your writing system, save a copy of this document to be used as the import source for all maps. If it could be helpful for other typesetters who may use the same writing system, please submit a copy to the repository manager at <a href="mailto:maps-illustrationsrepository_intl@sil.org">maps-illustrationsrepository_intl@sil.org</a>.</li>
-                            </ol>
+                                <li>Once you have set up your <code>font1</code> and <code>font2</code> styles appropriately for your writing system, 
+                                save a copy of this document to be used as the import source for all maps. 
+                                If it could be helpful for other typesetters who may use the same writing system, 
+                                please contact the repository manager via the <a href="#contact">Contact page</a> to offer to contribute it to the repository.</li>
+                            </ul>
                         </li>
                     </ol>
                     
                     <ol start="5">
                         <li>If you have all the needed fonts installed on your computer but you are still seeing a pink highlight behind your text, that is an indication that your font is still missing. Check to make sure there are no Character Styles applied. Removing them should fix your issue.</li>
                         <li>Open the Layers panel (Windows/Layers). This panel provides a number of customization possibilities, so explore it thoroughly. There is often a layer titled "Map Choices". Click the > symbol to the left to view the variations. Toggle the layer's visibility by clicking on the eyeball symbol.</li>
-                        <li>If you choose a map that has a black & white layer available, you can either apply the bw version of the styles to the appropriate layers or redefine the "<code>Regions</code>", "<code>Water</code>", "<code>Ocean</code>", and "<code>Seas</code>" paragraph styles to use the "BW" versions of the color swatches. (e.g. Edit the style, and under Character Color, instead of the "Region color" swatch, select the "Region BW" swatch.)</li>
+                        <li>If you choose a map that has a black & white layer available, you can either apply the bw version of the styles to the appropriate layers 
+                        or redefine the "<code>Regions</code>", "<code>Water</code>", "<code>Ocean</code>", and "<code>Seas</code>" paragraph styles to use the "BW" 
+                        versions of the color swatches. (e.g. Edit the style, and under Character Color, instead of the "Region color" swatch, select the "Region BW" 
+                        swatch.) Better yet, use the <a href="#map-monkey">MapMonkey</a> tool to automate this process.</li>
                     </ol>
                 </div>
                 
@@ -527,41 +541,77 @@ Both of these can generate data merge files for Adobe InDesign (IDML maps) and f
                     <h3>Using InDesign Merge - Data Merging</h3>
                     
                     <ol>
-                        <li>Make a copy of the repository map (.idml) to work from. We recommend saving the file in the project \\local\\figures directory and prefixing the file with project name. Allow InDesign to change the extension to .indd. (If the original was named e.g. <code>155wbt - Holy Land.idml</code>, and your Paratext project was e.g. LUC_TEST, your master copy file would be <code>luctest_155wbt - Holy Land.indd</code>)</li>
+                        <li>Open the repository map (.idml), and save a copy to work from in .indd format. We recommend saving the file in the project \\local\\figures directory and 
+                        adding the project name to the filename. The traditional option is to prefix the project name to the filename. (e.g. <code>zezi_155wbt - Holy Land.indd</code>) 
+                        Alternatively, you can append it after an "@" symbol (e.g. <code>155wbt - Holy Land @Zezi.idml</code>). 
+                        As this matches the pattern of the samples map filenames, this can simplify automatic substitution of sample placeholders with the actual map file at typesetting time 
+                        using a changes.txt rule. </li>
                         
-                        <li>Go to the InDesign menu item "Window" and navigate to "Utilities". Choose "Data Merge" from the fly-out menu. Go to the Panel Menu icon (stacked horizontal lines in the upper right corner of the Data Merge panel) <img src="images/image_B10.png" alt="Panel Menu Icon" style="vertical-align: middle; max-height: 20px;"> and choose "Select Data Source."</li>
+                        <li>Go to the InDesign menu item "Window" and navigate to "Utilities". Choose "Data Merge" from the fly-out menu. 
+                        Go to the Panel Menu icon (stacked horizontal lines in the upper right corner of the Data Merge panel) 
+                        <img src="images/image_B10.png" alt="Panel Menu Icon" style="vertical-align: middle; max-height: 20px;"> and choose "Select Data Source."</li>
                         
-                        <li>The data source files for each map will be found in the Paratext Projects \\local\\figures folder, unless you specified another destination. It is a text (.txt) file with the same name as the map (including .idml), prefixed by the project name. For example, <code>luctest_155wbt - Holy Land.idml.txt</code> The list should populate the Data Merge panel.</li>
-                    </ol>
-                    
                     <div class="info-card">
-                        <img src="images/image_B3.jpg" alt="Data Merge Process" style="max-width: 100%; margin: 1rem 0;">
+                        <img src="images/image_B3.png" alt="Data Merge Process" style="max-width: 70%; margin: 1rem 0; align: center;">
                     </div>
                     
-                    <p>Choose "Preview" by checking the box in the lower left corner of the Data Merge panel. The text fields in your document should change to reflect your own data, i.e. the vernacular text from the project.</p>
+                        <li>InDesign may warn you, "Changing to a new data source may make the inserted data fields invalid. You may have to insert the placeholders again." Click "OK" to proceed.</li>
+                        <li>If you (or the translation team) used Paratext Diagram Labeler and exported the data merge files to the default location, you'll find them in Paratext Project's 
+                        \\shared\\labeler folder. For example, <code>155wbt - Holy Land @Zezi.idml.txt</code> The list should populate the Data Merge panel. 
+                        (If you used Scripture Map Labeler instead, see its accompanying documentation for details on data merge filenames and locations.)</li>
+                    </ol>
+                    
                     
                     <div style="display: flex; align-items: flex-start; margin: 1rem 0;">
                         <img src="images/image_B5.png" alt="Data Merge Panel" style="max-width: 200px; margin-right: 1rem;">
                         <div>
+                            <p>Enable "Preview" mode by checking the box in the lower left corner of the Data Merge panel.  
+                            Then you should see the labels in your language rather than the original English labels or the field names enclosed in &lt;&lt;angle brackets&gt;&gt;. 
+                        </div>
+                    </div>
+                    
                             <ol start="4">
                                 <li><strong>Continuing to work in preview mode</strong>, adjust your map as follows:</li>
                             </ol>
                             
-                            <p>Using the Selection tool (top arrow in the toolbox), select any text boxes that have a red "X" that indicates there is overset text. You can also check for overset text by looking at the Preflight Panel indicator at the bottom of your InDesign window:</p>
+                            <p>First of all, especially if you are using a non-Roman writing system, check that everything is rendering correctly. 
+                            On your first map, you may need to make the changes to the <code>font1</code> and <code>font2</code> paragraph styles as described above in step 4 of "Using InDesign Data Merge - Create the InDesign file".
+                            On successive maps, you should be able to simply import these paragraph styles from your first map file. (From the Paragraph Styles panel, 
+                            click the menu icon in the upper right corner and choose "Load All Text Styles...")</p>
+
+                            <p>Next, select the map options you want. This is the time to call on the <a href="#map-monkey">MapMonkey</a> if you have it installed.</p>
+
+                            <p>After this, check for overset text. This is text that does not fit within its text box. Most text frames are set to "Auto Size" appropriately,
+                            but some labels may need to be resized. Overset text boxes are indicated with a red "+" symbol in the lower right corner of the text box.</p>
+                            <p>Using the Selection tool (top arrow in the toolbox), any such text frames can be selected and resized as needed. 
+                            You can also check for overset text by looking at the Preflight Panel indicator at the bottom of your InDesign window:</p>
                             
                             <img src="images/image_B2.png" alt="Preflight Panel Indicator" style="max-width: 100%; margin: 0.5rem 0;">
-                        </div>
-                    </div>
+                    <p>Reposition any text boxes as needed. You can adjust the font size of an individual entry or change the paragraph style so that you 
+                    adjust the size of all of the "cities", for example. Either can be appropriate at different times.</p>
                     
-                    <p>Reposition and resize any text boxes as needed. Resizing is most easily done with ctrl-alt-c (Fit frame to content) and the height and width menus in the control panel. Of course you can click and drag as well. You can adjust the font size of an individual entry or change the paragraph style so that you adjust the size of all of the "cities", for example. Either can be appropriate at different times.</p>
+                    <p>Any fields that contain only dashes/hyphens (or filled with the word "OMIT") are fields that the translators intend to be omitted. Hide these labels, 
+                    so that they don't appear in the final output, by un-ticking the eyeball for that item in the Layers panel. Likewise, hide any corresponding information 
+                    (like the Mile scale) by un-ticking that layer. 
+                    Removing dots for deliberately omitted cities is easy, as there is a separate InDesign object for each dot.</p>
+</p>
                     
-                    <p>Any fields that appear to be surrounded by "??" are verses that contained no text in the XX book, i.e. they were overlooked or skipped by the translators. Once they enter the required text, you will need to re-merge per below, "Repeating the Merge Cycle." Whenever you see "OMIT", simply delete it and hide any corresponding information (like the Mile scale) by un-ticking that layer. In the SMP1 collection, removing dots for deliberately missing cities is easy, as there is now a separate InDesign object for each dot.</p>
+                    <p>Now is the time - still in preview mode - to make any other cosmetic changes to the map, as needed by the current project. 
+                    Bear in mind that you may need two different versions of the map: a black and white one for print and a color one for digital use.</p>
                     
-                    <p>Now is the time - still in preview mode - to make any other cosmetic changes to the map, as needed by the current project.</p>
+                    <p>The cosmetic changes in mind are changing the visibility of various layers, changing style attributes, and/or moving text labels. 
+                    You should not make changes directly to the preview text, not even inserting a line break to wrap long text, as such changes will not be preserved when 
+                    doing the data merge. Rather, if you need a long label to be wrapped, you should change the dimensions and/or other properties of the text frame 
+                    and/or paragraph. E.g. Change the text frame's object style to "multiline". (Note that the paragraph's "Balance Ragged Lines" setting, which affects 
+                    wrapping, is turned on, as inherited from the <code>font1</code> style.) 
+                    It is recommended that you keep the Data Merge panel open so that InDesign will prevent you from mistakingly editing the preview text. 
+                    Unless the Data Merge panel is open, the document will behave just like an already-merged document, with editable labels. 
+                    (It will be possible AFTER step 6 in Repeating the Merge Cycle to edit the text and preserve the change, but it is hoped that little of that will be needed.)</p>
                     
-                    <p>The cosmetic changes in mind are changing the visibility of various layers, changing style attributes, and/or moving text labels. You should not make changes directly to the preview text, not even inserting a line break to wrap long text, as such changes will not be preserved when doing the data merge. Rather, if you need a long label to be wrapped, you should change the dimensions and/or other properties of the text frame and/or paragraph. E.g. Change the text frame's object style to "multiline". (Note that the paragraph's "Balance Ragged Lines" setting, which affects wrapping, is turned on, as inherited from the <code>font1</code> style.) It is recommended that you keep the data merge panel open so that InDesign will prevent you from mistakingly editing the preview text. Unless the data merge panel is open, the document will behave just like an already-merged document, with editable labels. (It will be possible AFTER step 6 in Repeating the Merge Cycle to edit the text and preserve the change, but it is hoped that little of that will be needed.)</p>
-                    
-                    <p>Note that we have found that it is NOT necessary to actually use the Merge button and create a second, merged InDesign file at this point. If you save and export to jpg or to pdf with Preview mode turned on, the files will be quite usable at this point. We do recommend doing the final merge step and saving that file after you are certain the team will make no more label changes. (See Repeating the Merge Cycle below).</p>
+                    <p>Note that it is NOT necessary to use the Merge button and create a second, merged InDesign file at this point. 
+                    If you save and export to jpg or to pdf with Preview mode turned on, the files will be quite usable at this point. 
+                    We do recommend doing the final merge step and saving that file after you are certain the team will make no more label changes. 
+                    (See Repeating the Merge Cycle below).</p>
                     
                     <div class="info-card">
                         <img src="images/image_B6.jpg" alt="InDesign Map Preview" style="max-width: 100%; margin: 1rem 0;">
@@ -569,32 +619,37 @@ Both of these can generate data merge files for Adobe InDesign (IDML maps) and f
                 </div>
                 
                 <div class="info-card">
-                    <h3>Controlling Map Options with MapMonkey</h3>
-                    <p>The MapMonkey tool enables the  user to easily switch between various map options. It can be found at <a href="https://tiny.cc/mapmonkey">tiny.cc/mapmonkey</a>.</p>
-                </div>
-
-                <div class="info-card">
                     <h3>Saving your InDesign map file</h3>
                     
-                    <p>Save the map in the project \\local\\figures directory e.g. as above: <code>luctest_155wbt - Holy Land.indd</code></p>
+                    <p>Save the .indd file as described above.</p>
                     
-                    <p>Export your file as a *.jpg file at this time also and use this file to insert \\fig information into the Paratext Project at the appropriate locations. If you have editing privileges to the project, you can do this yourself or else share it with the team for them to do so.</p>
-                    
-                    <p>Now you should have two map files in your project IDENTICALLY NAMED except for their extensions. First - a master copy file (.indd) containing all your edits and the original merge keys, which you will re-use for subsequent merges. Second, a (.jpg) file placed into the Paratext project.</p>
+                    <p>If the Paratext project does not already contain a \\fig field for this map/diagram, such as by doing "Insert Figure" with a sample image,
+                    or by the USFM representation of a diagram used by Paratext Diagram Labeler, you will need to create one now. First, export the map to a jpg file, 
+                    and then use this file to insert \\fig information into the Paratext Project at the appropriate locations. 
+                    If you have editing privileges to the project, you can do this yourself or else share it with the team for them to do so. 
+                    This will give you two map files in your project IDENTICALLY NAMED except for their extensions. 
+                    First - a master copy file (.indd) containing all your edits and the original merge keys, which you will re-use for subsequent merges. 
+                    Second, a (.jpg) file placed into the Paratext project.</p>
                 </div>
                 
                 <div class="info-card">
                     <h3>Repeating the Merge Cycle</h3>
-                    
-                    <p>After each round of team proofing, there will typically be text and spelling changes the need to be re-merged into the project maps:</p>
-                    
+
+                    <p>After each round of team proofing, there may be text and spelling changes that need to be re-merged into the project maps:</p>
+
                     <ol>
                         <li>Re-export the data merge files.</li>
                         <li>For each affected map, open the master file copy (.indd) and "Update data source" on the Merge Tool menu.</li>
                         <li>Save each revised map according to "Export Map Merge Files", replacing the previous vernacular (.indd) file.</li>
-                        <li>When the team has fully approved the maps and no more map label changes are expected, you can complete the final step of "Merging" the document and creating a second InDesign file with the labels actually embedded in the file.</li>
+                        <li>When the team has fully approved the maps and no more map label changes are expected, you can complete the final step of "Merging" 
+                            the document and creating a second InDesign file with the labels actually embedded in the file.</li>
                         <li>Choose "Create Merged Document" from either the Panel Menu or the "Merge Data" icon located just below the Panel Options icon.</li>
-                        <li>The Create Merged Document dialogue box will open. The default settings will suffice; click OK when prompted. Note: While performing the Merge task, your merged data will appear to revert back to the generic data fields, but it is still there. Once the Data Merge is completed, a new InDesign file with a "-1" added to the name will be generated. <strong>We recommend your saving this file as an .idml file and removing the -1</strong>. That way the files are identically named and you have not overwritten your mergeable .indd file. The merged .idml file will preserve the data more safely for long term archiving.</li>
+                        <li>The Create Merged Document dialogue box will open. The default settings will suffice; click OK when prompted. 
+                        Note: While performing the Merge task, your merged data will appear to revert back to the generic data fields, but it is still there. 
+                        Once the Data Merge is completed, a new InDesign file with a "-1" added to the name will be generated. 
+                        <strong>We recommend your saving this file as an .idml file and removing the -1</strong>. 
+                        That way the files are identically named and you have not overwritten your mergeable .indd file. 
+                        The merged .idml file will preserve the data more safely for long term archiving.</li>
                     </ol>
                 </div>
                 
@@ -602,10 +657,19 @@ Both of these can generate data merge files for Adobe InDesign (IDML maps) and f
                     <h3>Bringing an InDesign map into Scripture Publications</h3>
                     
                     <ol>
-                        <li>InDesign maps (.indd files) should be placed directly into InDesign Scripture documents. Publishing Assistant should automatically place any map which has been formatted in Paratext using the \\fig markup and is located in the Paratext project's local/figures folder. Occasionally, you may still see the jpg being placed instead of your .indd. The best way to fix this is to ascertain the exact location of the \\fig markup in Paratext and go to that location in the InDesign file. Edit the fig markup and change the filename to have the .indd extension. In PA6 jobs, you can find it using the Text Editor (ctrl-y). In PA7 jobs, figure markup is found in the Conditional Text Panel Menu. Make the "Hidden Illustration" text visible by clicking in the first column on that line, edit the markup, and turn off visibility again. In both cases, carefully verify that the hidden attributes apply to your new edits. Then use PubAssist to place the picture again.</li>
-                        <li>When maps are placed directly in the Scripture text, they should have the title layer turned off and the title should be included instead in the caption and reference sections of the Paratext markup as appropriate. Revisit all the maps after final validation to make sure they (and the gutter rule) still look ok.</li>
+                        <li>InDesign maps (.indd files) should be placed directly into InDesign Scripture documents. 
+                        Publishing Assistant should automatically place any map which has been formatted in Paratext using the \\fig markup and is located in the 
+                        Paratext project's local/figures folder. Occasionally, you may still see the jpg being placed instead of your .indd. 
+                        The best way to fix this is to ascertain the exact location of the \\fig markup in Paratext and go to that location in the InDesign file. 
+                        Edit the fig markup and change the filename to have the .indd extension. In PA6 jobs, you can find it using the Text Editor (ctrl-y). 
+                        In PA7 jobs, figure markup is found in the Conditional Text Panel Menu. Make the "Hidden Illustration" text visible by clicking in the first 
+                        column on that line, edit the markup, and turn off visibility again. In both cases, carefully verify that the hidden attributes apply to your new edits. 
+                        Then use PubAssist to place the picture again.</li>
+                        <li>When maps are placed directly in the Scripture text, they should have the title layer turned off and the title should be included instead in the 
+                        caption and reference sections of the Paratext markup as appropriate. Revisit all the maps after final validation to make sure they (and the gutter rule) 
+                        still look ok.</li>
                         <li>You may export the merged map to the jpg and PDF formats after final validation. The PDF is useful for archiving.</li>
-                        <li>When archiving the final publication files, make sure to archive the local/figures folder as well.</li>
+                        <li>When archiving the final publication files, make sure to archive the local/figures and shared/labeler folders as well.</li>
                     </ol>
                 </div>
             </div>
