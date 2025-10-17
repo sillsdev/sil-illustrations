@@ -98,8 +98,9 @@ class SiteManager {
         "accessing-repo": "MAPS & DIAGRAMS > ACCESSING THE REPOSITORY",
         "permission-rules": "MAPS & DIAGRAMS > PERMISSION RULES",
         "map-varieties": "MAPS & DIAGRAMS > MAP VARIETIES",
-        "indesign-maps": "MAPS & DIAGRAMS > INDESIGN MAPS",
         "map-creator-maps": "MAPS & DIAGRAMS > MAP CREATOR MAPS",
+        "indesign-maps": "MAPS & DIAGRAMS > INDESIGN MAPS",
+        "map-monkey": "MAPS & DIAGRAMS > MAP MONKEY",
         contact: "CONTACT",
       };
 
@@ -118,8 +119,9 @@ class SiteManager {
       "accessing-repo",
       "permission-rules",
       "map-varieties",
-      "indesign-maps",
       "map-creator-maps",
+      "indesign-maps",
+      "map-monkey",
     ];
 
     if (pageId === "maps" || learnPages.includes(pageId)) {
@@ -148,8 +150,9 @@ class SiteManager {
                 <li><a href="#permission-rules" data-page="permission-rules" class="${currentPageId === "permission-rules" ? "active" : ""}">Permission Rules</a></li>
                 <li><strong>How to Use the Maps</strong></li>
                 <li><a href="#map-varieties" data-page="map-varieties" class="${currentPageId === "map-varieties" ? "active" : ""}">Map Varieties</a></li>
-                <li><a href="#indesign-maps" data-page="indesign-maps" class="${currentPageId === "indesign-maps" ? "active" : ""}">InDesign Maps</a></li>
                 <li><a href="#map-creator-maps" data-page="map-creator-maps" class="${currentPageId === "map-creator-maps" ? "active" : ""}">Map Creator Maps</a></li>
+                <li><a href="#indesign-maps" data-page="indesign-maps" class="${currentPageId === "indesign-maps" ? "active" : ""}">InDesign Maps</a></li>
+                <li><a href="#map-monkey" data-page="map-monkey" class="${currentPageId === "map-monkey" ? "active" : ""}">MapMonkey for InDesign</a></li>
             </ul>
         `;  // add class="nav-subsection" to <li> for subsections
 
@@ -197,11 +200,14 @@ class SiteManager {
       case "map-varieties":
         mainContent.innerHTML = this.getMapVarietiesPage();
         break;
+      case "map-creator-maps":
+        mainContent.innerHTML = this.getMapCreatorMapsPage();
+        break;
       case "indesign-maps":
         mainContent.innerHTML = this.getInDesignMapsPage();
         break;
-      case "map-creator-maps":
-        mainContent.innerHTML = this.getMapCreatorMapsPage();
+      case "map-monkey":
+        mainContent.innerHTML = this.getMapMonkeyPage();
         break;
       case "contact":
         mainContent.innerHTML = this.getContactPage();
@@ -485,7 +491,7 @@ Both of these can generate data merge files for Adobe InDesign (IDML maps) and f
                     <ol start="2">
                         <li>If your maps use a Roman-based writing system, all you'll need to do is ensure that the <a href="https://software.sil.org/charis/download/">Charis SIL</a> and <a href="https://software.sil.org/andika/download/">Andika</a> fonts are installed on your system. If you receive a message that you have missing fonts, simply install the versions of these fonts that can be found in the "Document fonts" subfolder in the top level of "SIL Maps Repository".</li>
                         
-                        <li>Many of these InDesign maps support multiple options within one IDML file, most often the map type (such as "full color relief" or "black & white flat") and sometimes other variations (such as "complex routes" vs "simple routes" on the Exodus map). You can manually toggle layers to get the variation you're wanting. Note that some paragraph styles like "Ocean" and "Region" use color swatches named "Water color" and "Region color", and if you're wanting a black & white map, you'll need to change these paragraph styles to use the swatches named "Water BW" and "Region BW" instead. However, there's a better option: You can install the <a href="https://docs.google.com/document/d/1HjbQR9Q1zXQq_S0_xfODlRk2jovf8GHTKxWJuR5oBp4/edit?usp=sharing">MapMonkey</a> script, and run this whenever you want to "monkey" with the map options, either before or after the data merge. For example, you might want a black & white map for your print publication, but the color version of it for your Scripture app. For more information, visit the <a href="http://tiny.cc/mapmonkey">MapMonkey</a> page.</li>
+                        <li>Many of these InDesign maps support multiple options within one IDML file, most often the map type (such as "full color relief" or "black & white flat") and sometimes other variations (such as "complex routes" vs "simple routes" on the Exodus map). You can manually toggle layers to get the variation you're wanting. Note that some paragraph styles like "Ocean" and "Region" use color swatches named "Water color" and "Region color", and if you're wanting a black & white map, you'll need to change these paragraph styles to use the swatches named "Water BW" and "Region BW" instead. However, there's a better option: You can install the <b>MapMonkey</b> script, and run this whenever you want to "monkey" with the map options, either before or after the data merge. For example, you might want a black & white map for your print publication, but the color version of it for your Scripture app. For more information, see the <a href="#map-monkey">MapMonkey for InDesign</a> page.</li>
                         
                         <li>If your maps use a non-Roman writing system, you will need to ensure that the definitions of the <code>font1</code> and <code>font2</code> paragraphs styles specify the font and any other properties that are required for proper rendering. All styles used for labels inherit the writing system properties from these two styles.
                             <ol>
@@ -563,8 +569,8 @@ Both of these can generate data merge files for Adobe InDesign (IDML maps) and f
                 </div>
                 
                 <div class="info-card">
-                    <h3>Controlling Map Options with Map Monkey</h3>
-                    <p>The Map Monkey tool enables the  user to easily switch between various map options. It can be found at <a href="https://tiny.cc/mapmonkey">tiny.cc/mapmonkey</a>.</p>
+                    <h3>Controlling Map Options with MapMonkey</h3>
+                    <p>The MapMonkey tool enables the  user to easily switch between various map options. It can be found at <a href="https://tiny.cc/mapmonkey">tiny.cc/mapmonkey</a>.</p>
                 </div>
 
                 <div class="info-card">
@@ -681,6 +687,90 @@ Both of these can generate data merge files for Adobe InDesign (IDML maps) and f
         `;
   }
 
+  getMapMonkeyPage() {
+    return `
+            <div class="page-header">
+                <h1 class="page-title">MapMonkey</h1>
+                <p class="page-subtitle"><i>Selecting options within IDML maps</i></p>
+            </div>
+            <br>
+            <div class="content-section">
+                <div class="info-card">
+                    <div style="text-align: center; margin: 20px 0;">
+                        <img src="images/monkey1.jpg" alt="MapMonkey" style="max-width: 40%; border-radius: 6px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                    </div>
+                </div>
+                <div class="info-card">
+                    <p><em>Current Version: 2025-04-09 — See <a href="#version-history-section">Version History</a> below</em></p>
+                    
+                    <p>MapMonkey is a tool that makes it quick and easy to "monkey" with various map options supported by InDesign maps in the SIL Map Repository:</p>
+                    
+                    <ul>
+                        <li>Many maps support different map types, such as "full color relief" and "black and white flat".</li>
+                        <li>A few maps have additional options. For example, the world locator inset on the combined map of Paul's journeys can be flipped to be Pacific-centric.</li>
+                    </ul>
+                    
+                    <p>Manually adjusting the map for these options can require turning multiple layers on or off, and redefining paragraph styles that use blue or brown color swatches to use gray swatches instead.</p>
+                    
+                    <p>MapMonkey does all this for you through a simple dialog. For example:</p>
+                    
+                    <div style="text-align: center; margin: 20px 0;">
+                        <img src="images/monkey2.png" alt="MapMonkey Dialog" style="max-width: 100%; border-radius: 6px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                    </div>
+                    
+                    <p><strong>Note:</strong> We anticipate enabling MapMonkey to manage switching a map between different writing system settings, so check back later for that.</p>
+                </div>
+                
+                <div class="info-card">
+                    <h3>Download and Installation</h3>
+                    
+                    <p>To install MapMonkey, first download <a href="https://drive.google.com/file/d/11ce2Qlwj9zYRk8-4wZy2sczGRDfF8qAd/view?usp=drive_link" target="_blank">MapMonkey.jsx</a>.</p>
+                    
+                    <p>You can find more detailed online guides for installing InDesign scripts, but in a nutshell:</p>
+                    
+                    <ol>
+                        <li>Open the Scripts panel. (Window &gt; Utilities &gt; Scripts)</li>
+                        <li>Right-click on the Application folder, and select "Reveal in Explorer".
+                            <div style="text-align: center; margin: 15px 0;">
+                                <img src="images/monkey3.png" alt="Scripts Panel" style="max-width: 100%; border-radius: 6px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                            </div>
+                        </li>
+                        <li>Move MapMonkey.jsx from wherever you downloaded it into the "Scripts Panel" folder.</li>
+                    </ol>
+                    
+                    <p>To run the MapMonkey script, simply double-click on the MapMonkey.jsx item that now appears in the Scripts panel.</p>
+                    
+                    <div style="text-align: center; margin: 20px 0;">
+                        <img src="images/monkey4.png" alt="Run MapMonkey" style="max-width: 100%; border-radius: 6px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                    </div>
+                    
+                    <p><strong>Have fun monkeying!</strong></p>
+                </div>
+                
+                <div class="info-card" id="version-history-section">
+                    <h3>Version History</h3>
+                    
+                    <table style="width: 100%; margin: 1rem 0; border-collapse: collapse;">
+                        <tbody>
+                            <tr>
+                                <td style="border: 1px solid #ddd; padding: 0.5rem; font-weight: bold;">2025-04-09</td>
+                                <td style="border: 1px solid #ddd; padding: 0.5rem;">Added support for versions of InDesign back to CS5</td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #ddd; padding: 0.5rem; font-weight: bold;">2025-04-04</td>
+                                <td style="border: 1px solid #ddd; padding: 0.5rem;">Added support for MCR map types</td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #ddd; padding: 0.5rem; font-weight: bold;">2025-03-14</td>
+                                <td style="border: 1px solid #ddd; padding: 0.5rem;">Initial release</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        `;
+  }
+
   getContactPage() {
     return `
             <div class="page-header">
@@ -759,12 +849,16 @@ Both of these can generate data merge files for Adobe InDesign (IDML maps) and f
                         <p>Understand Map Varieties in the SIL Map Repository.</p>
                     </div>
                     <div class="feature-card">
-                        <h3><img src="images/idml.ico" alt="InDesign" style="width: 36px; height: 36px; margin-right: 8px; vertical-align: middle;"><a href="#indesign-maps" data-page="indesign-maps">InDesign Maps</a></h3>
-                        <p>Data-merging *.idml.txt files, using the Map Monkey, and more!</p>
-                    </div>
-                    <div class="feature-card">
                         <h3><img src="images/mapx.ico" alt="Map Creator" style="width: 36px; height: 36px; margin-right: 8px; vertical-align: middle;"><a href="#map-creator-maps" data-page="map-creator-maps">Map Creator Maps</a></h3>
                         <p>Importing *.mapx.txt data merge files, and more!</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3><img src="images/idml.ico" alt="InDesign" style="width: 36px; height: 36px; margin-right: 8px; vertical-align: middle;"><a href="#indesign-maps" data-page="indesign-maps">InDesign Maps</a></h3>
+                        <p>Data-merging *.idml.txt files, and more!</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3><span style="font-size: 36px; margin-right: 8px;">🐵</span><a href="#map-monkey" data-page="map-monkey">MapMonkey for InDesign</a></h3>
+                        <p>Selecting options within IDML maps</p>
                     </div>
                 </div>
             </div>
