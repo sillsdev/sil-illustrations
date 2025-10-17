@@ -301,15 +301,24 @@ Both of these can generate data merge files for Adobe InDesign (IDML maps) and f
                 <div class="info-card">
                 <p>The map repository comes in two English editions, due to some unresolved uncertainty:</p>
 <ul type="disc">
-  <li><strong>Compact Edition: (570 MB) </strong>All the maps are directly in the &ldquo;SIL Map Repository&rdquo; folder (or the &ldquo;HK Supplementary Maps&rdquo; folder, if applicable).&nbsp;</li>
-  <li><strong>Expanded Edition: (930 MB) </strong>All the maps are in sub-folders under the &ldquo;SIL Map Repository&rdquo; folder (or under the &ldquo;HK Supplementary Maps&rdquo; folder, if applicable). <br />
+  <li><strong>Compact Edition: (570 MB) </strong><br />All the maps are directly in the &ldquo;SIL Map Repository&rdquo; folder (or the &ldquo;HK Supplementary Maps&rdquo; folder, if applicable).&nbsp;</li>
+  <li><strong>Expanded Edition: (930 MB)</strong> <i>(Note: This edition does not contain the FMOSoft maps. See <a href="#accessing-repo">next page</a> for details.)</i>
+  <br />All the included maps are in sub-folders under the &ldquo;SIL Map Repository&rdquo; folder (or under the &ldquo;HK Supplementary Maps&rdquo; folder, if applicable). <br />
     Those sub-folders also contain:</li>
   <ul type="circle">
-    <li>An additional version of the IDML file that has been merged with English labels, and so is no longer mergeable. English labels contain &ldquo;<strong>@en</strong>&rdquo; in the file name. E.g. <strong>065wbt - Ruth @en.idml</strong>&nbsp; This is provided as a backup for users who prefer to copy and paste labels in rather than using the data merge feature.&nbsp;</li>
-    <ul type="square">
-      <li>Note: There is some uncertainty on whether it is ever possible for the mergeable maps to feel different to the copy/paste user, such as by showing a field&rsquo;s name, for example, <strong>&lt;&lt;jerusalem_nt&gt;&gt;</strong>, without the user having explicitly specified a data merge file to use. The repository manager would request that, if possible, even copy/paste users first try the mergeable files, not the <strong>@en</strong> files, and then alert the <a href="mailto:maps-illustrationsrepository_intl@sil.org">Repository Manager</a> if any such problems occur, before resorting to using the <strong>@en</strong> files. This will help us to resolve the question of whether it&rsquo;s worth continuing to provide such files in the longer term. Thank you!</li>
-    </ul>
     <li>An additional copy of the English data merge source file. (Also available in the <strong>DataMergeFiles</strong> folder.)</li>
+    <li>An additional version of the IDML file that has been merged with English labels, and so is no longer mergeable. 
+    English labels contain &ldquo;<strong>@en</strong>&rdquo; in the file name. E.g. <strong>065wbt - Ruth @en.idml</strong>&nbsp; 
+    <br><br>Although we strongly recommend using the data merge feature, these "@en" files are provided for users who are not up for learning how to use data merge, 
+    and who instead copy and paste labels in. 
+    Not that they couldn't copy and paste into the merge-enabled files, but there is some uncertainty on whether it is ever possible 
+    for the mergeable maps to feel different to the copy/paste user, 
+    such as by showing a field&rsquo;s name, for example, <strong>&lt;&lt;jerusalem_nt&gt;&gt;</strong>, without the user having explicitly 
+    specified a data merge file to use. The repository manager would request that, if possible, even copy/paste users first try the mergeable files, 
+    not the <strong>@en</strong> files, and then alert the Repository Manager via the <a href="#contact">Contact page</a>
+    if any such problems occur, before resorting to using the <strong>@en</strong> files. This will help us to resolve the question of whether it&rsquo;s 
+    worth continuing to provide such files in the longer term. Thank you!</li>
+    </ul>
   </ul>
 </ul>
                 </div>
@@ -326,12 +335,17 @@ Both of these can generate data merge files for Adobe InDesign (IDML maps) and f
             <div class="content-section">
                 <div class="info-card">
                 <p>If all you need is the main SIL Map Repository (without the supplementary maps), you can download it here:</p>
-<ul type="disc">
-  <li>SIL Map Repository Compact (English): <a href="https://tiny.cc/sil-map-repo" target="_blank">tiny.cc/sil-map-repo</a></li>
-  <li>SIL Map Repository Expanded (English): <a href="https://tiny.cc/sil-map-repo-red" target="_blank">tiny.cc/sil-map-repo-red</a></li>
-  <li>SIL Map Repository Compact (Spanish): <a href="http://tiny.cc/sil-map-repo-es" target="_blank">tiny.cc/sil-map-repo-es</a></li>
-</ul>
-<p>If you&rsquo;re a bonafide typesetter also needing access to the three HK maps for SIL-supported projects, please submit your request for access to the &ldquo;full repository&rdquo; at <a href="https://tiny.cc/requestimages" target="_blank">tiny.cc/requestimages</a>. (Maps cannot yet be requested by map ID, as you can do with Scripture illustrations.)</p>
+                    <ul type="disc">
+                    <li>SIL Map Repository Compact (English): <a href="https://tiny.cc/sil-map-repo" target="_blank">tiny.cc/sil-map-repo</a></li>
+                    <li>SIL Map Repository Expanded (English): <a href="https://tiny.cc/sil-map-repo-red" target="_blank">tiny.cc/sil-map-repo-red</a></li>
+                    <li>SIL Map Repository Compact (Spanish): <a href="http://tiny.cc/sil-map-repo-es" target="_blank">tiny.cc/sil-map-repo-es</a></li>
+                    </ul>
+                    <p>If you&rsquo;re a bonafide typesetter also needing access to the three HK maps for SIL-supported projects, please submit your request for access to the &ldquo;full repository&rdquo; at <a href="https://tiny.cc/requestimages" target="_blank">tiny.cc/requestimages</a>. (Maps cannot yet be requested by map ID, as you can do with Scripture illustrations.)</p>
+                </div>
+                <div class="info-card">
+                    <p>If you are using Paratext Diagram Labeler to prepare labels for Map Creator's built-in maps, the Compact editions of the repository contain
+                    our own edition of several of these maps and diagrams. Use these instead of the built-in ones, for better consistency and alignment with the Labeler terms.
+                    They are identified by the rules code "fmo" for FMOSoft.</p>
                 </div>
             </div>
         `;
@@ -461,11 +475,11 @@ Both of these can generate data merge files for Adobe InDesign (IDML maps) and f
                 <table style="width: 100%; margin: 1rem 0; border-collapse: collapse;">
                     <tbody>
                         <tr>
-                            <td style="border: 1px solid #ddd; padding: 0.5rem;"><code>265wbt - World [1pg] (bbf riv) @en.jpg</code></td>
+                            <td style="border: 1px solid #ddd; padding: 0.5rem;"><code>smr_265wbt - World [1pg] (bbf riv) @en.jpg</code></td>
                             <td style="border: 1px solid #ddd; padding: 0.5rem;">Black & Blue, showing rivers</td>
                         </tr>
                         <tr>
-                            <td style="border: 1px solid #ddd; padding: 0.5rem;"><code>265wbt - World [2pg-flipped] (fcr) @en.jpg</code></td>
+                            <td style="border: 1px solid #ddd; padding: 0.5rem;"><code>smr_265wbt - World [2pg-flipped] (fcr) @en.jpg</code></td>
                             <td style="border: 1px solid #ddd; padding: 0.5rem;">Full color relief</td>
                         </tr>
                     </tbody>
