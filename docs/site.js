@@ -1341,10 +1341,6 @@ Both of these can generate data merge files for Adobe InDesign (IDML maps) and f
                         <h3><span style="font-size: 36px; margin-right: 8px;">⬇️</span><a href="#accessing-repo" data-page="accessing-repo">Accessing the Repository</a></h3>
                         <p>Download links and access instructions</p>
                     </div>
-                    <div class="feature-card">
-                        <h3><span style="font-size: 36px; margin-right: 8px;">📄</span><a href="#permission-rules" data-page="permission-rules">Permission Rules</a></h3>
-                        <p>Usage rights and attribution requirements</p>
-                    </div>
                 </div>
 
                 <h2>How to Use the Maps</h2>
