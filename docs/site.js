@@ -93,13 +93,12 @@ class SiteManager {
       // Update breadcrumb text
       const pageTitles = {
         illustrations: "Illustrations",
-        rules: "PERMISSION & ATTRIBUTION RULES",
+        rules: "USAGE, PERMISSION & ATTRIBUTION RULES",
         maps: "MAPS & DIAGRAMS",
         "maps-intro": "MAPS & DIAGRAMS > INTRODUCTION",
         "map-samples": "MAPS & DIAGRAMS > SAMPLES",
         "map-editions": "MAPS & DIAGRAMS > EDITIONS",
         "accessing-repo": "MAPS & DIAGRAMS > ACCESSING THE REPOSITORY",
-        "permission-rules": "MAPS & DIAGRAMS > PERMISSION RULES",
         "map-varieties": "MAPS & DIAGRAMS > MAP VARIETIES",
         "map-creator-maps": "MAPS & DIAGRAMS > MAP CREATOR MAPS",
         "indesign-maps": "MAPS & DIAGRAMS > INDESIGN MAPS",
@@ -120,7 +119,6 @@ class SiteManager {
       "map-samples",
       "map-editions",
       "accessing-repo",
-      "permission-rules",
       "map-varieties",
       "map-creator-maps",
       "indesign-maps",
@@ -150,7 +148,6 @@ class SiteManager {
                 <li><a href="#map-samples" data-page="map-samples" class="${currentPageId === "map-samples" ? "active" : ""}">Samples</a></li>
                 <li><a href="#map-editions" data-page="map-editions" class="${currentPageId === "map-editions" ? "active" : ""}">Editions</a></li>
                 <li><a href="#accessing-repo" data-page="accessing-repo" class="${currentPageId === "accessing-repo" ? "active" : ""}">Accessing the Repository</a></li>
-                <li><a href="#permission-rules" data-page="permission-rules" class="${currentPageId === "permission-rules" ? "active" : ""}">Permission Rules</a></li>
                 <li><strong>How to Use the Maps</strong></li>
                 <li><a href="#map-varieties" data-page="map-varieties" class="${currentPageId === "map-varieties" ? "active" : ""}">Map Varieties</a></li>
                 <li><a href="#map-creator-maps" data-page="map-creator-maps" class="${currentPageId === "map-creator-maps" ? "active" : ""}">Map Creator Maps</a></li>
@@ -199,9 +196,6 @@ class SiteManager {
         break;
       case "accessing-repo":
         mainContent.innerHTML = this.getAccessingRepoPage();
-        break;
-      case "permission-rules":
-        mainContent.innerHTML = this.getPermissionRulesPage();
         break;
       case "map-varieties":
         mainContent.innerHTML = this.getMapVarietiesPage();
@@ -276,7 +270,7 @@ class SiteManager {
   getRulesPage() {
     return `
             <div class="page-header">
-                <h1 class="page-title">Permission and Attribution Rules</h1>
+                <h1 class="page-title">Usage, Permission, and Attribution Rules</h1>
                 <p class="page-subtitle">for Items in the SIL Map & Illustration Repository</p>
             </div>
             
@@ -286,7 +280,7 @@ class SiteManager {
                         <span id="maps-section-icon" style="display: inline-block; width: 20px; font-weight: bold;">+</span> For Maps and Diagrams
                     </h2>
                     <div id="maps-section" style="display: none;">
-                        <p>Every map and diagram in the repository has a map ID that is comprised of three digits (grouping similar maps) and a two- or three-letter code that indicates the permission and attribution rules. In some cases, similar maps that have the same usage and permission rules share a map ID. For example, the map ID "095wbt" refers to a set of maps that depict the kingdoms of Israel and Judah, and to which the "WBT" set of usage and permission rules apply.</p>
+                        <p>Every map and diagram in the repository has a map ID that is comprised of three digits (grouping similar maps) and a two- or three-letter code that indicates the usage and attribution rules. In some cases, similar maps that have the same usage and permission rules share a map ID. For example, the map ID "095wbt" refers to a set of maps that depict the kingdoms of Israel and Judah, and to which the "WBT" set of usage and permission rules apply.</p>
                         
                         <div style="margin-left: 20px; margin-top: 20px;">
                             <h3 onclick="toggleSection('wbt-maps')" style="cursor: pointer; user-select: none; color: var(--sil-medium-blue); margin-top: 20px;">
@@ -793,20 +787,6 @@ Both of these can generate data merge files for Adobe InDesign (IDML maps) and f
                     <p>If you are using Paratext Diagram Labeler to prepare labels for Map Creator's built-in maps, the Compact editions of the repository contain
                     our own edition of several of these maps and diagrams. Use these instead of the built-in ones, for better consistency and alignment with the Labeler terms.
                     They are identified by the rules code "fmo" for FMOSoft.</p>
-                </div>
-            </div>
-        `;
-  }
-
-  getPermissionRulesPage() {
-    return `
-            <div class="page-header">
-                <h1 class="page-title">Permission and Attribution Rules</h1>
-            </div>
-            
-            <div class="content-section">
-                <div class="info-card">
-                <p>The <strong>!Permission and Attribution Rules.docx</strong> file can be found in the <a href="https://tiny.cc/samplemaps" target="_blank"><strong>!All Map Samples</strong></a> folder in the repository.</p>
                 </div>
             </div>
         `;
