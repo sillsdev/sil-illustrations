@@ -283,31 +283,6 @@ class SiteManager {
                         <p>Every map and diagram in the repository has a map ID that is comprised of three digits (grouping similar maps) and a two- or three-letter code that indicates the usage and attribution rules. In some cases, similar maps that have the same usage and permission rules share a map ID. For example, the map ID "095wbt" refers to a set of maps that depict the kingdoms of Israel and Judah, and to which the "WBT" set of usage and permission rules apply.</p>
                         
                         <div style="margin-left: 20px; margin-top: 20px;">
-                            <h3 onclick="toggleSection('wbt-maps')" style="cursor: pointer; user-select: none; color: var(--sil-medium-blue); margin-top: 20px;">
-                                <span id="wbt-maps-icon" style="display: inline-block; width: 20px;">+</span> WBT (Wycliffe Bible Translators)
-                            </h3>
-                            <div id="wbt-maps" style="display: none; margin-left: 20px; margin-top: 10px;">
-                                <h4>Owner</h4>
-                                <p>The rights-holder of WBT-coded masters is SIL Global, which has an attribution agreement with Wycliffe Bible Translators as reflected below.</p>
-                                
-                                <h4>Permission Rules</h4>
-                                <p>Permission is granted for maps derived from WBT-coded masters to be used in any Scripture publication that follows the translation standards of the Forum of Bible Agencies International.</p>
-                                
-                                <h4>Attribution Rules</h4>
-                                <p>If a publication is copyrighted by Wycliffe Bible Translators, then maps derived from WBT-coded masters do not need to be credited, because they are covered by the copyright statement relating to the publication as a whole.</p>
-                                
-                                <p>Otherwise, in non-sensitive areas, they should be credited as follows:</p>
-                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
-                                    Maps [and diagrams] [on pages ___] © 20## Wycliffe Bible Translators, Inc.
-                                </p>
-                                <p>where "20##" corresponds to the publication year of the volume as a whole.</p>
-                                <p>For reprints or revisions where the map(s) have not been changed, the year of publication would be that of the original publication.</p>
-                                
-                                <p>In sensitive areas, where the association of this publication with Wycliffe could be problematic either for Wycliffe or for the publication, a representative of the publication's named copyright holder should submit a permissions request at <a href="https://tiny.cc/requestpermissions" target="_blank">tiny.cc/requestpermissions</a>, specifying that this is a request for a sensitive area. Once permission is granted, the following attribution is required:</p>
-                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
-                                    Maps [and diagrams] [on pages ___] used with permission. All rights reserved worldwide.
-                                </p>
-                            </div>
                             
                             <h3 onclick="toggleSection('gt-maps')" style="cursor: pointer; user-select: none; color: var(--sil-medium-blue); margin-top: 20px;">
                                 <span id="gt-maps-icon" style="display: inline-block; width: 20px;">+</span> GT (Gordon Thompson)
@@ -323,28 +298,6 @@ class SiteManager {
                                 <p>In non-sensitive areas, they should be credited as follows:</p>
                                 <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
                                     Maps [and diagrams] [on pages ___] are derived from works of Gordon Thompson, © 2012 Wycliffe Bible Translators, Inc. Used with permission. All rights reserved worldwide.
-                                </p>
-                                
-                                <p>In sensitive areas, where the association of this publication with Wycliffe could be problematic either for Wycliffe or for the publication, a representative of the publication's named copyright holder should submit a permissions request at <a href="https://tiny.cc/requestpermissions" target="_blank">tiny.cc/requestpermissions</a>, specifying that this is a request for a sensitive area. Once permission is granted, the following attribution is required:</p>
-                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
-                                    Maps and diagrams [on pages ___] used with permission. All rights reserved worldwide.
-                                </p>
-                            </div>
-                            
-                            <h3 onclick="toggleSection('mh-maps')" style="cursor: pointer; user-select: none; color: var(--sil-medium-blue); margin-top: 20px;">
-                                <span id="mh-maps-icon" style="display: inline-block; width: 20px;">+</span> MH (Michael Harrar)
-                            </h3>
-                            <div id="mh-maps" style="display: none; margin-left: 20px; margin-top: 10px;">
-                                <h4>Owner</h4>
-                                <p>The rights-holder of MH-coded masters is SIL Global, which has attribution agreements with Michael Harrar and Wycliffe Bible Translators as reflected below.</p>
-                                
-                                <h4>Permission Rules</h4>
-                                <p>Permission is granted for maps derived from MH-coded masters to be used in any Scripture publication that follows the translation standards of the Forum of Bible Agencies International.</p>
-                                
-                                <h4>Attribution Rules</h4>
-                                <p>In non-sensitive areas, they should be credited as follows:</p>
-                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
-                                    Maps [and diagrams] [on pages ___] are derived from works of Michael Harrar, © 2012 Wycliffe Bible Translators, Inc. Used with permission. All rights reserved worldwide.
                                 </p>
                                 
                                 <p>In sensitive areas, where the association of this publication with Wycliffe could be problematic either for Wycliffe or for the publication, a representative of the publication's named copyright holder should submit a permissions request at <a href="https://tiny.cc/requestpermissions" target="_blank">tiny.cc/requestpermissions</a>, specifying that this is a request for a sensitive area. Once permission is granted, the following attribution is required:</p>
@@ -384,6 +337,55 @@ class SiteManager {
                                     Maps [and diagrams] on pages ___ © BFBS, 1954, 1967, 1972, 1995.
                                 </p>
                             </div>
+
+                            <h3 onclick="toggleSection('mh-maps')" style="cursor: pointer; user-select: none; color: var(--sil-medium-blue); margin-top: 20px;">
+                                <span id="mh-maps-icon" style="display: inline-block; width: 20px;">+</span> MH (Michael Harrar)
+                            </h3>
+                            <div id="mh-maps" style="display: none; margin-left: 20px; margin-top: 10px;">
+                                <h4>Owner</h4>
+                                <p>The rights-holder of MH-coded masters is SIL Global, which has attribution agreements with Michael Harrar and Wycliffe Bible Translators as reflected below.</p>
+                                
+                                <h4>Permission Rules</h4>
+                                <p>Permission is granted for maps derived from MH-coded masters to be used in any Scripture publication that follows the translation standards of the Forum of Bible Agencies International.</p>
+                                
+                                <h4>Attribution Rules</h4>
+                                <p>In non-sensitive areas, they should be credited as follows:</p>
+                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
+                                    Maps [and diagrams] [on pages ___] are derived from works of Michael Harrar, © 2012 Wycliffe Bible Translators, Inc. Used with permission. All rights reserved worldwide.
+                                </p>
+                                
+                                <p>In sensitive areas, where the association of this publication with Wycliffe could be problematic either for Wycliffe or for the publication, a representative of the publication's named copyright holder should submit a permissions request at <a href="https://tiny.cc/requestpermissions" target="_blank">tiny.cc/requestpermissions</a>, specifying that this is a request for a sensitive area. Once permission is granted, the following attribution is required:</p>
+                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
+                                    Maps and diagrams [on pages ___] used with permission. All rights reserved worldwide.
+                                </p>
+                            </div>
+                            
+                            <h3 onclick="toggleSection('wbt-maps')" style="cursor: pointer; user-select: none; color: var(--sil-medium-blue); margin-top: 20px;">
+                                <span id="wbt-maps-icon" style="display: inline-block; width: 20px;">+</span> WBT (Wycliffe Bible Translators)
+                            </h3>
+                            <div id="wbt-maps" style="display: none; margin-left: 20px; margin-top: 10px;">
+                                <h4>Owner</h4>
+                                <p>The rights-holder of WBT-coded masters is SIL Global, which has an attribution agreement with Wycliffe Bible Translators as reflected below.</p>
+                                
+                                <h4>Permission Rules</h4>
+                                <p>Permission is granted for maps derived from WBT-coded masters to be used in any Scripture publication that follows the translation standards of the Forum of Bible Agencies International.</p>
+                                
+                                <h4>Attribution Rules</h4>
+                                <p>If a publication is copyrighted by Wycliffe Bible Translators, then maps derived from WBT-coded masters do not need to be credited, because they are covered by the copyright statement relating to the publication as a whole.</p>
+                                
+                                <p>Otherwise, in non-sensitive areas, they should be credited as follows:</p>
+                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
+                                    Maps [and diagrams] [on pages ___] © 20## Wycliffe Bible Translators, Inc.
+                                </p>
+                                <p>where "20##" corresponds to the publication year of the volume as a whole.</p>
+                                <p>For reprints or revisions where the map(s) have not been changed, the year of publication would be that of the original publication.</p>
+                                
+                                <p>In sensitive areas, where the association of this publication with Wycliffe could be problematic either for Wycliffe or for the publication, a representative of the publication's named copyright holder should submit a permissions request at <a href="https://tiny.cc/requestpermissions" target="_blank">tiny.cc/requestpermissions</a>, specifying that this is a request for a sensitive area. Once permission is granted, the following attribution is required:</p>
+                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
+                                    Maps [and diagrams] [on pages ___] used with permission. All rights reserved worldwide.
+                                </p>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -396,6 +398,23 @@ class SiteManager {
                         <p>Every illustration in the SIL repository has an illustration ID that begins with a two-letter code indicating ownership, and the usage and attribution rules. Here are the rules for each code:</p>
                         
                         <div style="margin-left: 20px; margin-top: 20px;">
+                            <h3 onclick="toggleSection('ba')" style="cursor: pointer; user-select: none; color: var(--sil-medium-blue); margin-top: 20px;">
+                                <span id="ba-icon" style="display: inline-block; width: 20px;">+</span> BA (Louise Bass Color & Halftone Bible Illustrations)
+                            </h3>
+                            <div id="ba" style="display: none; margin-left: 20px; margin-top: 10px;">
+                                <h4>Attribution</h4>
+                                <p>On the verso page, credit as follows:</p>
+                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
+                                    Color [and/or halftone] illustrations [on pages ___] are used by permission of Louise Bass.
+                                </p>
+                                
+                                <h4>Usage Restrictions</h4>
+                                <p>The halftone illustrations are only permitted to be used in print publications. (Of course, digital publications are better off using the color versions anyway.)</p>
+                                
+                                <h4>Permission Requests</h4>
+                                <p>It is not necessary to request permission to use Bass color & halftone illustrations in SIL or Wycliffe publications. For all other publications, permission must be requested at <a href="https://tiny.cc/requestpermissions" target="_blank">tiny.cc/requestpermissions</a>.</p>
+                            </div>
+
                             <h3 onclick="toggleSection('co-cn')" style="cursor: pointer; user-select: none; color: var(--sil-medium-blue); margin-top: 20px;">
                                 <span id="co-cn-icon" style="display: inline-block; width: 20px;">+</span> CO or CN (David C. Cook B&W Bible Illustrations)
                             </h3>
@@ -421,6 +440,107 @@ class SiteManager {
                                 <a href="https://davidccook.org/permissions/" target="_blank">https://davidccook.org/permissions/</a></p>
                                 
                                 <p>Note that reprints and revisions are required to have a new request for permission to use these illustrations.</p>
+                            </div>
+                            
+                            <h3 onclick="toggleSection('dh')" style="cursor: pointer; user-select: none; color: var(--sil-medium-blue); margin-top: 20px;">
+                                <span id="dh-icon" style="display: inline-block; width: 20px;">+</span> DH (David Healey's B&W Bible Illustrations)
+                            </h3>
+                            <div id="dh" style="display: none; margin-left: 20px; margin-top: 10px;">
+                                <h4>Attribution</h4>
+                                <p>On the verso page of a print publication, the following copyright statement should appear:</p>
+                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
+                                    Illustrations by David Healey, © 2012 Wycliffe Bible Translators, Inc.
+                                </p>
+                                
+                                <p>In a digital publication, this should be followed by the license information:</p>
+                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
+                                    Works by David Healey are licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License: <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">https://creativecommons.org/licenses/by-nc-nd/4.0/</a>.
+                                </p>
+                                
+                                <h4>Attribution in Sensitive Areas</h4>
+                                <p>To use these illustrations in sensitive areas where Wycliffe Bible Translators should not be named, the following copyright statement may be used instead:</p>
+                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
+                                    Illustrations on pages ___ used with permission. All rights reserved worldwide.
+                                </p>
+                                <p>Practically, this will mean anyone wanting to use the illustrations will need to contact the named copyright holder of the publication in which the illustration(s) appear, and they will in turn, contact the SIL illustration repository manager.</p>
+                                
+                                <h4>Usage Restrictions</h4>
+                                <p>In both print and digital publications you may crop and resize these illustrations, but not modify the images for your new work. Images may be rotated or flipped horizontally, provided this does not contradict historical fact or violate cultural norms.</p>
+                            </div>
+                            
+                            <h3 onclick="toggleSection('dn')" style="cursor: pointer; user-select: none; color: var(--sil-medium-blue); margin-top: 20px;">
+                                <span id="dn-icon" style="display: inline-block; width: 20px;">+</span> DN (Darwin Dunham B&W Bible Illustrations)
+                            </h3>
+                            <div id="dn" style="display: none; margin-left: 20px; margin-top: 10px;">
+                                <p><strong>These illustrations may not be used in digital publications.</strong></p>
+                                
+                                <p>On the verso page credit</p>
+                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
+                                    Illustrations by Darwin Dunham, © United Bible Societies, 1989.
+                                </p>
+                                
+                                <p>Permission is not needed to use Dunham illustrations in SIL publications.</p>
+                                
+                                <p>For permission to use Dunham illustrations in non-SIL publications contact:<br>
+                                <a href="mailto:igalliani@biblesocieties.org">igalliani@biblesocieties.org</a></p>
+                                
+                                <p>Permission is requested via e-mail. Reprints and revisions are required to have a new request for permission to use these illustrations. The request for the use of these pictures must include the following:</p>
+                                <ul>
+                                    <li>The name of the organization, entity or group.</li>
+                                    <li>The country, language and Ethnologue code.</li>
+                                    <li>The title of the book in the vernacular.</li>
+                                    <li>The type of book in English, e.g., New Testament, Bible, portion.</li>
+                                    <li>The number of books to be printed.</li>
+                                    <li>The number of illustrations and specific filename(s) of the illustration(s)/picture(s).</li>
+                                </ul>
+                            </div>
+                            
+                            <h3 onclick="toggleSection('dy')" style="cursor: pointer; user-select: none; color: var(--sil-medium-blue); margin-top: 20px;">
+                                <span id="dy-icon" style="display: inline-block; width: 20px;">+</span> DY (Carolyn Dyk Color Bible Illustrations)
+                            </h3>
+                            <div id="dy" style="display: none; margin-left: 20px; margin-top: 10px;">
+                                <h4>Attribution</h4>
+                                <p>On the verso page of a print publication, the following copyright statement should appear:</p>
+                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
+                                    Illustrations by Carolyn Dyk, © 2001 Wycliffe Bible Translators, Inc.
+                                </p>
+                                
+                                <p>In a digital publication, this should be followed by the license information:</p>
+                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
+                                    Works by Carolyn Dyk are licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License: <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">https://creativecommons.org/licenses/by-nc-nd/4.0/</a>.
+                                </p>
+                                
+                                <h4>Permission Requests</h4>
+                                <p>To use these illustrations in sensitive areas where Wycliffe Bible Translators should not be named, submit a request at <a href="https://tiny.cc/requestpermissions" target="_blank">tiny.cc/requestpermissions</a>, and indicate that your request is for a sensitive publication. Otherwise, it is not necessary to request permission to use these illustrations.</p>
+                                
+                                <h4>Usage Restrictions</h4>
+                                <p>In both print and digital publications you may crop and resize these illustrations, but not modify the images for your new work. Images may be rotated or flipped horizontally, provided this does not contradict historical fact or violate cultural norms.</p>
+                            </div>
+                            
+                            <h3 onclick="toggleSection('gt-ill')" style="cursor: pointer; user-select: none; color: var(--sil-medium-blue); margin-top: 20px;">
+                                <span id="gt-ill-icon" style="display: inline-block; width: 20px;">+</span> GT (Gordon Thompson's B&W Bible Illustrations)
+                            </h3>
+                            <div id="gt-ill" style="display: none; margin-left: 20px; margin-top: 10px;">
+                                <h4>Attribution</h4>
+                                <p>On the verso page of a print publication, the following copyright statement should appear:</p>
+                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
+                                    Illustrations on pages ___ by Gordon Thompson, © 2012 Wycliffe Bible Translators, Inc.
+                                </p>
+                                
+                                <p>In a digital publication, this should be followed by the license information:</p>
+                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
+                                    Works by Gordon Thompson are licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License: <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">https://creativecommons.org/licenses/by-nc-nd/4.0/</a>.
+                                </p>
+                                
+                                <h4>Attribution in Sensitive Areas</h4>
+                                <p>To use these illustrations in sensitive areas where Wycliffe Bible Translators should not be named, the owner has agreed that the following copyright statement may be used instead:</p>
+                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
+                                    Illustrations on pages ___ used with permission. All rights reserved worldwide.
+                                </p>
+                                <p>Practically, this will mean anyone wanting to use the illustrations will need to contact the named copyright holder of the publication in which the illustration(s) appear, and they will in turn, contact the SIL illustration repository manager.</p>
+                                
+                                <h4>Usage Restrictions</h4>
+                                <p>In both print and digital publications you may crop and resize these illustrations, but not modify the images for your new work. Images may be rotated or flipped horizontally, provided this does not contradict historical fact or violate cultural norms.</p>
                             </div>
                             
                             <h3 onclick="toggleSection('hk-lb-bk')" style="cursor: pointer; user-select: none; color: var(--sil-medium-blue); margin-top: 20px;">
@@ -494,31 +614,52 @@ class SiteManager {
                                 </p>
                             </div>
                             
-                            <h3 onclick="toggleSection('dn')" style="cursor: pointer; user-select: none; color: var(--sil-medium-blue); margin-top: 20px;">
-                                <span id="dn-icon" style="display: inline-block; width: 20px;">+</span> DN (Darwin Dunham B&W Bible Illustrations)
+                            <h3 onclick="toggleSection('mh-ill')" style="cursor: pointer; user-select: none; color: var(--sil-medium-blue); margin-top: 20px;">
+                                <span id="mh-ill-icon" style="display: inline-block; width: 20px;">+</span> MH (Michael Harrar's B&W Bible Illustrations)
                             </h3>
-                            <div id="dn" style="display: none; margin-left: 20px; margin-top: 10px;">
-                                <p><strong>These illustrations may not be used in digital publications.</strong></p>
-                                
-                                <p>On the verso page credit</p>
+                            <div id="mh-ill" style="display: none; margin-left: 20px; margin-top: 10px;">
+                                <h4>Attribution</h4>
+                                <p>On the verso page of a print publication, the following copyright statement should appear:</p>
                                 <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
-                                    Illustrations by Darwin Dunham, © United Bible Societies, 1989.
+                                    Illustrations by Michael Harrar, © 2012 Wycliffe Bible Translators, Inc.
                                 </p>
                                 
-                                <p>Permission is not needed to use Dunham illustrations in SIL publications.</p>
+                                <p>In a digital publication, this should be followed by the license information:</p>
+                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
+                                    Works by Michael Harrar are licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License: <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">https://creativecommons.org/licenses/by-nc-nd/4.0/</a>.
+                                </p>
                                 
-                                <p>For permission to use Dunham illustrations in non-SIL publications contact:<br>
-                                <a href="mailto:igalliani@biblesocieties.org">igalliani@biblesocieties.org</a></p>
+                                <h4>Attribution in Sensitive Areas</h4>
+                                <p>To use these illustrations in sensitive areas where Wycliffe Bible Translators should not be named, the following copyright statement may be used instead:</p>
+                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
+                                    Illustrations on pages ___ used with permission. All rights reserved worldwide.
+                                </p>
+                                <p>Practically, this will mean anyone wanting to use the illustrations will need to contact the named copyright holder of the publication in which the illustration(s) appear, and they will in turn, contact the SIL illustration repository manager.</p>
                                 
-                                <p>Permission is requested via e-mail. Reprints and revisions are required to have a new request for permission to use these illustrations. The request for the use of these pictures must include the following:</p>
-                                <ul>
-                                    <li>The name of the organization, entity or group.</li>
-                                    <li>The country, language and Ethnologue code.</li>
-                                    <li>The title of the book in the vernacular.</li>
-                                    <li>The type of book in English, e.g., New Testament, Bible, portion.</li>
-                                    <li>The number of books to be printed.</li>
-                                    <li>The number of illustrations and specific filename(s) of the illustration(s)/picture(s).</li>
-                                </ul>
+                                <h4>Usage Restrictions</h4>
+                                <p>In both print and digital publications you may crop and resize these illustrations, but not modify the images for your new work. Images may be rotated or flipped horizontally, provided this does not contradict historical fact or violate cultural norms.</p>
+                            </div>
+                            
+                            <h3 onclick="toggleSection('mn')" style="cursor: pointer; user-select: none; color: var(--sil-medium-blue); margin-top: 20px;">
+                                <span id="mn-icon" style="display: inline-block; width: 20px;">+</span> MN (Muze Tshilombo Color Bible Illustrations)
+                            </h3>
+                            <div id="mn" style="display: none; margin-left: 20px; margin-top: 10px;">
+                                <h4>Attribution</h4>
+                                <p>On the verso page of a print publication, the following copyright statement should appear:</p>
+                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
+                                    Illustrations by Muze Tshilombo, © 1997 Wycliffe Bible Translators, Inc.
+                                </p>
+                                
+                                <p>In a digital publication, this should be followed by the license information:</p>
+                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
+                                    Works by Muze Tshilombo are licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License: <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">https://creativecommons.org/licenses/by-nc-nd/4.0/</a>.
+                                </p>
+                                
+                                <h4>Permission Requests</h4>
+                                <p>To use these illustrations in sensitive areas where Wycliffe Bible Translators should not be named, submit a request at <a href="https://tiny.cc/requestpermissions" target="_blank">tiny.cc/requestpermissions</a>, and indicate that your request is for a sensitive publication. Otherwise, it is not necessary to request permission to use these illustrations.</p>
+                                
+                                <h4>Usage Restrictions</h4>
+                                <p>In both print and digital publications you may crop and resize these illustrations, but not modify the images for your new work. Images may be rotated or flipped horizontally, provided this does not contradict historical fact or violate cultural norms.</p>
                             </div>
                             
                             <h3 onclick="toggleSection('wa')" style="cursor: pointer; user-select: none; color: var(--sil-medium-blue); margin-top: 20px;">
@@ -548,144 +689,6 @@ class SiteManager {
                                 </ul>
                             </div>
                             
-                            <h3 onclick="toggleSection('mh-ill')" style="cursor: pointer; user-select: none; color: var(--sil-medium-blue); margin-top: 20px;">
-                                <span id="mh-ill-icon" style="display: inline-block; width: 20px;">+</span> MH (Michael Harrar's B&W Bible Illustrations)
-                            </h3>
-                            <div id="mh-ill" style="display: none; margin-left: 20px; margin-top: 10px;">
-                                <h4>Attribution</h4>
-                                <p>On the verso page of a print publication, the following copyright statement should appear:</p>
-                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
-                                    Illustrations by Michael Harrar, © 2012 Wycliffe Bible Translators, Inc.
-                                </p>
-                                
-                                <p>In a digital publication, this should be followed by the license information:</p>
-                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
-                                    Works by Michael Harrar are licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License: <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">https://creativecommons.org/licenses/by-nc-nd/4.0/</a>.
-                                </p>
-                                
-                                <h4>Attribution in Sensitive Areas</h4>
-                                <p>To use these illustrations in sensitive areas where Wycliffe Bible Translators should not be named, the following copyright statement may be used instead:</p>
-                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
-                                    Illustrations on pages ___ used with permission. All rights reserved worldwide.
-                                </p>
-                                <p>Practically, this will mean anyone wanting to use the illustrations will need to contact the named copyright holder of the publication in which the illustration(s) appear, and they will in turn, contact the SIL illustration repository manager.</p>
-                                
-                                <h4>Usage Restrictions</h4>
-                                <p>In both print and digital publications you may crop and resize these illustrations, but not modify the images for your new work. Images may be rotated or flipped horizontally, provided this does not contradict historical fact or violate cultural norms.</p>
-                            </div>
-                            
-                            <h3 onclick="toggleSection('gt-ill')" style="cursor: pointer; user-select: none; color: var(--sil-medium-blue); margin-top: 20px;">
-                                <span id="gt-ill-icon" style="display: inline-block; width: 20px;">+</span> GT (Gordon Thompson's B&W Bible Illustrations)
-                            </h3>
-                            <div id="gt-ill" style="display: none; margin-left: 20px; margin-top: 10px;">
-                                <h4>Attribution</h4>
-                                <p>On the verso page of a print publication, the following copyright statement should appear:</p>
-                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
-                                    Illustrations on pages ___ by Gordon Thompson, © 2012 Wycliffe Bible Translators, Inc.
-                                </p>
-                                
-                                <p>In a digital publication, this should be followed by the license information:</p>
-                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
-                                    Works by Gordon Thompson are licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License: <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">https://creativecommons.org/licenses/by-nc-nd/4.0/</a>.
-                                </p>
-                                
-                                <h4>Attribution in Sensitive Areas</h4>
-                                <p>To use these illustrations in sensitive areas where Wycliffe Bible Translators should not be named, the owner has agreed that the following copyright statement may be used instead:</p>
-                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
-                                    Illustrations on pages ___ used with permission. All rights reserved worldwide.
-                                </p>
-                                <p>Practically, this will mean anyone wanting to use the illustrations will need to contact the named copyright holder of the publication in which the illustration(s) appear, and they will in turn, contact the SIL illustration repository manager.</p>
-                                
-                                <h4>Usage Restrictions</h4>
-                                <p>In both print and digital publications you may crop and resize these illustrations, but not modify the images for your new work. Images may be rotated or flipped horizontally, provided this does not contradict historical fact or violate cultural norms.</p>
-                            </div>
-                            
-                            <h3 onclick="toggleSection('dh')" style="cursor: pointer; user-select: none; color: var(--sil-medium-blue); margin-top: 20px;">
-                                <span id="dh-icon" style="display: inline-block; width: 20px;">+</span> DH (David Healey's B&W Bible Illustrations)
-                            </h3>
-                            <div id="dh" style="display: none; margin-left: 20px; margin-top: 10px;">
-                                <h4>Attribution</h4>
-                                <p>On the verso page of a print publication, the following copyright statement should appear:</p>
-                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
-                                    Illustrations by David Healey, © 2012 Wycliffe Bible Translators, Inc.
-                                </p>
-                                
-                                <p>In a digital publication, this should be followed by the license information:</p>
-                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
-                                    Works by David Healey are licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License: <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">https://creativecommons.org/licenses/by-nc-nd/4.0/</a>.
-                                </p>
-                                
-                                <h4>Attribution in Sensitive Areas</h4>
-                                <p>To use these illustrations in sensitive areas where Wycliffe Bible Translators should not be named, the following copyright statement may be used instead:</p>
-                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
-                                    Illustrations on pages ___ used with permission. All rights reserved worldwide.
-                                </p>
-                                <p>Practically, this will mean anyone wanting to use the illustrations will need to contact the named copyright holder of the publication in which the illustration(s) appear, and they will in turn, contact the SIL illustration repository manager.</p>
-                                
-                                <h4>Usage Restrictions</h4>
-                                <p>In both print and digital publications you may crop and resize these illustrations, but not modify the images for your new work. Images may be rotated or flipped horizontally, provided this does not contradict historical fact or violate cultural norms.</p>
-                            </div>
-                            
-                            <h3 onclick="toggleSection('dy')" style="cursor: pointer; user-select: none; color: var(--sil-medium-blue); margin-top: 20px;">
-                                <span id="dy-icon" style="display: inline-block; width: 20px;">+</span> DY (Carolyn Dyk Color Bible Illustrations)
-                            </h3>
-                            <div id="dy" style="display: none; margin-left: 20px; margin-top: 10px;">
-                                <h4>Attribution</h4>
-                                <p>On the verso page of a print publication, the following copyright statement should appear:</p>
-                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
-                                    Illustrations by Carolyn Dyk, © 2001 Wycliffe Bible Translators, Inc.
-                                </p>
-                                
-                                <p>In a digital publication, this should be followed by the license information:</p>
-                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
-                                    Works by Carolyn Dyk are licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License: <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">https://creativecommons.org/licenses/by-nc-nd/4.0/</a>.
-                                </p>
-                                
-                                <h4>Permission Requests</h4>
-                                <p>To use these illustrations in sensitive areas where Wycliffe Bible Translators should not be named, submit a request at <a href="https://tiny.cc/requestpermissions" target="_blank">tiny.cc/requestpermissions</a>, and indicate that your request is for a sensitive publication. Otherwise, it is not necessary to request permission to use these illustrations.</p>
-                                
-                                <h4>Usage Restrictions</h4>
-                                <p>In both print and digital publications you may crop and resize these illustrations, but not modify the images for your new work. Images may be rotated or flipped horizontally, provided this does not contradict historical fact or violate cultural norms.</p>
-                            </div>
-                            
-                            <h3 onclick="toggleSection('mn')" style="cursor: pointer; user-select: none; color: var(--sil-medium-blue); margin-top: 20px;">
-                                <span id="mn-icon" style="display: inline-block; width: 20px;">+</span> MN (Muze Tshilombo Color Bible Illustrations)
-                            </h3>
-                            <div id="mn" style="display: none; margin-left: 20px; margin-top: 10px;">
-                                <h4>Attribution</h4>
-                                <p>On the verso page of a print publication, the following copyright statement should appear:</p>
-                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
-                                    Illustrations by Muze Tshilombo, © 1997 Wycliffe Bible Translators, Inc.
-                                </p>
-                                
-                                <p>In a digital publication, this should be followed by the license information:</p>
-                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
-                                    Works by Muze Tshilombo are licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License: <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">https://creativecommons.org/licenses/by-nc-nd/4.0/</a>.
-                                </p>
-                                
-                                <h4>Permission Requests</h4>
-                                <p>To use these illustrations in sensitive areas where Wycliffe Bible Translators should not be named, submit a request at <a href="https://tiny.cc/requestpermissions" target="_blank">tiny.cc/requestpermissions</a>, and indicate that your request is for a sensitive publication. Otherwise, it is not necessary to request permission to use these illustrations.</p>
-                                
-                                <h4>Usage Restrictions</h4>
-                                <p>In both print and digital publications you may crop and resize these illustrations, but not modify the images for your new work. Images may be rotated or flipped horizontally, provided this does not contradict historical fact or violate cultural norms.</p>
-                            </div>
-                            
-                            <h3 onclick="toggleSection('ba')" style="cursor: pointer; user-select: none; color: var(--sil-medium-blue); margin-top: 20px;">
-                                <span id="ba-icon" style="display: inline-block; width: 20px;">+</span> BA (Louise Bass Color & Halftone Bible Illustrations)
-                            </h3>
-                            <div id="ba" style="display: none; margin-left: 20px; margin-top: 10px;">
-                                <h4>Attribution</h4>
-                                <p>On the verso page, credit as follows:</p>
-                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
-                                    Color [and/or halftone] illustrations [on pages ___] are used by permission of Louise Bass.
-                                </p>
-                                
-                                <h4>Usage Restrictions</h4>
-                                <p>The halftone illustrations are only permitted to be used in print publications. (Of course, digital publications are better off using the color versions anyway.)</p>
-                                
-                                <h4>Permission Requests</h4>
-                                <p>It is not necessary to request permission to use Bass color & halftone illustrations in SIL or Wycliffe publications. For all other publications, permission must be requested at <a href="https://tiny.cc/requestpermissions" target="_blank">tiny.cc/requestpermissions</a>.</p>
-                            </div>
                         </div>
                     </div>
                 </div>
