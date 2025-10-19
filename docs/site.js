@@ -284,6 +284,24 @@ class SiteManager {
                         
                         <div style="margin-left: 20px; margin-top: 20px;">
                             
+                            <h3 onclick="toggleSection('fmo-maps')" style="cursor: pointer; user-select: none; color: var(--sil-medium-blue); margin-top: 20px;">
+                                <span id="fmo-maps-icon" style="display: inline-block; width: 20px;">+</span> FMO 
+                                (fmosoft.com - Adapted from Map Creator's built-in maps)
+                            </h3>
+                            <div id="fmo-maps" style="display: none; margin-left: 20px; margin-top: 10px;">
+                                <h4>Owner</h4>
+                                <p>The rights-holder of FMO-coded masters is fmosoft.com.</p>
+                                
+                                <h4>Attribution Rules</h4>
+                                <p>Publications that include material disseminated by Map Creator or produced using Map Creator 
+                                must include this credit:</p>
+
+                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
+                                    "Maps [and diagrams and charts] [on pages ___] are produced with Map Creator software from 
+                                    fmosoft.com. Used by permission. All rights reserved."
+                                </p>
+                            </div>
+                            
                             <h3 onclick="toggleSection('gt-maps')" style="cursor: pointer; user-select: none; color: var(--sil-medium-blue); margin-top: 20px;">
                                 <span id="gt-maps-icon" style="display: inline-block; width: 20px;">+</span> GT (Gordon Thompson)
                             </h3>
@@ -806,7 +824,7 @@ Both of these can generate data merge files for Adobe InDesign (IDML maps) and f
                 <div class="info-card">
                     <h3>Illustration Sets</h3>
                     <p>The SIL Illustration repository contains illustration sets from various owners, each with different rules regarding who may use them, in which kind of publications they may be used, what kind of attribution is required, and who SIL may share the master copies with.</p>
-                    <p>Make sure to read and understand the usage and attribution rules for each illustration set before selecting them for use.</p>
+                    <p>Make sure to read and understand the <a href="#rules">usage and attribution rules</a> for each illustration set before selecting them for use.</p>
                 </div>
             </div>
             <div class="content-section">
@@ -814,6 +832,14 @@ Both of these can generate data merge files for Adobe InDesign (IDML maps) and f
                     <h3>Sample Illustrations</h3>
                     <p>Translation teams can find low-resolution, watermarked samples of all illustrations available in the SIL Map & Illustration Repository at <a href="https://tiny.cc/sampleimages" target="_blank">tiny.cc/sampleimages</a>.
                     (They are available with search tags in English, Spanish, French, Bahasa Indonesia, Hindi, and Swahili.)</p>
+                </div>
+            </div>
+            <div class="content-section">
+                <div class="info-card">
+                    <h3>Inserting Illustrations using Multilinguial Keywords</h3>
+                    <p>The best way to insert illustrations into your Paratext project is to insert the sample illustrations as 
+                    placeholders, as you can search for appropriate illustrations using keywords, directly from Paratext's 
+                    <b>Insert Figure</b> dialog.</p>
                     <p>See <a href="https://lingtran.net/How+to+directly+insert+images%2C+illustrations%2C+and+figures+into+a+Paratext+project+from+a+searchable+database?highlight=illustrations" target="_blank">How to directly insert images, illustrations, and figures into a Paratext project from a searchable database</a>.</p>
                 </div>
             </div>
@@ -875,10 +901,10 @@ Both of these can generate data merge files for Adobe InDesign (IDML maps) and f
             
             <div class="content-section">
                 <h2 class="section-title">Map Grouping System</h2>
-                <p>Similar maps are grouped with the same chronology number, such as "185" for maps relating to Philip's travels. 
-                (Scripture Map Labeler, the predecessor to Paratext Diagram Labeler, required users to build sets of map labels in a Paratext "extra" book such as XXA, 
-                using chapters and verses, and this grouping number was the "chapter" number for all maps in that set.)</p>
-                <p>In the SIL Map Repository (SMR), there are three separate IDML files for <code>185wbt - Philips Travels</code>:</p>
+                <p>Similar maps are grouped with the same topic number, such as "185" for maps relating to Philip's travels. 
+                This is followed by a two- or three-letter code indicating the usage and attribution rules that apply, such as "wbt".</p>
+                <p>Multiple maps may be grouped by such codes. For example, in the SIL Map Repository (SMR) contains three separate 
+                IDML files for <code>185wbt - Philips Travels</code>:</p>
                 
                 <table style="width: 100%; margin: 1rem 0; border-collapse: collapse;">
                     <tbody>
@@ -916,8 +942,8 @@ Both of these can generate data merge files for Adobe InDesign (IDML maps) and f
                 </table>
                 
                 <div class="info-card">
-                    <h3>Filename Conventions</h3>
-                    <p>Please familiarize yourself with our maps' filename conventions described <a href="https://docs.google.com/spreadsheets/d/19xkEnd3x17eFAqChwzT6i9CmDxCJplLr/edit?gid=1704341479#gid=1704341479">here</a>.</p>
+                    <h3>Filename Conventions for Map Samples</h3>
+                    <p>Please familiarize yourself with our sample maps' filename conventions described <a href="https://docs.google.com/spreadsheets/d/19xkEnd3x17eFAqChwzT6i9CmDxCJplLr/edit?gid=1704341479#gid=1704341479">here</a>.</p>
                 </div>
             </div>
         `;
@@ -1181,13 +1207,26 @@ Both of these can generate data merge files for Adobe InDesign (IDML maps) and f
                 </div>
                 
                 <div class="info-card">
-                    <h3>More about Map Creator</h3>
+                    <h3>Attribution Required for Using Map Creator</h3>
                     
                     <div class="content-section">
+                        <p>Note that if you use Map Creator even with maps/diagrams that did not originate from Map Creator,
+                        you are required to follow the attribution rules below, <i>in addition</i> to any attribution rules that 
+                        may apply to the source of the maps/diagrams.</p>
+                        
+                                <h4>Attribution Rules</h4>
+                                <p>Publications that include material disseminated by Map Creator or produced using Map Creator 
+                                must include this credit:</p>
+
+                                <p style="margin-left: 20px; font-family: monospace; background: #f5f5f5; padding: 10px; border-left: 3px solid var(--sil-medium-blue);">
+                                    "Maps [and diagrams and charts] [on pages ___] are produced with Map Creator software from 
+                                    fmosoft.com. Used by permission. All rights reserved."
+                                </p>
+
+                        <h4>More Information</h4>
                         <ul>
                             <li><strong>Home Page:</strong> <a href="https://fmosoft.com/map-creator">https://fmosoft.com/map-creator</a></li>
                             <li><strong>Intro Video:</strong> <a href="https://vimeo.com/59357958">https://vimeo.com/59357958</a></li>
-                            <li><strong>Support:</strong> <a href="mailto:help@fmosoft.com">help@fmosoft.com</a></li>
                         </ul>
                     </div>
                 </div>
@@ -1294,6 +1333,7 @@ Both of these can generate data merge files for Adobe InDesign (IDML maps) and f
                             <span id="form1-icon" style="display: inline-block; width: 20px;">+</span> To request permissions to use maps or illustrations in publications:
                         </h3>
                         <div id="form1" style="display: none; margin-top: 10px;">
+                            <p style="text-align: center;">To open this form in a new tab, visit <a href="https://tiny.cc/requestpermissions" target="_blank">tiny.cc/requestpermissions</a>.</p>
                             <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScGc_jhYmu2KrVzlX8oL0-Iw32-0UY6kzD6j_wm5j-VD6RsAw/viewform?embedded=true" width="100%" height="1500" frameborder="0" marginheight="0" marginwidth="0" style="border-radius: 8px; background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,0.08);">Loading…</iframe>
                         </div>
                     </div>
@@ -1303,6 +1343,7 @@ Both of these can generate data merge files for Adobe InDesign (IDML maps) and f
                             <span id="form2-icon" style="display: inline-block; width: 20px;">+</span> To request access to master copies of maps or illustrations:
                         </h3>
                         <div id="form2" style="display: none; margin-top: 10px;">
+                            <p style="text-align: center;">To open this form in a new tab, visit <a href="https://tiny.cc/requestimages" target="_blank">tiny.cc/requestimages</a>.</p>
                             <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScCAOsNhonkU8H9msz7eUncVVme4MvtJ7Tnzjgl9s-KAtL3oA/viewform?embedded=true" width="100%" height="1500" frameborder="0" marginheight="0" marginwidth="0" style="border-radius: 8px; background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,0.08);">Loading…</iframe>
                         </div>
                     </div>
@@ -1312,6 +1353,7 @@ Both of these can generate data merge files for Adobe InDesign (IDML maps) and f
                             <span id="form3-icon" style="display: inline-block; width: 20px;">+</span> For all other inquiries:
                         </h3>
                         <div id="form3" style="display: none; margin-top: 10px;">
+                            <p style="text-align: center;">To open this form in a new tab, <a href="https://docs.google.com/forms/d/e/1FAIpQLSedIIw87Qr1_nTgBfPG75Z7XRZdqxrCtxwT_oqTdaqNEmCStw/viewform" target="_blank">click here</a>.</p>
                             <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSedIIw87Qr1_nTgBfPG75Z7XRZdqxrCtxwT_oqTdaqNEmCStw/viewform?embedded=true" width="100%" height="1200" frameborder="0" marginheight="0" marginwidth="0" style="border-radius: 8px; background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,0.08);">Loading…</iframe>
                         </div>
                     </div>
