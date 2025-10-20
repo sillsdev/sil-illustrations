@@ -92,7 +92,11 @@ class SiteManager {
 
       // Update breadcrumb text
       const pageTitles = {
-        illustrations: "Illustrations",
+        illustrations: "ILLUSTRATIONS",
+        "illustration-sets": "ILLUSTRATIONS > ILLUSTRATION SETS",
+        "sample-illustrations": "ILLUSTRATIONS > SAMPLE ILLUSTRATIONS",
+        "using-illustrations": "ILLUSTRATIONS > INSERTING BY KEYWORDS",
+        "master-illustrations": "ILLUSTRATIONS > MASTER ILLUSTRATIONS",
         rules: "USAGE, PERMISSION & ATTRIBUTION RULES",
         maps: "MAPS & DIAGRAMS",
         "maps-intro": "MAPS & DIAGRAMS > INTRODUCTION",
@@ -111,10 +115,11 @@ class SiteManager {
   }
 
   handleLearnNavigation(pageId) {
-    const sidebar = document.getElementById("maps-nav");
+    const mapsSidebar = document.getElementById("maps-nav");
+    const illustrationsSidebar = document.getElementById("illustrations-nav");
     const contentWrapper = document.querySelector(".sil-content-wrapper");
 
-    const learnPages = [
+    const mapsPages = [
       "maps-intro",
       "map-samples",
       "map-editions",
@@ -125,12 +130,26 @@ class SiteManager {
       "map-monkey",
     ];
 
-    if (pageId === "maps" || learnPages.includes(pageId)) {
-      sidebar.style.display = "block";
+    const illustrationsPages = [
+      "illustration-sets",
+      "sample-illustrations",
+      "using-illustrations",
+      "master-illustrations",
+    ];
+
+    if (pageId === "maps" || mapsPages.includes(pageId)) {
+      mapsSidebar.style.display = "block";
+      illustrationsSidebar.style.display = "none";
       contentWrapper.classList.add("with-sidebar");
       this.setupLearnSidebar(pageId);
+    } else if (pageId === "illustrations" || illustrationsPages.includes(pageId)) {
+      mapsSidebar.style.display = "none";
+      illustrationsSidebar.style.display = "block";
+      contentWrapper.classList.add("with-sidebar");
+      this.setupIllustrationsSidebar(pageId);
     } else {
-      sidebar.style.display = "none";
+      mapsSidebar.style.display = "none";
+      illustrationsSidebar.style.display = "none";
       contentWrapper.classList.remove("with-sidebar");
     }
   }
@@ -139,7 +158,7 @@ class SiteManager {
     const sidebar = document.getElementById("maps-nav");
     sidebar.innerHTML = `
             <div class="sil-sidebar-header">
-                <img src="images/logo.png" alt="SIL Map & Illustration Repository" class="sil-sidebar-logo">
+                <h3><span style="font-size: 48px; text-align: center;">🗺️</span></h3>
             </div>
             <ul class="sil-sidebar-nav">
                 <li><a href="#maps" data-page="maps" class="${currentPageId === "maps" ? "active" : ""}">Overview</a></li>
@@ -169,6 +188,35 @@ class SiteManager {
     });
   }
 
+  setupIllustrationsSidebar(currentPageId) {
+    const sidebar = document.getElementById("illustrations-nav");
+    sidebar.innerHTML = `
+            <div class="sil-sidebar-header">
+                <h3><span style="font-size: 48px; text-align: center;">🗺️</span></h3>
+            </div>
+            <ul class="sil-sidebar-nav">
+                <li><a href="#illustrations" data-page="illustrations" class="${currentPageId === "illustrations" ? "active" : ""}">Overview</a></li>
+                <li><strong>Topics</strong></li>
+                <li><a href="#illustration-sets" data-page="illustration-sets" class="${currentPageId === "illustration-sets" ? "active" : ""}">Illustration Sets</a></li>
+                <li><a href="#sample-illustrations" data-page="sample-illustrations" class="${currentPageId === "sample-illustrations" ? "active" : ""}">Sample Illustrations</a></li>
+                <li><a href="#using-illustrations" data-page="using-illustrations" class="${currentPageId === "using-illustrations" ? "active" : ""}">Inserting by Keywords</a></li>
+                <li><a href="#master-illustrations" data-page="master-illustrations" class="${currentPageId === "master-illustrations" ? "active" : ""}">Master Illustrations</a></li>
+            </ul>
+        `;
+
+    // Setup sidebar navigation
+    const sidebarLinks = sidebar.querySelectorAll("a[data-page]");
+    sidebarLinks.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const page = link.getAttribute("data-page");
+        if (page) {
+          window.location.hash = page;
+        }
+      });
+    });
+  }
+
   displayPage(pageId) {
     const mainContent = document.querySelector(".sil-content");
 
@@ -180,7 +228,19 @@ class SiteManager {
         mainContent.innerHTML = this.getRulesPage();
         break;
       case "illustrations":
-        mainContent.innerHTML = this.getIllustrationsPage();
+        mainContent.innerHTML = this.getIllustrationsOverviewPage();
+        break;
+      case "illustration-sets":
+        mainContent.innerHTML = this.getIllustrationSetsPage();
+        break;
+      case "sample-illustrations":
+        mainContent.innerHTML = this.getSampleIllustrationsPage();
+        break;
+      case "using-illustrations":
+        mainContent.innerHTML = this.getUsingIllustrationsPage();
+        break;
+      case "master-illustrations":
+        mainContent.innerHTML = this.getMasterIllustrationsPage();
         break;
       case "maps":
         mainContent.innerHTML = this.getMapsOverviewPage();
@@ -718,9 +778,8 @@ class SiteManager {
     return `
             <div class="page-header">
                 <h1 class="page-title">Introduction</h1>
-                <p class="page-subtitle"><i>About our Maps, and Why You Need a Labeler</i></p>
+                <p class="page-subtitle">About our Maps, and Why You Need a Labeler</p>
             </div>
-            <br>
             <div class="content-section">
                 
                 <div class="info-card">
@@ -730,9 +789,11 @@ class SiteManager {
 <p>The solution is to use either the <a href="https://sites.google.com/sil.org/scripture-map-labeler/home" target="blank">Scripture Map Labeler</a> plugin for Paratext, or its successor, the <a href="https://tiny.cc/labeler" target="blank">Paratext Diagram Labeler</a>.
 Both of these can generate data merge files for Adobe InDesign (IDML maps) and for Map Creator (MAPX maps). </p>
 <p><strong>InDesign Maps</strong></p>
-<p><i>Important Note:</i> If you will be using other writing systems, other digit systems, or just other fonts, be sure to read the instructions on the best way to set this up. See <a href="#map-varieties">How to Use the Maps</a> for more details.</p>
+<p><i>Important Note:</i> If you will be using other writing systems, other digit systems, or just other fonts, be sure to read the instructions on the best way to 
+set this up. See <a href="#map-varieties">How to Use the Maps</a> for more details.</p>
 <p><strong>Map Creator</strong><br />
-  Several (but not yet all) of our IDML maps are also  available in MAPX format. In addition, a custom version of the Bible maps that  are built into Map Creator are available here. Use these copies rather than the  built-in templates with Paratext Diagram Labeler.</p>
+  Several (but not yet all) of our IDML maps are also  available in MAPX format. In addition, a custom version of the Bible maps that are built into Map Creator 
+  are available in this map repository. Use these copies rather than the built-in templates with Paratext Diagram Labeler.</p>
 
                 </div>
             </div>
@@ -741,16 +802,25 @@ Both of these can generate data merge files for Adobe InDesign (IDML maps) and f
 
   getMapSamplesPage() {
     return `
-            <div class="page-header">
-                <h1 class="page-title">Samples</h1>
+        <div class="page-header">
+            <h1 class="page-title">Samples</h1>
+        </div>
+        
+        <div class="content-section">
+            <div class="info-card">
+            <p>Samples of all maps are available at:</p>
+            <p><a href="https://tiny.cc/samplemaps" target="_blank" class="btn" style="display: inline-block; padding: 12px 24px; background: #007bff; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; margin: 10px 0;">
+                🔗 tiny.cc/samplemaps
+            </a></p>
+
+            <p>Translation teams will generally only need to download this folder of samples. This is the same folder included within the
+            <strong>SIL Map Repository</strong> folder as <strong>!All Map Samples</strong>.</p>
+            <p>Typesetters: See also <a href="https://docs.google.com/document/d/1zUMQK1CoSTT1FPKTAukK4M3IXS-7jAB0NgE85AnAu-g/edit?usp=sharing" target="_blank">
+            Tips for Using the Sample Maps</a>.</p> 
+
             </div>
-            
-            <div class="content-section">
-                <div class="info-card">
-                <p>Samples of all maps are available at <a href="https://tiny.cc/samplemaps" target="_blank">tiny.cc/samplemaps</a>. See <a href="https://docs.google.com/document/d/1zUMQK1CoSTT1FPKTAukK4M3IXS-7jAB0NgE85AnAu-g/edit?usp=sharing" target="_blank">Tips for Using the Sample Maps</a>. Translation teams will generally only need to download this folder of samples. This is the same folder included within the <strong>SIL Map Repository</strong> folder as <strong>!All Map Samples</strong>.</p>
-                </div>
-            </div>
-        `;
+        </div>
+    `;
   }
 
   getMapEditionsPage() {
@@ -761,7 +831,7 @@ Both of these can generate data merge files for Adobe InDesign (IDML maps) and f
             
             <div class="content-section">
                 <div class="info-card">
-                <p>The map repository comes in two English editions, due to some unresolved uncertainty:</p>
+                <p>In addition to a compact Spanish edition, the map repository also comes in two English editions, due to some unresolved uncertainty:</p>
 <ul type="disc">
   <li><strong>Compact Edition: (570 MB) </strong><br />All the maps are directly in the &ldquo;SIL Map Repository&rdquo; folder (or the &ldquo;HK Supplementary Maps&rdquo; folder, if applicable).&nbsp;</li>
   <li><strong>Expanded Edition: (930 MB)</strong> <i>(Note: This edition does not contain the FMOSoft maps. See <a href="#accessing-repo">next page</a> for details.)</i>
@@ -779,7 +849,8 @@ Both of these can generate data merge files for Adobe InDesign (IDML maps) and f
     specified a data merge file to use. The repository manager would request that, if possible, even copy/paste users first try the mergeable files, 
     not the <strong>@en</strong> files, and then alert the Repository Manager via the <a href="#contact">Contact page</a>
     if any such problems occur, before resorting to using the <strong>@en</strong> files. This will help us to resolve the question of whether it&rsquo;s 
-    worth continuing to provide such files in the longer term. Thank you!</li>
+    worth continuing to provide such files in the longer term. (So far, since the launch of the "SMP1" release in April 2025, we have not received any such 
+    problem reports.) Thank you!</li>
     </ul>
   </ul>
 </ul>
@@ -814,40 +885,281 @@ Both of these can generate data merge files for Adobe InDesign (IDML maps) and f
   }
 
   // Page content methods will be implemented as we build each page
-  getIllustrationsPage() {
+  getIllustrationsOverviewPage() {
+    return `
+            <div class="content-section">
+                <h1 class="page-title">Illustrations</h1>
+                <p class="page-subtitle">Select illustrations to engage readers in the Scriptures.</p>
+
+                <h2>Topics</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3><span style="font-size: 36px; margin-right: 8px;">📚</span><a href="#illustration-sets" data-page="illustration-sets">Illustration Sets</a></h3>
+                        <p>Learn about the illustration sets with different owners and permissions</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3><span style="font-size: 36px; margin-right: 8px;">🖼️</span><a href="#sample-illustrations" data-page="sample-illustrations">Sample Illustrations</a></h3>
+                        <p>View and download sample illustrations with multilingual keywords</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3><span style="font-size: 36px; margin-right: 8px;">🔍</span><a href="#using-illustrations" data-page="using-illustrations">Inserting by Keywords</a></h3>
+                        <p>Insert into Paratext using multilingual keyword searching</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3><span style="font-size: 36px; margin-right: 8px;">⬇️</span><a href="#master-illustrations" data-page="master-illustrations">Master Illustrations</a></h3>
+                        <p>Request high-resolution master illustrations for typesetting and publishing</p>
+                    </div>
+                </div>
+            </div>
+        `;
+  }
+
+  getIllustrationSetsPage() {
     return `
             <div class="page-header">
-                <h1 class="page-title">Illustrations</h1>
+                <h1 class="page-title">Illustration Sets</h1>
+                <p class="page-subtitle">Understanding the different illustration collections</p>
             </div>
-            
             <div class="content-section">
                 <div class="info-card">
-                    <h3>Illustration Sets</h3>
                     <p>The SIL Illustration repository contains illustration sets from various owners, each with different rules regarding who may use them, in which kind of publications they may be used, what kind of attribution is required, and who SIL may share the master copies with.</p>
                     <p>Make sure to read and understand the <a href="#rules">usage and attribution rules</a> for each illustration set before selecting them for use.</p>
                 </div>
             </div>
-            <div class="content-section">
-                <div class="info-card">
-                    <h3>Sample Illustrations</h3>
-                    <p>Translation teams can find low-resolution, watermarked samples of all illustrations available in the SIL Map & Illustration Repository at <a href="https://tiny.cc/sampleimages" target="_blank">tiny.cc/sampleimages</a>.
-                    (They are available with search tags in English, Spanish, French, Bahasa Indonesia, Hindi, and Swahili.)</p>
-                </div>
+        `;
+  }
+
+  getSampleIllustrationsPage() {
+    return `
+            <div class="page-header">
+                <h1 class="page-title">Sample Illustrations</h1>
+                <p class="page-subtitle">Browse and download sample illustrations</p>
             </div>
             <div class="content-section">
                 <div class="info-card">
-                    <h3>Inserting Illustrations using Multilinguial Keywords</h3>
+                    <p>Translation teams can find low-resolution, watermarked samples of all illustrations available in the SIL Map & Illustration Repository at 
+                    the link below.
+                    (They are available with search tags in English, Spanish, French, Bahasa Indonesia, Hindi, and Swahili.)</p>
+                    <p><a href="https://tiny.cc/sampleimages" target="_blank" class="btn" style="display: inline-block; padding: 12px 24px; background: #007bff; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; margin: 10px 0;">
+                        🔗 tiny.cc/sampleimages
+                    </a></p>
+                </div>
+            </div>
+        `;
+  }
+
+  getUsingIllustrationsPage() {
+    return `
+            <div class="page-header">
+                <h1 class="page-title">Inserting Illustrations using Multilinguial Keywords</h1>
+                <p class="page-subtitle">The easy way to find and insert illustrations in your Paratext project</p>
+            </div>
+            <div class="content-section">
+                <div class="info-card">
+                    <h3></h3>
                     <p>The best way to insert illustrations into your Paratext project is to insert the sample illustrations as 
                     placeholders, as you can search for appropriate illustrations using keywords, directly from Paratext's 
                     <b>Insert Figure</b> dialog.</p>
-                    <p>See <a href="https://lingtran.net/How+to+directly+insert+images%2C+illustrations%2C+and+figures+into+a+Paratext+project+from+a+searchable+database?highlight=illustrations" target="_blank">How to directly insert images, illustrations, and figures into a Paratext project from a searchable database</a>.</p>
                 </div>
+                <div class="info-card">
+<div dir="ltr">
+<div>
+    <iframe src="https://player.vimeo.com/video/371311463" width="800" height="450" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<div>&nbsp;</div>
+
+<div><span style="background-color: transparent; font-size: 1em;">The SIL Repository provides over 2800 black and white or color illustrations. Finding the best image among so many can be a challenge. The best approach is to do an image search from within Paratext, searching by chapter reference or by keyword in multiple languages. Here&#39;s how:</span></div>
+
+<div>&nbsp;</div>
+
+<h2>Download and Unzip Image Files and Folders</h2>
+
+<p><span><span style="background-color: transparent;">Visit the SIL Illustration Samples folder as per the instructions at the&nbsp;</span></span><span><a href="#sample-illustrations" style="background-color: transparent; font-size: 1em;">Sample Illustrations page</a><span style="background-color: transparent;">.&nbsp;</span></span></p>
+
+<ul>
+	<li><span><span style="background-color: transparent;">Either browse within the appropriate language folder for the sets of images you want, and download those&nbsp;OR​​​​</span></span></li>
+	<li><span><span style="background-color: transparent;">Download all images by right-clicking on the language folder and selecting Download.</span></span></li>
+	<li><span><span style="background-color: transparent;">Note that these are low-resolution watermarked images.</span></span>
+	<ul>
+		<li><span><span style="background-color: transparent;">In all cases except for WBT image sets licensed under CC, the full-resolution originals are available only for bona fide typesetters, who will automatically substitute them for your sample images at typesetting time.</span></span></li>
+	</ul>
+	</li>
+</ul>
+
+<p>Unzip this collection to a folder within your Pictures folder.</p>
+
+<ul>
+	<li>This will ensure that the images are included in Windows&rsquo; search index.</li>
+	<li><span>If you&rsquo;d rather store these files in another location, add that folder to Windows&rsquo; search indexing. <a href="https://winaero.com/blog/add-folders-search-index-windows-10/" rel="nofollow" style="background-color: transparent; font-size: 1em;" target="_blank"><u>Here&rsquo;s</u></a><span style="background-color: transparent;"> how to add it.</span></span></li>
+	<li>Troubleshooting: On some systems, the Windows Search Index might be able to return results for filenames but not for key terms, such as &quot;sheep&quot; or &quot;LUK02&quot;. This may be because it&#39;s been somehow corrupted or misconfigured.
+	<ul>
+		<li>If you are unable to diagnose and correct the problem, one workaround is to open the File Explorer App, click on the &quot;3 dots&quot; menu (for More menu items), then click on Options to open the Folder Options dialog. Next, click on the Search tab. Finally, under the heading &quot;When searching in non-indexed locations&quot;, check the option for &quot;Always search file names and contents&quot;.</li>
+		<li>Alternatively, you can explicitly search for key terms by prefixing them with &quot;tags:&quot;. For example, &quot;tags:sheep AND tags:LUK02&quot;</li>
+	</ul>
+	</li>
+</ul>
+
+<h2>Find and Insert Images in Paratext</h2>
+
+<ol>
+	<li>In Paratext, position the cursor in the passage where you want to insert a picture.</li>
+	<li><span>Go to the <strong>Project menu &gt; </strong><b>Insert </b>&gt; <b>Figure</b>...</span></li>
+	<li><span>Click the <b>Browse </b>button:<br />
+	<br />
+    <img src="images/figure-properties-browse-button.png" alt="Insert Figure Browse Button" style="width: 100%; max-width: 600px;" /><br />
+	</span><br />
+	&nbsp;</li>
+	<li>Navigate to the folder where you unzipped your collection.&nbsp;</li>
+	<li><span><span style="background-color: transparent; vertical-align: baseline;">Click in the SEARCH box in the top right corner:</span></span><br />
+	<img src="images/search-for-image.png" alt="Insert Figure Search Box" style="width: 100%; max-width: 600px;" /></li>
+	<li><span><span style="background-color: transparent; vertical-align: baseline;">Enter one or more terms to search for.</span></span></li>
+</ol>
+
+<ul>
+	<li><span><span style="background-color: transparent; vertical-align: baseline;">For example: </span><span style="background-color: transparent; font-weight: 700; vertical-align: baseline;">baptism </span><span style="background-color: transparent; vertical-align: baseline;">or </span><span style="background-color: transparent; font-weight: 700; vertical-align: baseline;">dove</span>:</span><br />
+	&nbsp;</li>
+</ul>
+
+<p><span>
+<img src="images/search-for-image-dove.png" alt="Search for Image Example" style="width: 100%; max-width: 600px;" /><br />
+</span></p>
+
+	<p>There are a number of search terms/filters you can use:
+	<table border="1" cellpadding="1" cellspacing="1" style="width: 1000px;">
+		<thead>
+			<tr>
+				<th scope="col">Search Term/Filter</th>
+				<th scope="col">Description</th>
+				<th scope="col">Example(s)</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>{keyword}</td>
+				<td>Search for an image by&nbsp;<strong>keyword</strong>.</td>
+				<td>dove<br />
+				baptism<br />
+				altar</td>
+			</tr>
+			<tr>
+				<td>Bible book</td>
+				<td>Search for a book&nbsp;using the <strong>3-letter Paratext book code</strong>.</td>
+				<td>GEN<br />
+				MRK<br />
+				LUK</td>
+			</tr>
+			<tr>
+				<td>Chapter reference</td>
+				<td>Search for a chapter using the <strong>3-letter book code plus the 2-digit chapter number</strong>.</td>
+				<td>GEN03<br />
+				MRK01<br />
+				JHN10</td>
+			</tr>
+			<tr>
+				<td>OR search</td>
+				<td>OR will include images with <strong>any of the search terms.</strong><br />
+				<em>Example: Find images of a <strong>sheep</strong> or <strong>lamb</strong></em></td>
+				<td>sheep OR lamb</td>
+			</tr>
+			<tr>
+				<td>digital</td>
+				<td>
+				<p><strong>digital</strong> will include images with permission to use in a Scripture app.<br />
+				<em>Example: Find images of a <strong>lamb </strong>that can be used in a <strong>Scripture app</strong></em></p>
+				</td>
+				<td>
+				<p>sheep digital</p>
+				</td>
+			</tr>
+			<tr>
+				<td>minus {term}</td>
+				<td>Using the minus sign in front of a term will exclude the term from the search.<br />
+				<em>Example: Find images of a <strong>sheep</strong>&nbsp;that are NOT pictures of a <strong>lamb</strong></em></td>
+				<td>sheep -lamb</td>
+			</tr>
+			<tr>
+				<td>color</td>
+				<td>The <strong>color</strong>&nbsp;keyword will include color images (excluding black and white images).<br />
+				<em>Example: Find <strong>color </strong>images of a <strong>sheep</strong></em></td>
+				<td>sheep color</td>
+			</tr>
+			<tr>
+				<td>black</td>
+				<td>
+				<p>The <strong>black</strong> keyword will include black and white images (excluding color images).<br />
+				<em>Example: Find <strong>black and white</strong> images of a <strong>sheep</strong></em></p>
+				</td>
+				<td>sheep black</td>
+			</tr>
+		</tbody>
+	</table>
+	</p>
+	<p>You can also combine these filters with parenthesis and additional terms.</p>
+
+<ul>
+	<li>For example: Find images of sheep or lambs that can be used in a Scripture app:&nbsp;<span><strong>(lamb OR sheep) digital</strong></span></li>
+</ul>
+
+<h3>Adjust Display Settings</h3>
+
+	<p>Typically, the first time you do a search, you&#39;ll need to adjust the display settings for the results.</p>
+	<p>If your search results are not displayed with extra large icons:</p>
+
+<ul>
+	<li><span>
+        In the upper-right corner, click the drop-down arrow to open the view options:
+    </span></li>
+    <p><img src="images/drop-down-more-options.png" alt="Dropdown View Options" style="width: 100%; max-width: 600px;" /></p>
+
+    <li><span>
+        Select &ldquo;Extra large icons&rdquo;:
+    </span></li>
+    <p><img src="images/extra-large.png" style="border: medium none;" /></p>
+
+    <h4>Optional View Settings:</h4>
+    <ul>
+        <li><span>To make space for even more images, you may want to hide the navigation pane: go to&nbsp;<strong>Organize &gt; Layout </strong>and uncheck <strong>Navigation pane</strong>.</span></li>
+        <li>You can resize this window to fit more images by dragging a corner or edge, or by double-clicking on the title bar to maximize it.</li>
+    </ul>
+    <li>Double-click on an image from the search results to select it.</li>
+</ul>
+
+<h3>Enter Caption and Location</h3>
+<ul>
+	<li>Enter a Caption:<br />
+	<img src="images/enter-a-caption.png" alt="Enter a Caption" style="width: 100%; max-width: 600px;" />
+    
+	<li><span><em>Best Practice: </em>If you only want this illustration to be used in print publications or you don&#39;t expect to receive permission to use it in app or Web, enter &ldquo;p&rdquo; for Location.</span></li>
+	<li><span><span style="background-color: transparent; vertical-align: baseline;">See <a href="https://lingtran.net/How+to+tell+Paratext+which+images+are+for+print+and+which+are+for+electronic+outputs" target="_blank"><u>How to tell Paratext which images are for print and which are for electronic outputs</u></a>.</span></span></li>
+	<li><span><span style="color: rgb(0, 0, 0); background-color: transparent; vertical-align: baseline;">Click <strong>OK</strong>.</span></span></li>
+</ul>
+</div>
+
+<p style="line-height: 1.2; font-size: 13.33px; margin-top: 0pt; margin-bottom: 0pt; margin-left: 36pt;">&nbsp;</p>
+<p style="line-height: 1.2; font-size: 13.33px; margin-top: 0pt; margin-bottom: 0pt; margin-left: 36pt;">&nbsp;</p>
+
+<h2>&nbsp;</h2>
+
+<p style="line-height: 1.2; font-size: 13.33px; margin-top: 0pt; margin-bottom: 0pt; margin-left: 36pt;">&nbsp;</p>
+                </div>
+            </div>
+        `;
+  }
+
+  getMasterIllustrationsPage() {
+    return `
+            <div class="page-header">
+                <h1 class="page-title">Master Illustrations</h1>
+                <p class="page-subtitle">Access high-resolution illustrations for publishing</p>
             </div>
             <div class="content-section">
                 <div class="info-card">
-                    <h3>Master Illustrations</h3>
-                    <p>Typesetters may obtain copies of the Master Illustrations by submitting a request at <a href="https://tiny.cc/requestimages" target="_blank">tiny.cc/requestimages</a>.</p>
-                </div>
+                    <p>Typesetters may obtain copies of the Master Illustrations by submitting a request below.</p>
+                <div class="info-card">
+                            <p style="text-align: center;">To open this form in a new tab, visit <a href="https://tiny.cc/requestimages" target="_blank">tiny.cc/requestimages</a>.</p>
+                            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScCAOsNhonkU8H9msz7eUncVVme4MvtJ7Tnzjgl9s-KAtL3oA/viewform?embedded=true" width="100%" height="1500" frameborder="0" marginheight="0" marginwidth="0" style="border-radius: 8px; background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,0.08);">Loading…</iframe>
+                        </div>
             </div>
         `;
   }
@@ -910,23 +1222,25 @@ Both of these can generate data merge files for Adobe InDesign (IDML maps) and f
                     <tbody>
                         <tr>
                             <td style="border: 1px solid #ddd; padding: 0.5rem;"><code>185wbt - Philips Travels.idml</code></td>
-                            <td style="border: 1px solid #ddd; padding: 0.5rem;">Full page color map</td>
+                            <td style="border: 1px solid #ddd; padding: 0.5rem;">Full page map, with color and other options</td>
                         </tr>
                         <tr>
                             <td style="border: 1px solid #ddd; padding: 0.5rem;"><code>185wbt - Philips Travels [sm].idml</code></td>
-                            <td style="border: 1px solid #ddd; padding: 0.5rem;">Shorter, more square color map</td>
+                            <td style="border: 1px solid #ddd; padding: 0.5rem;">Shorter, more square map, with color and other options</td>
                         </tr>
                         <tr>
                             <td style="border: 1px solid #ddd; padding: 0.5rem;"><code>185wbt - Philips Travels [sm-bw].idml</code></td>
-                            <td style="border: 1px solid #ddd; padding: 0.5rem;">Black & white version of the shorter map</td>
+                            <td style="border: 1px solid #ddd; padding: 0.5rem;">A different short map, in only black & white</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             
             <div class="content-section">
-                <h2 class="section-title">Internal Map Options</h2>
-                <p>Many maps have multiple options for display all within one IDML file. As you browse through the map samples, the internal options used are indicated within parentheses. For example, options on two varieties of the World map are (bbf, riv) and (fcr):</p>
+                <h2 class="section-title">Options that are Internal to a Map File</h2>
+                <p>Many maps have multiple options for display all within one IDML file. As you browse through the map samples, the 
+                internal options used are indicated within parentheses. For example, options on two varieties of the World map 
+                are (bbf, riv) and (fcr):</p>
                 
                 <table style="width: 100%; margin: 1rem 0; border-collapse: collapse;">
                     <tbody>
@@ -943,8 +1257,174 @@ Both of these can generate data merge files for Adobe InDesign (IDML maps) and f
                 
                 <div class="info-card">
                     <h3>Filename Conventions for Map Samples</h3>
-                    <p>Please familiarize yourself with our sample maps' filename conventions described <a href="https://docs.google.com/spreadsheets/d/19xkEnd3x17eFAqChwzT6i9CmDxCJplLr/edit?gid=1704341479#gid=1704341479">here</a>.</p>
-                </div>
+
+                    <p>The filename of map samples may be comprised of the following elements:</p>
+                        <table xmlns="http://www.w3.org/1999/xhtml" cellspacing="0" cellpadding="4" dir="ltr" border="1" data-sheets-root="1" data-sheets-baot="1" style="border-collapse: collapse; width: 100%; font-size:8pt;">
+                        <thead>
+                            <tr style="background-color: #e8e8e8; font-weight: bold;">
+                            <td style="border: 1px solid #999; padding: 8px; border-bottom: 2px solid #666;">Coll ID</td>
+                            <td style="border: 1px solid #999; padding: 8px; border-bottom: 2px solid #666;">Map ID</td>
+                            <td style="border: 1px solid #999; padding: 8px; border-bottom: 2px solid #666;">Map Title</td>
+                            <td style="border: 1px solid #999; padding: 8px; border-bottom: 2px solid #666;">[File-variant]</td>
+                            <td style="border: 1px solid #999; padding: 8px; border-bottom: 2px solid #666;">(options)</td>
+                            <td style="border: 1px solid #999; padding: 8px; border-bottom: 2px solid #666;">@lang</td>
+                            <td style="border: 1px solid #999; padding: 8px; background-color: #ffffff;"></td>
+                            <td style="border: 1px solid #999; padding: 8px; border-bottom: 2px solid #666;">Joined</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr >
+                            <td style="border: 1px solid #ccc; padding: 6px; border-left: 2px solid #666;">smr_</td>
+                            <td style="border: 1px solid #ccc; padding: 6px;">265wbt</td>
+                            <td style="border: 1px solid #ccc; padding: 6px;"> - World</td>
+                            <td style="border: 1px solid #ccc; padding: 6px;"> [1pg]</td>
+                            <td style="border: 1px solid #ccc; padding: 6px;"> (bbf riv)</td>
+                            <td style="border: 1px solid #ccc; padding: 6px; border-right: 2px solid #666;"> @en</td>
+                            <td style="border: 1px solid #ccc; padding: 6px; background-color: #ffffff;"></td>
+                            <td style="border: 1px solid #ccc; padding: 6px; border-right: 2px solid #666; border-left: 2px solid #666;">smr_265wbt - World [1pg] (bbf riv) @en</td>
+                            </tr>
+                            <tr>
+                            <td style="border: 1px solid #ccc; padding: 6px; border-left: 2px solid #666; border-bottom: 2px solid #666;">smr_</td>
+                            <td style="border: 1px solid #ccc; padding: 6px; border-bottom: 2px solid #666;">265wbt</td>
+                            <td style="border: 1px solid #ccc; padding: 6px; border-bottom: 2px solid #666;"> - World</td>
+                            <td style="border: 1px solid #ccc; padding: 6px; border-bottom: 2px solid #666;"> [2pg-flipped]</td>
+                            <td style="border: 1px solid #ccc; padding: 6px; border-bottom: 2px solid #666;"> (fcr)</td>
+                            <td style="border: 1px solid #ccc; padding: 6px; border-bottom: 2px solid #666; border-right: 2px solid #666;"> @en</td>
+                            <td style="border: 1px solid #ccc; padding: 6px; background-color: #ffffff;"></td>
+                            <td style="border: 1px solid #ccc; padding: 6px; border-bottom: 2px solid #666;  border-right: 2px solid #666; border-left: 2px solid #666;">smr_265wbt - World [2pg-flipped] (fcr) @en</td>
+                            </tr>
+                            <tr>
+                            <td style="border: 1px solid #ccc; padding: 6px; border-left: 2px solid #666;">smr_</td>
+                            <td style="border: 1px solid #ccc; padding: 6px;">185wbt</td>
+                            <td style="border: 1px solid #ccc; padding: 6px;"> - Philips Travels</td>
+                            <td style="border: 1px solid #ccc; padding: 6px;"></td>
+                            <td style="border: 1px solid #ccc; padding: 6px;"> (fcr)</td>
+                            <td style="border: 1px solid #ccc; padding: 6px; border-right: 2px solid #666;"> @en</td>
+                            <td style="border: 1px solid #ccc; padding: 6px; background-color: #ffffff;"></td>
+                            <td style="border: 1px solid #ccc; padding: 6px; border-right: 2px solid #666; border-left: 2px solid #666;">smr_185wbt - Philips Travels (fcr) @en</td>
+                            </tr>
+                            <tr>
+                            <td style="border: 1px solid #ccc; padding: 6px; border-left: 2px solid #666;">smr_</td>
+                            <td style="border: 1px solid #ccc; padding: 6px;">185wbt</td>
+                            <td style="border: 1px solid #ccc; padding: 6px;"> - Philips Travels</td>
+                            <td style="border: 1px solid #ccc; padding: 6px;"> [sm]</td>
+                            <td style="border: 1px solid #ccc; padding: 6px;"> (bbr)</td>
+                            <td style="border: 1px solid #ccc; padding: 6px; border-right: 2px solid #666;"> @en</td>
+                            <td style="border: 1px solid #ccc; padding: 6px; background-color: #ffffff;"></td>
+                            <td style="border: 1px solid #ccc; padding: 6px; border-right: 2px solid #666; border-left: 2px solid #666;">smr_185wbt - Philips Travels [sm] (bbr) @en</td>
+                            </tr>
+                            <tr>
+                            <td style="border: 1px solid #ccc; padding: 6px; border-left: 2px solid #666; border-bottom: 2px solid #666;">smr_</td>
+                            <td style="border: 1px solid #ccc; padding: 6px; border-bottom: 2px solid #666;">185wbt</td>
+                            <td style="border: 1px solid #ccc; padding: 6px; border-bottom: 2px solid #666;"> - Philips Travels</td>
+                            <td style="border: 1px solid #ccc; padding: 6px; border-bottom: 2px solid #666;"> [sm-bw]</td>
+                            <td style="border: 1px solid #ccc; padding: 6px; border-bottom: 2px solid #666;"></td>
+                            <td style="border: 1px solid #ccc; padding: 6px; border-right: 2px solid #666; border-bottom: 2px solid #666;"> @en</td>
+                            <td style="border: 1px solid #ccc; padding: 6px; background-color: #ffffff;"></td>
+                            <td style="border: 1px solid #ccc; padding: 6px;  border-bottom: 2px solid #666; border-right: 2px solid #666; border-left: 2px solid #666;">smr_185wbt - Philips Travels [sm-bw] @en</td>
+                            </tr>
+                            <tr>
+                            <td style="border: 1px solid #ccc; padding: 6px; border-left: 2px solid #666;">smr_</td>
+                            <td style="border: 1px solid #ccc; padding: 6px;">195wbt</td>
+                            <td style="border: 1px solid #ccc; padding: 6px;"> - Paul journey 1</td>
+                            <td style="border: 1px solid #ccc; padding: 6px;"> [bwr]</td>
+                            <td style="border: 1px solid #ccc; padding: 6px;"></td>
+                            <td style="border: 1px solid #ccc; padding: 6px; border-right: 2px solid #666;"> @en</td>
+                            <td style="border: 1px solid #ccc; padding: 6px; background-color: #ffffff;"></td>
+                            <td style="border: 1px solid #ccc; padding: 6px; border-right: 2px solid #666; border-left: 2px solid #666;">smr_195wbt - Paul journey 1 [bwr] @en</td>
+                            </tr>
+                            <tr>
+                            <td style="border: 1px solid #ccc; padding: 6px; border-left: 2px solid #666; border-bottom: 2px solid #666;">smr_</td>
+                            <td style="border: 1px solid #ccc; padding: 6px; border-bottom: 2px solid #666;">195wbt</td>
+                            <td style="border: 1px solid #ccc; padding: 6px; border-bottom: 2px solid #666;"> - Paul journey 1</td>
+                            <td style="border: 1px solid #ccc; padding: 6px; border-bottom: 2px solid #666;"> [bw-dark]</td>
+                            <td style="border: 1px solid #ccc; padding: 6px; border-bottom: 2px solid #666;"></td>
+                            <td style="border: 1px solid #ccc; padding: 6px; border-right: 2px solid #666; border-bottom: 2px solid #666;"> @en</td>
+                            <td style="border: 1px solid #ccc; padding: 6px; background-color: #ffffff;"></td>
+                            <td style="border: 1px solid #ccc; padding: 6px; border-right: 2px solid #666; border-left: 2px solid #666; border-bottom: 2px solid #666;">smr_195wbt - Paul journey 1 [bw-dark] @en</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <p>The elements are defined as follows:</p>
+                    <table xmlns="http://www.w3.org/1999/xhtml" cellspacing="4" cellpadding="4" dir="ltr" border="0" data-sheets-root="1" data-sheets-baot="1" style="font-size:9pt;">
+                    <colgroup>
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td><b>Coll ID:</b></td>
+                        <td><div>
+                            <div>Collection ID. All samples from the SIL Map Repository have a collection ID of &quot;smr&quot;.</div>
+                        </div></td>
+                        </tr>
+                        <tr>
+                            <td><b>Map ID:</b></td>
+                        <td><div>
+                            <div>Topic number (grouping similar maps) plus 2- or 3-character code indicating the set of usage &amp; permissions rules that apply.</div>
+                        </div></td>
+                        </tr>
+                        <tr>
+                            <td><b>Map Title:</b></td>
+                        <td><div>
+                            <div>A title for the map, in English</div>
+                        </div></td>
+                        </tr>
+                        <tr>
+                            <td><b>File variant:</b></td>
+                        <td><div>
+                            <div>Distinguishes a particular variant of the master file among other (possible) master files.</div>
+                        </div></td>
+                        </tr>
+                        <tr>
+                            <td><b>Options:</b></td>
+                        <td><div>
+                            <div>Any file-internal options utilized in producing a particular sample of the map.</div>
+                        </div></td>
+                        </tr>
+                        <tr>
+                            <td><b>Lang:</b></td>
+                        <td><div>
+                            <div>The language code of the language used in the map.</div>
+                        </div></td>
+                        </tr>
+                    </tbody>
+                    </table>
+                    <br>
+                    <p>The following map types may be indicated in the options field:</p>
+                        <table cellspacing="8" cellpadding="4" dir="ltr" border="0" data-sheets-root="1" data-sheets-baot="1" style="font-size:9pt;">
+                            <tbody>
+                                <tr>
+                                    <td><b>BWR</b></td>
+                                    <td>black & white, relief</td>
+                                </tr>
+                                <tr>
+                                    <td><b>BWF</b></td>
+                                    <td>black & white, flat</td>
+                                </tr>
+                                <tr>
+                                    <td><b>BBR</b></td>
+                                    <td>blue & brown, relief</td>
+                                </tr>
+                                <tr>
+                                    <td><b>BBF</b></td>
+                                    <td>blue & brown, flat</td>
+                                </tr>
+                                <tr>
+                                    <td><b>FCR</b></td>
+                                    <td>full color, relief</td>
+                                </tr>
+                                <tr>
+                                    <td><b>FCF</b></td>
+                                    <td>full color, flat</td>
+                                </tr>
+                                <tr>
+                                    <td><b>MCR</b></td>
+                                    <td>muted color, relief</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
             </div>
         `;
   }
@@ -1238,9 +1718,8 @@ Both of these can generate data merge files for Adobe InDesign (IDML maps) and f
     return `
             <div class="page-header">
                 <h1 class="page-title">MapMonkey</h1>
-                <p class="page-subtitle"><i>Selecting options within IDML maps</i></p>
+                <p class="page-subtitle">Selecting options within IDML maps</p>
             </div>
-            <br>
             <div class="content-section">
                 <div class="info-card">
                     <div style="text-align: center; margin: 20px 0;">
@@ -1366,7 +1845,7 @@ Both of these can generate data merge files for Adobe InDesign (IDML maps) and f
     return `
             <div class="content-section">
                 <h1 class="page-title">Maps & Diagrams</h1>
-                <p>Create maps and diagrams to engage readers in the Scriptures.</p>
+                <p class="page-subtitle">Create maps and diagrams to engage readers in the Scriptures.</p>
 
                 <h2>Basics</h2>
                 <div class="feature-grid">
@@ -1375,8 +1854,8 @@ Both of these can generate data merge files for Adobe InDesign (IDML maps) and f
                         <p>About our Maps, and Why You Need a Labeler</p>
                     </div>
                     <div class="feature-card">
-                        <h3><span style="font-size: 36px; margin-right: 8px;">🖼️</span><a href="#map-samples" data-page="map-samples">Samples</a></h3>
-                        <p>View and download sample maps for your projects</p>
+                        <h3><span style="font-size: 36px; margin-right: 8px;">🖼️</span><a href="#map-samples" data-page="map-samples">Sample Maps</a></h3>
+                        <p>View and download sample maps/diagrams</p>
                     </div>
                     <div class="feature-card">
                         <h3><span style="font-size: 36px; margin-right: 8px;">📦</span><a href="#map-editions" data-page="map-editions">Editions</a></h3>

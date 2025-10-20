@@ -480,6 +480,11 @@ body {
     margin-top: 25px;
 }
 
+.page-subtitle {
+    font-style: italic;
+    margin-bottom: 1em;
+}
+
 .download-btn {
     display: inline-flex;
     align-items: center;
