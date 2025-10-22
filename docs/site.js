@@ -100,6 +100,7 @@ class SiteManager {
         rules: "USAGE, PERMISSION & ATTRIBUTION RULES",
         maps: "MAPS & DIAGRAMS",
         "maps-intro": "MAPS & DIAGRAMS > INTRODUCTION",
+        "map-labeler": "MAPS & DIAGRAMS > LABELER",
         "map-samples": "MAPS & DIAGRAMS > SAMPLES",
         "map-editions": "MAPS & DIAGRAMS > EDITIONS",
         "accessing-repo": "MAPS & DIAGRAMS > ACCESSING THE REPOSITORY",
@@ -121,6 +122,7 @@ class SiteManager {
 
     const mapsPages = [
       "maps-intro",
+      "map-labeler",
       "map-samples",
       "map-editions",
       "accessing-repo",
@@ -164,6 +166,7 @@ class SiteManager {
                 <li><a href="#maps" data-page="maps" class="${currentPageId === "maps" ? "active" : ""}">Overview</a></li>
                 <li><strong>Basics</strong></li>
                 <li><a href="#maps-intro" data-page="maps-intro" class="${currentPageId === "maps-intro" ? "active" : ""}">Introduction</a></li>
+                <li><a href="#map-labeler" data-page="map-labeler" class="${currentPageId === "map-labeler" ? "active" : ""}">Why You Need a Labeler</a></li>
                 <li><a href="#map-samples" data-page="map-samples" class="${currentPageId === "map-samples" ? "active" : ""}">Samples</a></li>
                 <li><a href="#map-editions" data-page="map-editions" class="${currentPageId === "map-editions" ? "active" : ""}">Editions</a></li>
                 <li><a href="#accessing-repo" data-page="accessing-repo" class="${currentPageId === "accessing-repo" ? "active" : ""}">Accessing the Repository</a></li>
@@ -247,6 +250,9 @@ class SiteManager {
         break;
       case "maps-intro":
         mainContent.innerHTML = this.getMapsIntroPage();
+        break;
+      case "map-labeler":
+        mainContent.innerHTML = this.getMapLabelerPage();
         break;
       case "map-samples":
         mainContent.innerHTML = this.getMapSamplesPage();
@@ -776,28 +782,79 @@ class SiteManager {
 
   getMapsIntroPage() {
     return `
-            <div class="page-header">
-                <h1 class="page-title">Introduction</h1>
-                <p class="page-subtitle">About our Maps, and Why You Need a Labeler</p>
-            </div>
-            <div class="content-section">
-                
-                <div class="info-card">
+        <div class="page-header">
+            <h1 class="page-title">Introduction</h1>
+            <p class="page-subtitle">About our Maps</p>
+        </div>
+        <div class="content-section">
+            
+            <div class="info-card">
                 <p>The SIL Map Repository is a collection of maps and diagrams that may be helpful in Scripture publications. Most of the maps currently contained in the repository are owned by SIL Global, with attribution rules that credit Wycliffe Bible Translators, Inc., and where applicable, the artists. </p>
-<p>There is also a supplementary collection of 3 maps/diagrams based on artwork by Horace Knowles, owned by the British and Foreign Bible Societies. Our current licensing agreement only allows us to distribute these for use on SIL-supported projects.</p>
-<p>All of our maps and diagrams are enabled for use with data merge files. These data merge files should contain the map labels configured from your Paratext project data. While it is possible to copy and paste label text into any of our map files, this is strongly discouraged. Place-names are notorious for being spelled inconsistently in minority language Scripture projects, because they are typically transliterations, and there are always multiple ways that Hebrew or Greek terms could be transliterated into any given language. </p>
-<p>The solution is to use either the <a href="https://sites.google.com/sil.org/scripture-map-labeler/home" target="blank">Scripture Map Labeler</a> plugin for Paratext, or its successor, the <a href="https://tiny.cc/labeler" target="blank">Paratext Diagram Labeler</a>.
-Both of these can generate data merge files for Adobe InDesign (IDML maps) and for Map Creator (MAPX maps). </p>
-<p><strong>InDesign Maps</strong></p>
-<p><i>Important Note:</i> If you will be using other writing systems, other digit systems, or just other fonts, be sure to read the instructions on the best way to 
-set this up. See <a href="#map-varieties">How to Use the Maps</a> for more details.</p>
-<p><strong>Map Creator</strong><br />
-  Several (but not yet all) of our IDML maps are also  available in MAPX format. In addition, a custom version of the Bible maps that are built into Map Creator 
-  are available in this map repository. Use these copies rather than the built-in templates with Paratext Diagram Labeler.</p>
-
-                </div>
+                <p>There is also a supplementary collection of 3 maps/diagrams based on artwork by Horace Knowles, owned by the British and Foreign Bible Societies. Our current licensing agreement only allows us to distribute these for use on SIL-supported projects.</p>
+                <p><strong>InDesign Maps</strong></p>
+                <p><i>Important Note:</i> If you will be using other writing systems, other digit systems, or just other fonts, be sure to read the instructions on the best way to 
+                set this up. See <a href="#map-varieties">How to Use the Maps</a> for more details.</p>
+                <p><strong>Map Creator</strong><br />
+                Several (but not yet all) of our IDML maps are also  available in MAPX format. In addition, a custom version of the Bible maps that are built into Map Creator 
+                are available in this map repository. Use these copies rather than the built-in templates with Paratext Diagram Labeler.</p>
             </div>
-        `;
+        </div>
+    `;
+  }
+  getMapLabelerPage() {
+    return `
+        <div class="page-header">
+            <h1 class="page-title">Why You Need a Labeler</h1>
+            <p class="page-subtitle">Why the Translation Team Should Not Just Come Up with a List of Place-Names</p>
+        </div>
+        <div class="content-section">
+            
+            <div class="info-card">
+                <p>It used to be a common practice for typesetters to simply ask the translation team to provide a list of place-names for labeling maps.
+                There were multiple problems with this approach, stemming from the fact that place-names are notorious for being spelled inconsistently in 
+                minority-language Scripture projects, because place-names are typically transliterations, and there are always multiple ways that Hebrew or 
+                Greek terms could be transliterated into any given language:</p>
+                <ul>
+                  <li>Sometimes the provided place-name doesn't match the approved rendering in the Paratext project's Biblical Terms.</li>
+                  <li>Other times, it matches the rendering, but that rendering isn't consistently used throughout the Scripture text.</li>
+                  <li>In yet other cases, the rendering used in the Old Testament doesn't match the rendering used in the New Testament when it should. 
+                  (E.g., if the place that Abram first moved to is spelled "Haran" in the Old Testament but spelled "Harran" in the New Testament.)</li>
+                </ul>
+                <p>The solution is to use a tool that can extract the approved place-names directly from the Paratext project's term renderings data, 
+                and from it, create data merge files that can be used with our IDML and MAPX maps. 
+                All of our maps and diagrams are enabled for use with such data merge files. 
+                (While it is possible to copy and paste label text into any of our map files, this is strongly discouraged.) 
+                </p>
+                <p>We have two main tools for this purpose. Both are free to download and use:</p>
+                  <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
+                    <div style="flex: 1 1 300px; min-width: 300px; padding: 15px;">
+                      <h3 style="text-align: center; margin-bottom: 15px;">Scripture Map Labeler</h3>
+                      <p style="margin-bottom: 20px;">This is the original plugin that is integrated into Paratext 9 (or 8). 
+                      Map labels are entered as verses in the chapters of a Paratext Extra book, such as XXA.
+                      This works in conjunction with a Paratext resource (SMP1 or SMP1es) that defines which labels
+                      are associated with which chapters and verses.</p>
+                      <div style="text-align: center;">
+                        <a href="https://sites.google.com/sil.org/scripture-map-labeler/home" target="_blank" class="btn" style="display: inline-block; padding: 12px 24px; background: #007bff; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; margin: 10px 0;">
+                          🔗 Get Scripture Map Labeler
+                        </a>
+                      </div>
+                    </div>
+                    <div style="flex: 1 1 300px; min-width: 300px; padding: 15px;">
+                      <h3 style="text-align: center; margin-bottom: 15px;">Paratext Diagram Labeler</h3>
+                      <p style="margin-bottom: 20px;">This is the successor to Scripture Map Labeler. A beta version is 
+                      currently available as a standalone application for Paratext 9. (This will in due course be integrated into Paratext 10 as an extension.) 
+                      Map labels are entered in either a graphical or tabular layout, with additional context provided for translation.
+                      It also provides a view on where the terms are found or missing in the Scripture text, similar to the familiar Biblical Terms Tool.</p>
+                      <div style="text-align: center;">
+                        <a href="https://tiny.cc/labeler" target="_blank" class="btn" style="display: inline-block; padding: 12px 24px; background: #007bff; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; margin: 10px 0;">
+                          🔗 Get Paratext Diagram Labeler
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    `;
   }
 
   getMapSamplesPage() {
@@ -827,6 +884,7 @@ set this up. See <a href="#map-varieties">How to Use the Maps</a> for more detai
     return `
             <div class="page-header">
                 <h1 class="page-title">Editions of the Map Repository</h1>
+                <p class="page-subtitle">Why are there Compact and Expanded Editions?</p>
             </div>
             
             <div class="content-section">
@@ -1851,7 +1909,11 @@ set this up. See <a href="#map-varieties">How to Use the Maps</a> for more detai
                 <div class="feature-grid">
                     <div class="feature-card">
                         <h3><span style="font-size: 36px; margin-right: 8px;">🗺️</span><a href="#maps-intro" data-page="maps-intro">Introduction</a></h3>
-                        <p>About our Maps, and Why You Need a Labeler</p>
+                        <p>About our Maps</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3><span style="font-size: 36px; margin-right: 8px;">🏷️</span><a href="#map-labeler" data-page="map-labeler">Why You Need a Labeler</a></h3>
+                        <p>and  where to get it</p>
                     </div>
                     <div class="feature-card">
                         <h3><span style="font-size: 36px; margin-right: 8px;">🖼️</span><a href="#map-samples" data-page="map-samples">Sample Maps</a></h3>
@@ -1859,7 +1921,7 @@ set this up. See <a href="#map-varieties">How to Use the Maps</a> for more detai
                     </div>
                     <div class="feature-card">
                         <h3><span style="font-size: 36px; margin-right: 8px;">📦</span><a href="#map-editions" data-page="map-editions">Editions</a></h3>
-                        <p>Learn about Compact and Expanded editions</p>
+                        <p>Why are there Compact and Expanded editions?</p>
                     </div>
                     <div class="feature-card">
                         <h3><span style="font-size: 36px; margin-right: 8px;">⬇️</span><a href="#accessing-repo" data-page="accessing-repo">Accessing the Repository</a></h3>
