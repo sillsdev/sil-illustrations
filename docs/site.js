@@ -550,18 +550,8 @@ class SiteManager {
                         <h4>Permission Rules</h4>
                         <p>Permission is not needed to use HK-coded maps or diagrams in SIL-supported print publications.</p>
                         
-                        <p>For permission to use these maps/diagrams in all other publications (including all digital publications) contact:</p>
-                        <p style="margin-left: 20px;"><a href="mailto:permissions@biblesociety.org.uk">permissions@biblesociety.org.uk</a></p>
-                        
-                        <p>Permission is requested via e-mail. Reprints and revisions are required to have a new request for permission to use these illustrations. The request for the use of these pictures must include the following:</p>
-                        <ul>
-                            <li>The name of the organization, entity or group.</li>
-                            <li>The country, language and Ethnologue code.</li>
-                            <li>The title of the book in the vernacular.</li>
-                            <li>The type of book in English, e.g., New Testament, Bible, portion.</li>
-                            <li>The number of books to be printed.</li>
-                            <li>The number of illustrations and specific filename(s) of the illustration(s)/picture(s).</li>
-                        </ul>
+                        <p>For permission to use Knowles/Bass illustrations in non-SIL or digital publications, see the current instructions at:<br>
+                        <a href="https://www.biblesociety.org.uk/copyright-and-permissions#knowles%20and%20bass">biblesociety.org.uk/copyright-and-permissions</a></p>
                         
                         <h4>Attribution Rules</h4>
                         <p>In non-sensitive areas, they should be credited as follows:</p>
@@ -601,22 +591,12 @@ class SiteManager {
                         
                         <p>Permission is not needed to use Knowles/Bass illustrations in SIL publications.</p>
                         
-                        <p>For permission to use Knowles/Bass illustrations in non-SIL publications contact:<br>
-                        <a href="mailto:permissions@biblesociety.org.uk">permissions@biblesociety.org.uk</a></p>
-                        
-                        <p>Permission is requested via e-mail. Reprints and revisions are required to have a new request for permission to use these illustrations. The request for the use of these pictures must include the following:</p>
-                        <ul>
-                            <li>The name of the organization, entity or group.</li>
-                            <li>The country, language and Ethnologue code.</li>
-                            <li>The title of the book in the vernacular.</li>
-                            <li>The type of book in English, e.g., New Testament, Bible, portion.</li>
-                            <li>The number of books to be printed.</li>
-                            <li>The number of illustrations and specific filename(s) of the illustration(s)/picture(s).</li>
-                        </ul>
+                        <p>For permission to use Knowles/Bass illustrations in non-SIL publications, see the current instructions at:<br>
+                        <a href="https://www.biblesociety.org.uk/copyright-and-permissions#knowles%20and%20bass">biblesociety.org.uk/copyright-and-permissions</a></p>
                     </div>
                     
                     <h3 onclick="toggleSection('ib')" style="cursor: pointer; user-select: none; color: var(--sil-medium-blue); margin-top: 20px;">
-                        <span id="ib-icon" style="display: inline-block; width: 20px;">+</span> IB (Biblica/IBS-ME / Faadil — Color Bible Illustrations)
+                        <span id="ib-icon" style="display: inline-block; width: 20px;">+</span> IB (Biblica/IBS-ME — Faadil Color Bible Illustrations)
                     </h3>
                     <div id="ib" style="display: none; margin-left: 20px; margin-top: 10px;">
                         <p><strong>These illustrations may not be used in digital publications.</strong><br>
