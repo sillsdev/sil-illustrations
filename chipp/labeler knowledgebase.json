@@ -1,0 +1,431 @@
+{
+  "application": {
+    "name": "Paratext Diagram Labeler",
+    "version": "Beta",
+    "organization": "SIL Global",
+    "license": "MIT License",
+    "copyright": "© 2025 SIL Global",
+    "status": "Beta software under active development"
+  },
+  "purpose": {
+    "overview": "The Labeler is a tool to prepare labels for maps and other diagrams to be used in a Paratext project. It helps ensure that the labels you use on maps and diagrams in Map Creator or Adobe InDesign actually match the terms used in your Scripture text.",
+    "important_note": "While the work is done in a graphical layout, the goal is not to create an image, but to collect the labels to be used on a map or diagram in either Map Creator or InDesign."
+  },
+  "beta_notices": {
+    "signup": "To sign up for the beta test program, send an email to labeler+subscribe@groups.sall.com and click the confirm link in the email you receive in reply.",
+    "updates": "Don't expect a patch system. Upgrading to the latest version means downloading the installer again and running it to replace your previous version.",
+    "data_structures": "The app is under active development, and the underlying data structures for representing map data may change. However, we do not anticipate that such changes will have any more impact on users than a typical version update would.",
+    "platform_testing": "The Mac and Linux versions are relatively untested so far. We'd be glad for any help in testing them out."
+  },
+  "key_features": [
+    {
+      "name": "Smart Label Management",
+      "description": "Automatically sync your map labels with terms used in your Scripture text"
+    },
+    {
+      "name": "Multiple Views",
+      "description": "Work with Map View, Table View, and USFM Preview to match your workflow"
+    },
+    {
+      "name": "Paratext Integration",
+      "description": "Works with Paratext 8 and 9 project files, with Paratext 10 integration planned"
+    },
+    {
+      "name": "Export Ready",
+      "description": "Generate data merge files for use in Map Creator or Adobe InDesign"
+    }
+  ],
+  "editions": {
+    "current": "Paratext 9 Standalone Edition",
+    "description": "A standalone React app that is separate from Paratext, but which works with Paratext 8 or 9 project files.",
+    "purpose": "The real purpose of the Paratext 9 standalone edition is to test the user experience, so that when integrated into Paratext 10, we'll be able to have an extension that is intuitive and useful.",
+    "future": "The goal is to create an extension that is fully integrated in Paratext 10. As such it must be an integrated React app."
+  },
+  "key_concepts": {
+    "term_renderings": {
+      "description": "A project's Term Renderings is where the Labeler will look for text to use in labels.",
+      "term_ids": "Wherever possible, it looks for the term ID as used in Paratext's Major Biblical Terms list, generally a single Greek or Hebrew word. E.g. Ναζαρά for Nazareth.",
+      "custom_terms": "In some cases, a label such as 'Mediterranean Sea' does not have a corresponding word in the source texts, and so a term ID like 'mediterranean_sea' is used instead. This is fairly transparent to the user."
+    },
+    "label_storage": "You store your labels in the Term Renderings so that they will be automatically available on other maps and diagrams. The color-coded statuses will help to ensure that you've done this consistently.",
+    "flexibility": "You are free to export and use labels no matter what status they have. You may have valid reasons not to match the label used for the same location on a different map. E.g. A place is labeled 'Mizpah' on one map, but 'Mizpah of Moab' on another. But the status will at least make you aware of the difference.",
+    "saving_methods": [
+      {
+        "method": "IDML Data Merge Files",
+        "description": "You can export all the labels for a diagram into an IDML data merge file, which is the format from which you could merge them into an IDML diagram.",
+        "recommendation": "It is recommended that you save these in the shared\\labeler folder within your project folder, so that they are included in your send/receive.",
+        "preferred": true
+      },
+      {
+        "method": "USFM Representation",
+        "description": "You can save the USFM representation of the diagram in any appropriate location in your Paratext project, just like you do with \\fig fields to store illustration information.",
+        "current_limitation": "It is not tied to chapters and verses in an XX book, as was the case with the Scripture Map Labeler. For this, you must currently copy and paste between the USFM in/out control and your Paratext project. For the Paratext 10 extension, this would be automatic.",
+        "warning": "The USFM representation has not been finalized, and may change, so it's recommended that for the time being, you store your diagram labels in IDML data merge files.",
+        "preferred": false
+      }
+    ],
+    "map_collections": "Multiple organizations may distribute collections of maps and other diagrams, and the Labeler will be able to work with any of them, as well as with custom, private collections."
+  },
+  "prerequisites": {
+    "for_translation_teams": [
+      {
+        "requirement": "Paratext 9",
+        "details": "Paratext 9 should already be installed"
+      },
+      {
+        "requirement": "Biblical Terms",
+        "details": "In your Paratext project, it's highly recommended that you at least have the Biblical Terms tool guess renderings for all Names. Some diagrams will also benefit from Realia guessed renderings."
+      },
+      {
+        "requirement": "Format Knowledge",
+        "details": "You need to know which formats of maps your typesetter can work with, either Map Creator (.mapx) or Adobe InDesign (.idml)"
+      },
+      {
+        "requirement": "User Guide",
+        "details": "Be sure to read through the User Guide"
+      }
+    ],
+    "for_typesetters": [
+      {
+        "requirement": "Software",
+        "details": "You will need either Map Creator to work with .mapx files or Adobe InDesign to work with .idml files",
+        "map_creator_url": "https://fmosoft.com/map-creator",
+        "indesign_url": "https://www.adobe.com/products/indesign.html"
+      },
+      {
+        "requirement": "Map Templates",
+        "details": "If you want to use the built-in maps that come with Map Creator, instead use the editions of these maps that are provided in the SIL Map Repository (with usage rules code 'fmo' for FMOSoft), as these labels will align more consistently with the labels used by Paratext Diagram Labeler."
+      },
+      {
+        "requirement": "SIL Map Repository",
+        "details": "Download all maps and diagrams from the SIL Map Repository",
+        "url": "https://tiny.cc/sil-maps",
+        "tip": "Download the compact edition, not the expanded edition, which only adds redundant clutter, and does not include the SMR edition of the FMOSoft maps and diagrams."
+      }
+    ]
+  },
+  "launch_screen": {
+    "starting": {
+      "windows": "On Windows, the Paratext Diagram Labeler should appear in your Start menu, or you can run the executable from wherever you installed it.",
+      "initial_view": "You will see the 'pre-Launch' screen that contains the context that the Paratext 10 extension will (in the future) provide"
+    },
+    "settings": {
+      "template_folder": {
+        "description": "The installer initially places the templates folder (_LabelerTemplates) in the same folder as the Paratext Diagram Labeler executable.",
+        "recommendation": "It's recommended that you leave it there, so that when you install an updated version, you'll be able to immediately use the updated files."
+      },
+      "project_folder": {
+        "description": "Specify the full path to your Paratext project folder.",
+        "example": "C:\\My Paratext 9 Projects\\Zezi"
+      },
+      "save_renderings_to": {
+        "description": "If you don't want the Labeler to directly modify your TermsRendering.xml file (that Paratext uses), select TermsRenderings-Demo.xml instead.",
+        "usage": "Once you're satisfied with the changes to this file, you can replace your original TermRenderings.xml file with it."
+      },
+      "usfm_in_out": {
+        "description": "If you paste a USFM representation of a diagram into this space, Labeler will use it when launched. Clicking the OK button after Labeler is launched will return the diagram's USFM representation.",
+        "persistence": "It will persist there for subsequent uses of the Labeler, or you can copy and paste it into an appropriate location in your Paratext project.",
+        "empty_behavior": "If this area does not contain relevant USFM, you'll be prompted to browse for a diagram template when you click the Launch button."
+      }
+    },
+    "launching": "Once these settings provide the necessary context for the Labeler, click the Launch button."
+  },
+  "selecting_template": {
+    "opening_browser": "If you click the Launch button with no template specified in the USFM, or if you ever click the 'Browse for map template' button (its icon looks like a yellow file folder), this will open the system file picker dialog",
+    "browsing_tips": [
+      "It's recommended that you make this dialog as large as possible, and then choose 'Extra large icons' to display. You may also want to toggle the preview pane on if it's hidden, for a closer view of template images.",
+      "The first time you run Paratext Diagram Labeler, it copies '!All Map Samples' to your Pictures folder. The advantage of it being there is that it will be indexed. If you don't need the Spanish versions, you can delete the SMR @es folder.",
+      "Navigate to that folder.",
+      "You can browse the images without filtering, but it may be faster to find a suitable map by using the search bar."
+    ],
+    "search_examples": [
+      {
+        "query": "armor",
+        "description": "Search for armor-related diagrams"
+      },
+      {
+        "query": "bw AND paul",
+        "description": "All black and white maps of Paul's journeys"
+      },
+      {
+        "query": "bw AND act18",
+        "description": "Black and white maps related to Acts 18"
+      },
+      {
+        "query": "bw AND paul AND mapx",
+        "description": "Restrict to only maps supported by Map Creator"
+      },
+      {
+        "query": "bw AND paul AND idml",
+        "description": "Restrict to only maps supported by InDesign"
+      }
+    ],
+    "map_type_tags": [
+      {
+        "tag": "BWR",
+        "description": "black & white, relief"
+      },
+      {
+        "tag": "BWF",
+        "description": "black & white, flat"
+      },
+      {
+        "tag": "BBR",
+        "description": "blue & brown, relief"
+      },
+      {
+        "tag": "BBF",
+        "description": "blue & brown, flat"
+      },
+      {
+        "tag": "FCR",
+        "description": "full color, relief"
+      },
+      {
+        "tag": "FCF",
+        "description": "full color, flat"
+      },
+      {
+        "tag": "MCR",
+        "description": "muted color, relief"
+      }
+    ],
+    "additional_search_examples": [
+      {
+        "query": "mapx",
+        "description": "All Map Creator maps"
+      },
+      {
+        "query": "fcr OR bbr",
+        "description": "Maps with full color relief OR blue-brown relief versions available"
+      },
+      {
+        "query": "bwf idml",
+        "description": "Black & White flat maps in IDML format"
+      },
+      {
+        "query": "ACT08",
+        "description": "Maps for Acts 8"
+      },
+      {
+        "query": "*gt",
+        "description": "Greg Thompson maps/diagrams"
+      }
+    ],
+    "indexing_note": "The first time you run this, the operating system may not have had time yet to index the sample maps, so searching by keyword might not work until your machine has had enough idle time to finish indexing.",
+    "template_selection": "While the sample maps folder contains separate images for the different varieties that one master file can produce, it won't matter which of these you select to identify the template.",
+    "final_step": "Once you've selected the template you want to use, click the Open button."
+  },
+  "interface": {
+    "overview": "You can think of the launched Labeler window as an enhanced version of the familiar Biblical Terms tool. It is divided into three resizable panes.",
+    "main_pane": {
+      "description": "Typically used in 'map view' to show the labels overlaid on an image.",
+      "label_colors": "Each of the labels is color-coded to indicate the kind of attention that the label may need.",
+      "zoom_buttons": "Enable zooming in and out on the diagram."
+    },
+    "details_pane": {
+      "view_buttons": "Enable you to select between 'map view', 'table view', and 'USFM view' to be shown in the main pane.",
+      "ok_cancel_buttons": "Will return you to the pre-launch screen, with or without updating the USFM representation there.",
+      "settings_cog": {
+        "label_size": "Scale the labels to balance readability with space efficiency on your screen.",
+        "label_opacity": "Reduce opacity to see the underlying sample of style that will be applied in Map Creator / InDesign.",
+        "language": "Select a language for the user interface. Note that the strings in other languages are currently just A.I.-translated, not yet human-checked.",
+        "show_tally_fractions": "Check this box to display the fraction of found renderings directly on the labels."
+      },
+      "template_group": {
+        "display": "Displays the name of the current diagram template",
+        "actions": [
+          {
+            "name": "Template Info",
+            "description": "Display information about the current diagram, including a link to usage and attribution rules."
+          },
+          {
+            "name": "Browse for Template",
+            "description": "Load a different diagram by browsing either for a template JPG image, or for an IDML data merge file that you've previously saved."
+          },
+          {
+            "name": "Export to Data Merge File",
+            "description": "Use this to save your current diagram to a text file for data merge into either InDesign (IDML) or Map Creator (MAPX) master files.",
+            "recommendation": "It's recommended that you save such files to your project's shared\\labeler folder, so that they will be included in Paratext's send/receive."
+          }
+        ]
+      },
+      "tally_box": "Displays the count of each status of label in the diagram.",
+      "label_group": {
+        "displays": [
+          "Information about the currently selected label, including the major-language gloss, the source-language Biblical term, and some contextual information to aid in translation.",
+          "An expandable vernacular label box in which you can provide or edit the vernacular text for that label, and see a detailed explanation of that label's status, in some cases with quick action buttons.",
+          "The term renderings box, in which you can edit your term renderings. Note: Term rendering history tracking is not yet implemented."
+        ]
+      }
+    },
+    "bottom_pane": {
+      "description": "Displays the available Scripture verses where the term is expected to appear if the translation team has used the term consistently.",
+      "filter_buttons": [
+        {
+          "name": "Show all verses",
+          "description": "Shows all available verses."
+        },
+        {
+          "name": "Show only verses without matching renderings",
+          "description": "Allows you to focus on just the missing renderings."
+        },
+        {
+          "name": "Show unique forms",
+          "description": "Displays just the first occurrence of each inflected form of the rendering."
+        }
+      ],
+      "text_selection_buttons": [
+        {
+          "name": "Add rendering",
+          "description": "Adds the selected text to the term renderings box as a new rendering.",
+          "availability": "Available when text in the bottom pane is selected"
+        },
+        {
+          "name": "Replace renderings and label",
+          "description": "Replaces the contents of both the terms rendering box and the vernacular label box with the selected text.",
+          "availability": "Available when text in the bottom pane is selected"
+        }
+      ],
+      "verse_buttons": [
+        {
+          "name": "Found status",
+          "indicators": [
+            "A green checkmark indicates the term has been found.",
+            "A red X indicates that the term is missing from this verse. If it's OK that it's missing, click the red X to deny that it's a problem.",
+            "A green checkmark with a small red X indicates that you've examined the verse and denied that the missing rendering is the problem."
+          ]
+        },
+        {
+          "name": "Edit verse",
+          "description": "Click the pencil icon to edit the verse in Paratext. On Windows, Paratext should scroll to the selected verse."
+        }
+      ]
+    },
+    "table_view": {
+      "description": "Table View is just like Map View, but with labels provided in a table instead of being positioned on an image.",
+      "availability": "Even if the chosen template is not available on a particular local system, opening a diagram definition (from an *.idml.txt file or from USFM) is at least editable in Table View."
+    },
+    "usfm_view": {
+      "description": "The USFM view displays how the diagram and its labels might be currently represented in USFM 3.",
+      "warning": "This is subject to change, so at the current time, it is recommended that you save your work by exporting to *.idml.txt files rather than by copying and pasting USFM text to/from your Paratext project."
+    }
+  },
+  "working_with_labels": {
+    "label_status_system": {
+      "description": "Each label in the Labeler is color-coded to indicate the kind of attention it may need.",
+      "note": "Different label statuses have different color indicators. See the interface for visual reference."
+    },
+    "data_merge_files": {
+      "description": "Once you've completed your label work, the Labeler can generate data merge files for use in Map Creator or Adobe InDesign.",
+      "detailed_instructions": "For detailed instructions on using the exported files, visit the SIL Maps & Illustrations Repository site, especially the section on 'How to Use the Maps'.",
+      "url": "https://tiny.cc/sil-maps"
+    },
+    "migration_from_scripture_map_labeler": {
+      "description": "If you've created maps already with the current version of Scripture Map Labeler, those labels will be accessible to you in Paratext Diagram Labeler if you took the step of ensuring your labels were copied into the term renderings.",
+      "alternative": "If you have not done that, the easiest way to do that now is to use the Map Labeler Helper's 'Commit Labels' tool.",
+      "url": "https://tiny.cc/maplabelerhelper"
+    }
+  },
+  "keyboard_shortcuts": {
+    "navigation": [
+      {
+        "shortcut": "PgDn",
+        "action": "Cycle forwards through the labels"
+      },
+      {
+        "shortcut": "PgUp",
+        "action": "Cycle backwards through the labels"
+      }
+    ],
+    "zoom": [
+      {
+        "shortcut": "Ctrl + +",
+        "action": "Zoom in (increase scale of all text elements)"
+      },
+      {
+        "shortcut": "Ctrl + -",
+        "action": "Zoom out (decrease scale of all text elements)"
+      },
+      {
+        "shortcut": "Ctrl + 0",
+        "action": "Reset text zoom to default scale"
+      },
+      {
+        "shortcut": "Ctrl + 9",
+        "action": "Reset map zoom to fit window"
+      }
+    ]
+  },
+  "downloads": {
+    "github_releases": "https://github.com/sillsdev/paratext-diagram-labeler/releases",
+    "installation_instructions": [
+      "Download the Paratext Diagram Labeler Setup program for your operating system",
+      "Run the installer with administrator privileges if required",
+      "Follow the setup wizard instructions",
+      "The application will appear in your Start menu (Windows) or Applications folder (Mac)"
+    ],
+    "system_requirements": {
+      "windows": {
+        "requirement": "Windows 10 or later",
+        "status": "Primary supported platform"
+      },
+      "linux": {
+        "requirement": "Modern Linux distributions",
+        "status": "Less tested"
+      },
+      "mac": {
+        "requirement": "macOS 10.14 or later",
+        "status": "Less tested"
+      }
+    },
+    "testing_note": "Mac and Linux versions are relatively untested. We'd appreciate help testing them out."
+  },
+  "making_maps": {
+    "description": "After the data merge files have been exported from the Labeler, they can be imported into the corresponding IDML or MAPX file to create your finished, localized maps.",
+    "process": "The process of importing data merge files and creating finished maps varies depending on whether you're using Adobe InDesign (IDML files) or Map Creator (MAPX files).",
+    "detailed_instructions": {
+      "url": "https://tiny.cc/sil-maps",
+      "description": "Visit the SIL Map and Illustrations Repository for detailed instructions and tips on how to make the maps"
+    },
+    "repository_resources": [
+      "Step-by-step instructions for data merging in InDesign",
+      "Guidance on importing translations into Map Creator",
+      "Tips for adjusting and finalizing your maps",
+      "Best practices for map typography and layout",
+      "Access to map templates"
+    ]
+  },
+  "feedback": {
+    "description": "Thank you for your willingness to beta test this software. After installing and using this software, please complete our feedback form.",
+    "form_url": "https://docs.google.com/forms/d/e/1FAIpQLSc2gEdVYaRTemTOje2Yhly7bNcjSTqv9i3LVlG8c74oIwgfXA/viewform"
+  },
+  "resources": {
+    "sil_map_repository": "https://tiny.cc/sil-maps",
+    "map_labeler_helper": "https://tiny.cc/maplabelerhelper",
+    "map_creator": "https://fmosoft.com/map-creator",
+    "adobe_indesign": "https://www.adobe.com/products/indesign.html",
+    "github_releases": "https://github.com/sillsdev/paratext-diagram-labeler/releases",
+    "sil_software": "https://software.sil.org/",
+    "donate": "https://give.sil.org/campaign/597654/donate"
+  },
+  "navigation": {
+    "main_pages": [
+      "Home",
+      "Prerequisites",
+      "Downloads",
+      "Learn",
+      "Feedback"
+    ],
+    "learn_pages": [
+      "Overview",
+      "Key Concepts",
+      "Launch Screen",
+      "Selecting a Template",
+      "Interface Overview",
+      "Keyboard Shortcuts",
+      "Working with Labels",
+      "Making the Maps"
+    ]
+  }
+}

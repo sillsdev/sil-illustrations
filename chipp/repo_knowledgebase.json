@@ -1,0 +1,788 @@
+{
+  "knowledgebase_info": {
+    "title": "SIL Map & Illustration Repository Knowledge Base",
+    "description": "Comprehensive knowledge base containing all information from the SIL Map & Illustration Repository website for LLM assistance",
+    "version": "1.0",
+    "date_created": "2025-10-21",
+    "source_files": ["index.html", "site.js"],
+    "website_url": "https://sillsdev.github.io/sil-illustrations/"
+  },
+  "navigation": {
+    "main_sections": [
+      {
+        "id": "home",
+        "title": "Home",
+        "url": "#home"
+      },
+      {
+        "id": "rules",
+        "title": "Usage, Permission & Attribution Rules",
+        "url": "#rules"
+      },
+      {
+        "id": "illustrations",
+        "title": "Illustrations",
+        "url": "#illustrations",
+        "subsections": [
+          "illustration-sets",
+          "sample-illustrations",
+          "using-illustrations",
+          "master-illustrations"
+        ]
+      },
+      {
+        "id": "maps",
+        "title": "Maps & Diagrams",
+        "url": "#maps",
+        "subsections": [
+          "maps-intro",
+          "map-samples",
+          "map-editions",
+          "accessing-repo",
+          "map-varieties",
+          "map-creator-maps",
+          "indesign-maps",
+          "map-monkey"
+        ]
+      },
+      {
+        "id": "contact",
+        "title": "Contact",
+        "url": "#contact"
+      }
+    ]
+  },
+  "content": {
+    "home": {
+      "title": "Welcome to the SIL Map & Illustration Repository!",
+      "description": "This repository is a collection of maps, diagrams, and other Scripture illustrations.",
+      "status": "Under Construction - This site is still under construction as we pull in documentation from various sources and attempt to update it.",
+      "navigation_instructions": "Use the navigation links above to explore the resources and documentation, or to contact us."
+    },
+    "rules": {
+      "title": "Usage, Permission, and Attribution Rules",
+      "subtitle": "for Items in the SIL Map & Illustration Repository",
+      "maps_and_diagrams": {
+        "overview": "Every map and diagram in the repository has a map ID that is comprised of three digits (grouping similar maps) and a two- or three-letter code that indicates the usage and attribution rules.",
+        "rule_codes": {
+          "FMO": {
+            "full_name": "fmosoft.com - Adapted from Map Creator's built-in maps",
+            "owner": "The rights-holder of FMO-coded masters is fmosoft.com.",
+            "attribution": "Publications that include material disseminated by Map Creator or produced using Map Creator must include this credit: 'Maps [and diagrams and charts] [on pages ___] are produced with Map Creator software from fmosoft.com. Used by permission. All rights reserved.'"
+          },
+          "GT": {
+            "full_name": "Gordon Thompson",
+            "owner": "The rights-holder of GT-coded masters is SIL Global, which has attribution agreements with Gordon Thompson and Wycliffe Bible Translators.",
+            "permission": "Permission is granted for maps derived from GT-coded masters to be used in any Scripture publication that follows the translation standards of the Forum of Bible Agencies International.",
+            "attribution_non_sensitive": "Maps [and diagrams] [on pages ___] are derived from works of Gordon Thompson, © 2012 Wycliffe Bible Translators, Inc. Used with permission. All rights reserved worldwide.",
+            "attribution_sensitive": "Maps and diagrams [on pages ___] used with permission. All rights reserved worldwide.",
+            "sensitive_area_note": "In sensitive areas, a representative of the publication's named copyright holder should submit a permissions request at tiny.cc/requestpermissions"
+          },
+          "HK": {
+            "full_name": "British & Foreign Bible Society",
+            "permission_for_sil": "Permission is not needed to use HK-coded maps or diagrams in SIL-supported print publications.",
+            "permission_for_others": "For permission to use these maps/diagrams in all other publications (including all digital publications) contact: permissions@biblesociety.org.uk",
+            "attribution_non_sensitive": "Maps [and diagrams] on pages ___ by Horace Knowles, © The British & Foreign Bible Society, 1954, 1967, 1972, 1995.",
+            "attribution_sensitive": "Maps [and diagrams] on pages ___ © BFBS, 1954, 1967, 1972, 1995.",
+            "permission_requirements": [
+              "The name of the organization, entity or group",
+              "The country, language and Ethnologue code",
+              "The title of the book in the vernacular",
+              "The type of book in English, e.g., New Testament, Bible, portion",
+              "The number of books to be printed",
+              "The number of illustrations and specific filename(s) of the illustration(s)/picture(s)"
+            ]
+          },
+          "MH": {
+            "full_name": "Michael Harrar",
+            "owner": "The rights-holder of MH-coded masters is SIL Global, which has attribution agreements with Michael Harrar and Wycliffe Bible Translators.",
+            "permission": "Permission is granted for maps derived from MH-coded masters to be used in any Scripture publication that follows the translation standards of the Forum of Bible Agencies International.",
+            "attribution_non_sensitive": "Maps [and diagrams] [on pages ___] are derived from works of Michael Harrar, © 2012 Wycliffe Bible Translators, Inc. Used with permission. All rights reserved worldwide.",
+            "attribution_sensitive": "Maps and diagrams [on pages ___] used with permission. All rights reserved worldwide.",
+            "sensitive_area_note": "In sensitive areas, submit a permissions request at tiny.cc/requestpermissions"
+          },
+          "WBT": {
+            "full_name": "Wycliffe Bible Translators",
+            "owner": "The rights-holder of WBT-coded masters is SIL Global, which has an attribution agreement with Wycliffe Bible Translators.",
+            "permission": "Permission is granted for maps derived from WBT-coded masters to be used in any Scripture publication that follows the translation standards of the Forum of Bible Agencies International.",
+            "attribution_wbt_copyright": "If a publication is copyrighted by Wycliffe Bible Translators, then maps derived from WBT-coded masters do not need to be credited, because they are covered by the copyright statement relating to the publication as a whole.",
+            "attribution_non_sensitive": "Maps [and diagrams] [on pages ___] © 20## Wycliffe Bible Translators, Inc. (where 20## corresponds to the publication year)",
+            "attribution_sensitive": "Maps [and diagrams] [on pages ___] used with permission. All rights reserved worldwide.",
+            "sensitive_area_note": "In sensitive areas, submit a permissions request at tiny.cc/requestpermissions"
+          }
+        }
+      },
+      "illustrations": {
+        "overview": "Every illustration in the SIL repository has an illustration ID that begins with a two-letter code indicating ownership, and the usage and attribution rules.",
+        "illustration_codes": {
+          "BA": {
+            "full_name": "Louise Bass Color & Halftone Bible Illustrations",
+            "attribution": "Color [and/or halftone] illustrations [on pages ___] are used by permission of Louise Bass.",
+            "usage_restrictions": "The halftone illustrations are only permitted to be used in print publications.",
+            "permission": "It is not necessary to request permission to use Bass color & halftone illustrations in SIL or Wycliffe publications. For all other publications, permission must be requested at tiny.cc/requestpermissions."
+          },
+          "CO_CN": {
+            "full_name": "David C. Cook B&W Bible Illustrations",
+            "codes": ["CO", "CN"],
+            "attribution": "Each illustration must be individually credited: '© 1996 David C. Cook.' In addition, optional credit on verso page: 'Illustrations © 1996 David C Cook. Used by permission.'",
+            "attribution_sensitive": "In sensitive locations: '© DCC.'",
+            "permission_wycliffe_sil": "For Wycliffe or SIL-supported projects: tiny.cc/requestpermissions",
+            "permission_others": "For other publications: https://davidccook.org/permissions/",
+            "note": "Reprints and revisions are required to have a new request for permission to use these illustrations."
+          },
+          "DH": {
+            "full_name": "David Healey's B&W Bible Illustrations",
+            "attribution_print": "Illustrations by David Healey, © 2012 Wycliffe Bible Translators, Inc.",
+            "attribution_digital": "Works by David Healey are licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License: https://creativecommons.org/licenses/by-nc-nd/4.0/",
+            "attribution_sensitive": "Illustrations on pages ___ used with permission. All rights reserved worldwide.",
+            "usage_restrictions": "In both print and digital publications you may crop and resize these illustrations, but not modify the images for your new work. Images may be rotated or flipped horizontally, provided this does not contradict historical fact or violate cultural norms."
+          },
+          "DN": {
+            "full_name": "Darwin Dunham B&W Bible Illustrations",
+            "digital_restriction": "These illustrations may not be used in digital publications.",
+            "attribution": "Illustrations by Darwin Dunham, © United Bible Societies, 1989.",
+            "permission_sil": "Permission is not needed to use Dunham illustrations in SIL publications.",
+            "permission_others": "For non-SIL publications contact: igalliani@biblesocieties.org",
+            "permission_requirements": [
+              "The name of the organization, entity or group",
+              "The country, language and Ethnologue code",
+              "The title of the book in the vernacular",
+              "The type of book in English",
+              "The number of books to be printed",
+              "The number of illustrations and specific filename(s)"
+            ]
+          },
+          "DY": {
+            "full_name": "Carolyn Dyk Color Bible Illustrations",
+            "attribution_print": "Illustrations by Carolyn Dyk, © 2001 Wycliffe Bible Translators, Inc.",
+            "attribution_digital": "Works by Carolyn Dyk are licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License: https://creativecommons.org/licenses/by-nc-nd/4.0/",
+            "permission_sensitive": "To use in sensitive areas, submit a request at tiny.cc/requestpermissions",
+            "usage_restrictions": "You may crop and resize these illustrations, but not modify the images. Images may be rotated or flipped horizontally, provided this does not contradict historical fact or violate cultural norms."
+          },
+          "GT": {
+            "full_name": "Gordon Thompson's B&W Bible Illustrations",
+            "attribution_print": "Illustrations on pages ___ by Gordon Thompson, © 2012 Wycliffe Bible Translators, Inc.",
+            "attribution_digital": "Works by Gordon Thompson are licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License: https://creativecommons.org/licenses/by-nc-nd/4.0/",
+            "attribution_sensitive": "Illustrations on pages ___ used with permission. All rights reserved worldwide.",
+            "usage_restrictions": "You may crop and resize these illustrations, but not modify the images. Images may be rotated or flipped horizontally, provided this does not contradict historical fact or violate cultural norms."
+          },
+          "HK_LB_BK": {
+            "full_name": "Horace Knowles and Louise Bass B&W Bible Illustrations",
+            "codes": ["HK", "LB", "BK"],
+            "digital_restriction": "These illustrations may not be used in digital publications.",
+            "attribution_hk": "Illustrations by Horace Knowles, © The British & Foreign Bible Society, 1954, 1967, 1972, 1995.",
+            "attribution_bk": "Illustrations by Horace Knowles revised by Louise Bass, © The British & Foreign Bible Society, 1994.",
+            "attribution_lb": "Illustrations by Louise Bass, © The British & Foreign Bible Society, 1994.",
+            "permission_sil": "Permission is not needed to use Knowles/Bass illustrations in SIL publications.",
+            "permission_others": "Contact: permissions@biblesociety.org.uk",
+            "permission_requirements": [
+              "The name of the organization, entity or group",
+              "The country, language and Ethnologue code",
+              "The title of the book in the vernacular",
+              "The type of book in English",
+              "The number of books to be printed",
+              "The number of illustrations and specific filename(s)"
+            ]
+          },
+          "IB": {
+            "full_name": "Biblica/IBS-ME / Faadil Color Bible Illustrations",
+            "digital_restriction": "These illustrations may not be used in digital publications.",
+            "geographic_restriction": "Not for use in the Middle East or North Africa without written permission.",
+            "attribution": "Color illustrations by Farid Faadil. © Biblica, Inc. Used with permission. All rights reserved worldwide.",
+            "trademark_notice": "'Biblica', 'International Bible Society' and the Biblica Logo are trademarks registered in the United States Patent and Trademark Office by Biblica, Inc. Used with permission.",
+            "permission_sil": "Permission is not needed to use the Faadil illustrations in SIL publications outside the Middle East and North Africa.",
+            "permission_others": "Contact form: https://www.biblica.com/permissions/contact/",
+            "permission_detailed_form": "https://www.surveymonkey.com/r/XWH6Q9J",
+            "modification_allowance": "Adaptations may be made to these Illustrations, where necessary, to make them culturally appropriate for the target reader group. Such modifications might include removing or adding head coverings, changes in length of hair styles, adaptation of clothing, and alterations required to render the Illustrations culturally appropriate."
+          },
+          "MH": {
+            "full_name": "Michael Harrar's B&W Bible Illustrations",
+            "attribution_print": "Illustrations by Michael Harrar, © 2012 Wycliffe Bible Translators, Inc.",
+            "attribution_digital": "Works by Michael Harrar are licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License: https://creativecommons.org/licenses/by-nc-nd/4.0/",
+            "attribution_sensitive": "Illustrations on pages ___ used with permission. All rights reserved worldwide.",
+            "usage_restrictions": "You may crop and resize these illustrations, but not modify the images. Images may be rotated or flipped horizontally."
+          },
+          "MN": {
+            "full_name": "Muze Tshilombo Color Bible Illustrations",
+            "attribution_print": "Illustrations by Muze Tshilombo, © 1997 Wycliffe Bible Translators, Inc.",
+            "attribution_digital": "Works by Muze Tshilombo are licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License: https://creativecommons.org/licenses/by-nc-nd/4.0/",
+            "permission_sensitive": "To use in sensitive areas, submit a request at tiny.cc/requestpermissions",
+            "usage_restrictions": "You may crop and resize these illustrations, but not modify the images. Images may be rotated or flipped horizontally."
+          },
+          "WA": {
+            "full_name": "Graham Wade B&W Bible Illustrations",
+            "digital_restriction": "These illustrations may not be used in digital publications.",
+            "attribution": "Illustrations by Graham Wade, © United Bible Societies, 1989.",
+            "permission_sil": "Permission is not needed to use Wade illustrations in SIL publications.",
+            "permission_others": "Contact: igalliani@biblesocieties.org",
+            "permission_requirements": [
+              "The name of the organization, entity or group",
+              "The country, language and Ethnologue code",
+              "The title of the book in the vernacular",
+              "The type of book in English",
+              "The number of books to be printed",
+              "The number of illustrations and specific filename(s)"
+            ]
+          }
+        }
+      }
+    },
+    "illustrations": {
+      "overview": {
+        "title": "Illustrations",
+        "subtitle": "Select illustrations to engage readers in the Scriptures.",
+        "topics": [
+          "Illustration Sets",
+          "Sample Illustrations",
+          "Inserting by Keywords",
+          "Master Illustrations"
+        ]
+      },
+      "illustration_sets": {
+        "title": "Illustration Sets",
+        "subtitle": "Understanding the different illustration collections",
+        "description": "The SIL Illustration repository contains illustration sets from various owners, each with different rules regarding who may use them, in which kind of publications they may be used, what kind of attribution is required, and who SIL may share the master copies with.",
+        "important_note": "Make sure to read and understand the usage and attribution rules for each illustration set before selecting them for use."
+      },
+      "sample_illustrations": {
+        "title": "Sample Illustrations",
+        "subtitle": "Browse and download sample illustrations",
+        "description": "Translation teams can find low-resolution, watermarked samples of all illustrations available in the SIL Map & Illustration Repository.",
+        "url": "tiny.cc/sampleimages",
+        "languages_available": [
+          "English",
+          "Spanish",
+          "French",
+          "Bahasa Indonesia",
+          "Hindi",
+          "Swahili"
+        ]
+      },
+      "using_illustrations": {
+        "title": "Inserting Illustrations using Multilingual Keywords",
+        "subtitle": "The easy way to find and insert illustrations in your Paratext project",
+        "overview": "The best way to insert illustrations into your Paratext project is to insert the sample illustrations as placeholders, as you can search for appropriate illustrations using keywords, directly from Paratext's Insert Figure dialog.",
+        "steps": {
+          "download_and_unzip": {
+            "title": "Download and Unzip Image Files and Folders",
+            "instructions": [
+              "Visit the SIL Illustration Samples folder",
+              "Either browse within the appropriate language folder for the sets of images you want, and download those OR download all images by right-clicking on the language folder and selecting Download",
+              "Note that these are low-resolution watermarked images",
+              "Unzip this collection to a folder within your Pictures folder to ensure images are included in Windows' search index",
+              "If storing elsewhere, add that folder to Windows' search indexing"
+            ],
+            "troubleshooting": "On some systems, the Windows Search Index might not return results for key terms. Workarounds: 1) Open File Explorer > Options > Search tab > Check 'Always search file names and contents', or 2) Prefix search terms with 'tags:' (e.g., 'tags:sheep AND tags:LUK02')"
+          },
+          "find_and_insert": {
+            "title": "Find and Insert Images in Paratext",
+            "steps": [
+              "In Paratext, position the cursor in the passage where you want to insert a picture",
+              "Go to Project menu > Insert > Figure...",
+              "Click the Browse button",
+              "Navigate to the folder where you unzipped your collection",
+              "Click in the SEARCH box in the top right corner",
+              "Enter one or more terms to search for"
+            ],
+            "search_filters": [
+              {
+                "term": "{keyword}",
+                "description": "Search for an image by keyword",
+                "examples": ["dove", "baptism", "altar"]
+              },
+              {
+                "term": "Bible book",
+                "description": "Search using 3-letter Paratext book code",
+                "examples": ["GEN", "MRK", "LUK"]
+              },
+              {
+                "term": "Chapter reference",
+                "description": "Search using 3-letter book code plus 2-digit chapter number",
+                "examples": ["GEN03", "MRK01", "JHN10"]
+              },
+              {
+                "term": "OR search",
+                "description": "OR will include images with any of the search terms",
+                "examples": ["sheep OR lamb"]
+              },
+              {
+                "term": "digital",
+                "description": "Include images with permission to use in a Scripture app",
+                "examples": ["sheep digital"]
+              },
+              {
+                "term": "minus {term}",
+                "description": "Exclude term from search using minus sign",
+                "examples": ["sheep -lamb"]
+              },
+              {
+                "term": "color",
+                "description": "Include color images (excluding black and white)",
+                "examples": ["sheep color"]
+              },
+              {
+                "term": "black",
+                "description": "Include black and white images (excluding color)",
+                "examples": ["sheep black"]
+              }
+            ],
+            "combining_filters": "You can combine filters with parenthesis and additional terms. Example: (lamb OR sheep) digital"
+          },
+          "adjust_display": {
+            "title": "Adjust Display Settings",
+            "instructions": [
+              "In the upper-right corner, click the drop-down arrow to open the view options",
+              "Select 'Extra large icons'",
+              "Optional: Hide the navigation pane via Organize > Layout",
+              "Optional: Resize window by dragging corner or edge, or double-click title bar to maximize",
+              "Double-click on an image from the search results to select it"
+            ]
+          },
+          "enter_caption": {
+            "title": "Enter Caption and Location",
+            "instructions": [
+              "Enter a Caption",
+              "Best Practice: If you only want this illustration to be used in print publications or don't expect to receive permission for app/web use, enter 'p' for Location",
+              "See documentation for telling Paratext which images are for print vs electronic outputs",
+              "Click OK"
+            ]
+          }
+        }
+      },
+      "master_illustrations": {
+        "title": "Master Illustrations",
+        "subtitle": "Access high-resolution illustrations for publishing",
+        "description": "Typesetters may obtain copies of the Master Illustrations by submitting a request.",
+        "request_url": "tiny.cc/requestimages",
+        "form_embedded": true
+      }
+    },
+    "maps": {
+      "overview": {
+        "title": "Maps & Diagrams",
+        "subtitle": "Create maps and diagrams to engage readers in the Scriptures.",
+        "sections": {
+          "basics": [
+            "Introduction",
+            "Sample Maps",
+            "Editions",
+            "Accessing the Repository"
+          ],
+          "how_to_use": [
+            "Map Varieties",
+            "Map Creator Maps",
+            "InDesign Maps",
+            "MapMonkey for InDesign"
+          ]
+        }
+      },
+      "introduction": {
+        "title": "Introduction",
+        "subtitle": "About our Maps, and Why You Need a Labeler",
+        "content": {
+          "overview": "The SIL Map Repository is a collection of maps and diagrams that may be helpful in Scripture publications. Most of the maps currently contained in the repository are owned by SIL Global, with attribution rules that credit Wycliffe Bible Translators, Inc., and where applicable, the artists.",
+          "supplementary_collection": "There is also a supplementary collection of 3 maps/diagrams based on artwork by Horace Knowles, owned by the British and Foreign Bible Societies. Our current licensing agreement only allows us to distribute these for use on SIL-supported projects.",
+          "data_merge": "All of our maps and diagrams are enabled for use with data merge files. These data merge files should contain the map labels configured from your Paratext project data. While it is possible to copy and paste label text into any of our map files, this is strongly discouraged.",
+          "place_names_issue": "Place-names are notorious for being spelled inconsistently in minority language Scripture projects, because they are typically transliterations, and there are always multiple ways that Hebrew or Greek terms could be transliterated into any given language.",
+          "solution": "The solution is to use either the Scripture Map Labeler plugin for Paratext (https://sites.google.com/sil.org/scripture-map-labeler/home), or its successor, the Paratext Diagram Labeler (tiny.cc/labeler). Both can generate data merge files for Adobe InDesign (IDML maps) and for Map Creator (MAPX maps).",
+          "indesign_note": "If you will be using other writing systems, other digit systems, or just other fonts, be sure to read the instructions on the best way to set this up.",
+          "map_creator": "Several (but not yet all) of our IDML maps are also available in MAPX format. In addition, a custom version of the Bible maps that are built into Map Creator are available in this map repository. Use these copies rather than the built-in templates with Paratext Diagram Labeler."
+        }
+      },
+      "samples": {
+        "title": "Samples",
+        "url": "tiny.cc/samplemaps",
+        "description": "Samples of all maps are available. Translation teams will generally only need to download this folder of samples. This is the same folder included within the SIL Map Repository folder as !All Map Samples.",
+        "typesetter_tips": "See also Tips for Using the Sample Maps: https://docs.google.com/document/d/1zUMQK1CoSTT1FPKTAukK4M3IXS-7jAB0NgE85AnAu-g/edit?usp=sharing"
+      },
+      "editions": {
+        "title": "Editions of the Map Repository",
+        "compact_edition": {
+          "size": "570 MB",
+          "description": "All the maps are directly in the 'SIL Map Repository' folder (or the 'HK Supplementary Maps' folder, if applicable)."
+        },
+        "expanded_edition": {
+          "size": "930 MB",
+          "note": "This edition does not contain the FMOSoft maps.",
+          "description": "All the included maps are in sub-folders under the 'SIL Map Repository' folder. Those sub-folders also contain: 1) An additional copy of the English data merge source file, 2) An additional version of the IDML file that has been merged with English labels (with '@en' in filename).",
+          "en_files_note": "Although we strongly recommend using the data merge feature, these '@en' files are provided for users who are not up for learning how to use data merge, and who instead copy and paste labels in."
+        }
+      },
+      "accessing_repo": {
+        "title": "Accessing the Map Repository",
+        "download_links": {
+          "compact_english": "tiny.cc/sil-map-repo",
+          "expanded_english": "tiny.cc/sil-map-repo-red",
+          "compact_spanish": "tiny.cc/sil-map-repo-es"
+        },
+        "full_repository_access": "If you're a bonafide typesetter also needing access to the three HK maps for SIL-supported projects, please submit your request for access to the 'full repository' at tiny.cc/requestimages",
+        "paratext_diagram_labeler_note": "If you are using Paratext Diagram Labeler to prepare labels for Map Creator's built-in maps, the Compact editions of the repository contain our own edition of several of these maps and diagrams. Use these instead of the built-in ones, for better consistency and alignment with the Labeler terms. They are identified by the rules code 'fmo' for FMOSoft."
+      },
+      "map_varieties": {
+        "title": "Understanding Map Varieties",
+        "subtitle": "SIL Map Repository filename conventions and options",
+        "map_grouping": {
+          "description": "Similar maps are grouped with the same topic number, such as '185' for maps relating to Philip's travels. This is followed by a two- or three-letter code indicating the usage and attribution rules that apply, such as 'wbt'.",
+          "example": "185wbt - Philips Travels has three separate IDML files: base version, [sm] (shorter/square), and [sm-bw] (different short map, black & white only)"
+        },
+        "internal_options": {
+          "description": "Many maps have multiple options for display all within one IDML file. As you browse through the map samples, the internal options used are indicated within parentheses.",
+          "examples": [
+            "265wbt - World [1pg] (bbf riv) - Black & Blue, showing rivers",
+            "265wbt - World [2pg-flipped] (fcr) - Full color relief"
+          ]
+        },
+        "filename_components": {
+          "coll_id": "Collection ID. All samples from the SIL Map Repository have a collection ID of 'smr'.",
+          "map_id": "Topic number (grouping similar maps) plus 2- or 3-character code indicating the set of usage & permissions rules that apply.",
+          "map_title": "A title for the map, in English",
+          "file_variant": "Distinguishes a particular variant of the master file among other (possible) master files.",
+          "options": "Any file-internal options utilized in producing a particular sample of the map.",
+          "lang": "The language code of the language used in the map."
+        },
+        "map_types": {
+          "BWR": "black & white, relief",
+          "BWF": "black & white, flat",
+          "BBR": "blue & brown, relief",
+          "BBF": "blue & brown, flat",
+          "FCR": "full color, relief",
+          "FCF": "full color, flat",
+          "MCR": "muted color, relief"
+        }
+      },
+      "indesign_maps": {
+        "title": "Working with InDesign Maps",
+        "subtitle": "Complete guide for typesetting with IDML files",
+        "create_indesign_file": {
+          "steps": [
+            "For the map you wish to typeset, open the corresponding InDesign file (without '@en' or other language code in filename if using expanded edition)",
+            "Ensure Charis SIL and Andika fonts are installed (available in 'Document fonts' subfolder)",
+            "Toggle layers manually or use MapMonkey script for map variations (color vs black & white, etc.)",
+            "For non-Roman writing systems, modify 'font1' and 'font2' paragraph styles for proper font and rendering",
+            "If fonts lack native bold/italic, edit paragraph styles to fake faces (slight outer stroke for bold, skew for italics)",
+            "Adjust 'expanded' character style for appropriate tracking in different writing systems",
+            "For supported numeral systems, import appropriate digit style from !AllDigitStyles.indd",
+            "Save customized document as import source for future maps"
+          ],
+          "font_setup_note": "If seeing pink highlight behind text, check for applied Character Styles and remove them.",
+          "layers_customization": "Open Layers panel (Windows/Layers) to explore customization possibilities. Toggle visibility by clicking eyeball symbol."
+        },
+        "data_merging": {
+          "steps": [
+            "Open repository map (.idml) and save copy in .indd format in project's \\local\\figures directory",
+            "Recommended naming: prefix project name (e.g., 'zezi_155wbt - Holy Land.indd') or append after @ symbol (e.g., '155wbt - Holy Land @Zezi.idml')",
+            "Go to Window > Utilities > Data Merge",
+            "From Panel Menu, choose 'Select Data Source'",
+            "Navigate to Paratext Project's \\shared\\labeler folder for data merge files",
+            "Enable 'Preview' mode to see labels in your language",
+            "Adjust map in preview mode: check rendering, select map options, check for overset text",
+            "Reposition text boxes as needed, adjust font sizes or paragraph styles",
+            "Hide fields containing only dashes/hyphens or 'OMIT' by un-ticking eyeball in Layers panel",
+            "Make cosmetic changes while in preview mode (do not edit preview text directly)",
+            "Save and export to jpg or pdf with Preview mode on"
+          ],
+          "overset_text": "Overset text is indicated with red '+' symbol in lower right corner of text box. Use Selection tool to resize text frames.",
+          "final_merge_note": "It is NOT necessary to use the Merge button and create a second merged InDesign file initially. Do final merge after team makes no more label changes."
+        },
+        "saving": {
+          "instructions": [
+            "Save the .indd file as described",
+            "If Paratext project doesn't contain \\fig field for this map, export map to jpg and use this to insert \\fig info into Paratext",
+            "This gives two identically named files: .indd master copy with merge keys, and .jpg file in Paratext project"
+          ]
+        },
+        "repeating_merge_cycle": {
+          "steps": [
+            "Re-export the data merge files after team proofing",
+            "For each affected map, open master .indd file and 'Update data source' on Merge Tool menu",
+            "Save each revised map, replacing previous vernacular .indd file",
+            "When team fully approves maps with no more label changes, complete final 'Merge' step",
+            "Choose 'Create Merged Document' from Panel Menu or 'Merge Data' icon",
+            "Use default settings in dialogue box and click OK",
+            "Save new file with '-1' in name as .idml file (removes -1), preserving mergeable .indd"
+          ]
+        },
+        "bringing_into_publication": {
+          "steps": [
+            "InDesign maps (.indd files) should be placed directly into InDesign Scripture documents",
+            "Publishing Assistant should automatically place maps with \\fig markup in local/figures folder",
+            "If jpg placed instead, edit \\fig markup to change filename to .indd extension",
+            "When placed directly in text, turn off title layer and include title in caption/reference of Paratext markup",
+            "Revisit all maps after final validation",
+            "Export merged map to jpg and PDF for archiving after final validation",
+            "Archive local/figures and shared/labeler folders with final publication files"
+          ]
+        }
+      },
+      "map_creator_maps": {
+        "title": "Working with Map Creator Maps",
+        "subtitle": "Complete guide for working with MAPX files",
+        "create_localized_file": {
+          "steps": [
+            "Find appropriate downloaded .mapx file for the map(s) you wish to prepare",
+            "Copy file to project's \\local\\figures folder with naming convention: e.g., '245wbt - Seven Churches @Zezi.mapx'",
+            "Open .mapx file with Map Creator",
+            "Go to File > Import > Translation Data",
+            "Browse to .txt file exported from SIL Map & Illustration Repository",
+            "Click Finish on 'Ready to import translations'",
+            "If successful, see 'Import complete' (resolve any conflicts with previously imported translations)"
+          ],
+          "finalize_map": {
+            "steps": [
+              "Map looks same after import - go to Language dropdown under Map Options and choose your project language",
+              "Adjust location and other properties of text fields (see tutorial video: https://vimeo.com/59357958)",
+              "Fields displaying English within parentheses indicate missing translations",
+              "For labels saying 'OMIT' or containing only dashes, select and uncheck 'Visible' checkbox",
+              "Contact help@fmosoft.org for excellent support"
+            ]
+          }
+        },
+        "bringing_into_publication": {
+          "steps": [
+            "Create PDFs and jpegs in Map Creator via File > Export",
+            "PDFs should be placed directly into InDesign Scripture documents",
+            "Publishing Assistant should automatically place maps with \\fig markup in local/figures folder",
+            "If jpg placed instead, use Text Editor (ctrl-y) to edit \\fig markup and change to .pdf extension",
+            "When placed directly in text, turn off title field and include in caption/reference of Paratext markup",
+            "Revisit all maps after final validation"
+          ]
+        },
+        "attribution": {
+          "requirement": "If you use Map Creator even with maps/diagrams that did not originate from Map Creator, you are required to follow the attribution rules below, in addition to any attribution rules that may apply to the source of the maps/diagrams.",
+          "text": "Publications that include material disseminated by Map Creator or produced using Map Creator must include this credit: 'Maps [and diagrams and charts] [on pages ___] are produced with Map Creator software from fmosoft.com. Used by permission. All rights reserved.'",
+          "more_info": {
+            "home_page": "https://fmosoft.com/map-creator",
+            "intro_video": "https://vimeo.com/59357958"
+          }
+        }
+      },
+      "map_monkey": {
+        "title": "MapMonkey",
+        "subtitle": "Selecting options within IDML maps",
+        "current_version": "2025-04-09",
+        "description": "MapMonkey is a tool that makes it quick and easy to 'monkey' with various map options supported by InDesign maps in the SIL Map Repository. Many maps support different map types (full color relief, black and white flat, etc.). A few maps have additional options (e.g., world locator inset can be flipped to Pacific-centric).",
+        "problem_solved": "Manually adjusting the map for these options can require turning multiple layers on or off, and redefining paragraph styles that use blue or brown color swatches to use gray swatches instead. MapMonkey does all this through a simple dialog.",
+        "future_features": "We anticipate enabling MapMonkey to manage switching a map between different writing system settings.",
+        "download": {
+          "url": "https://drive.google.com/file/d/11ce2Qlwj9zYRk8-4wZy2sczGRDfF8qAd/view?usp=drive_link",
+          "file": "MapMonkey.jsx"
+        },
+        "installation": {
+          "steps": [
+            "Open the Scripts panel (Window > Utilities > Scripts)",
+            "Right-click on the Application folder and select 'Reveal in Explorer'",
+            "Move MapMonkey.jsx from download location into the 'Scripts Panel' folder",
+            "To run, double-click on MapMonkey.jsx in the Scripts panel"
+          ]
+        },
+        "version_history": [
+          {
+            "version": "2025-04-09",
+            "changes": "Added support for versions of InDesign back to CS5"
+          },
+          {
+            "version": "2025-04-04",
+            "changes": "Added support for MCR map types"
+          },
+          {
+            "version": "2025-03-14",
+            "changes": "Initial release"
+          }
+        ]
+      }
+    },
+    "contact": {
+      "title": "Contact",
+      "forms": {
+        "permissions": {
+          "title": "To request permissions to use maps or illustrations in publications",
+          "url": "tiny.cc/requestpermissions",
+          "embedded_form": "https://docs.google.com/forms/d/e/1FAIpQLScGc_jhYmu2KrVzlX8oL0-Iw32-0UY6kzD6j_wm5j-VD6RsAw/viewform"
+        },
+        "master_copies": {
+          "title": "To request access to master copies of maps or illustrations",
+          "url": "tiny.cc/requestimages",
+          "embedded_form": "https://docs.google.com/forms/d/e/1FAIpQLScCAOsNhonkU8H9msz7eUncVVme4MvtJ7Tnzjgl9s-KAtL3oA/viewform"
+        },
+        "other_inquiries": {
+          "title": "For all other inquiries",
+          "url": "https://docs.google.com/forms/d/e/1FAIpQLSedIIw87Qr1_nTgBfPG75Z7XRZdqxrCtxwT_oqTdaqNEmCStw/viewform",
+          "embedded_form": "https://docs.google.com/forms/d/e/1FAIpQLSedIIw87Qr1_nTgBfPG75Z7XRZdqxrCtxwT_oqTdaqNEmCStw/viewform"
+        }
+      }
+    }
+  },
+  "quick_links": {
+    "sample_maps": "tiny.cc/samplemaps",
+    "sample_illustrations": "tiny.cc/sampleimages",
+    "compact_map_repo_english": "tiny.cc/sil-map-repo",
+    "expanded_map_repo_english": "tiny.cc/sil-map-repo-red",
+    "compact_map_repo_spanish": "tiny.cc/sil-map-repo-es",
+    "request_permissions": "tiny.cc/requestpermissions",
+    "request_images": "tiny.cc/requestimages",
+    "scripture_map_labeler": "https://sites.google.com/sil.org/scripture-map-labeler/home",
+    "paratext_diagram_labeler": "tiny.cc/labeler",
+    "donate": "https://give.sil.org/campaign/597654/donate",
+    "sil_global": "https://sil.org/",
+    "map_creator": "https://fmosoft.com/map-creator",
+    "mapmonkey_download": "https://drive.google.com/file/d/11ce2Qlwj9zYRk8-4wZy2sczGRDfF8qAd/view?usp=drive_link"
+  },
+  "tools_and_resources": {
+    "fonts": {
+      "charis_sil": "https://software.sil.org/charis/download/",
+      "andika": "https://software.sil.org/andika/download/",
+      "annapurna_sil": "https://software.sil.org/annapurna/download/"
+    },
+    "software": {
+      "map_creator": {
+        "website": "https://fmosoft.com/map-creator",
+        "support_email": "help@fmosoft.org",
+        "intro_video": "https://vimeo.com/59357958"
+      },
+      "paratext": {
+        "diagram_labeler": "tiny.cc/labeler",
+        "scripture_map_labeler": "https://sites.google.com/sil.org/scripture-map-labeler/home"
+      },
+      "adobe_indesign": {
+        "data_merge_feature": "Used for merging translated labels into IDML maps",
+        "supported_versions": "CS4 and later (via IDML format)"
+      }
+    }
+  },
+  "file_formats": {
+    "IDML": {
+      "description": "InDesign Markup Language - Map files for Adobe InDesign",
+      "compatibility": "Supported back to InDesign CS4",
+      "use_case": "Primary format for maps and diagrams that can be data-merged with translation labels",
+      "data_merge_file": "*.idml.txt files contain translation data for labels"
+    },
+    "MAPX": {
+      "description": "Map Creator format",
+      "software": "Map Creator by FMOSoft",
+      "use_case": "Alternative format for maps that can be used with Map Creator software",
+      "data_merge_file": "*.mapx.txt files contain translation data for labels"
+    },
+    "JPG": {
+      "description": "JPEG image format",
+      "use_case": "Sample images, watermarked low-resolution placeholders, exported final maps"
+    },
+    "PDF": {
+      "description": "Portable Document Format",
+      "use_case": "Exported maps for archiving and publication, Map Creator exports"
+    }
+  },
+  "workflows": {
+    "illustration_workflow": {
+      "steps": [
+        "Download low-resolution sample illustrations from tiny.cc/sampleimages",
+        "Unzip to Pictures folder (for Windows search indexing)",
+        "In Paratext, use Insert > Figure and Browse to search by keyword or Bible reference",
+        "Insert sample illustrations as placeholders",
+        "Check usage rules and attribution requirements for selected illustration sets",
+        "Request master copies from tiny.cc/requestimages for typesetting",
+        "Master copies will automatically substitute for samples at typesetting time"
+      ]
+    },
+    "indesign_map_workflow": {
+      "steps": [
+        "Generate translation data using Paratext Diagram Labeler or Scripture Map Labeler",
+        "Download appropriate IDML map from SIL Map Repository",
+        "Open IDML in InDesign and save as INDD in project's local/figures folder",
+        "Setup fonts (Charis SIL, Andika) and configure for writing system if non-Roman",
+        "Use Window > Utilities > Data Merge to select data source from shared/labeler folder",
+        "Enable Preview mode to see translated labels",
+        "Use MapMonkey to select map options (color vs B&W, etc.)",
+        "Adjust text boxes, check for overset text, hide OMIT labels",
+        "Save and export to JPG/PDF for use in publication",
+        "After final approval, do Create Merged Document for archiving"
+      ]
+    },
+    "map_creator_workflow": {
+      "steps": [
+        "Generate translation data using Paratext Diagram Labeler",
+        "Download appropriate MAPX map file",
+        "Copy to project's local/figures folder with naming convention",
+        "Open in Map Creator",
+        "Import translation data (File > Import > Translation Data)",
+        "Select project language from Language dropdown",
+        "Adjust label positions and properties",
+        "Hide OMIT labels by unchecking Visible",
+        "Export to PDF or JPEG (File > Export)",
+        "Place PDF directly in InDesign Scripture document"
+      ]
+    }
+  },
+  "best_practices": {
+    "general": [
+      "Always use data merge features rather than copy/paste for labels to maintain consistency",
+      "Check usage rules and attribution requirements before selecting maps or illustrations",
+      "Use low-resolution samples during translation, request masters only for final typesetting",
+      "Archive both local/figures and shared/labeler folders with final publications",
+      "For sensitive areas, use alternative attribution options and request special permissions"
+    ],
+    "paratext": [
+      "Insert illustrations using keywords from Paratext's Insert Figure dialog",
+      "Use 'p' for Location if illustration only for print, not digital",
+      "Store sample images in Pictures folder for Windows search indexing",
+      "Use specific search terms and filters to find appropriate images",
+      "Combine filters with parentheses: (lamb OR sheep) digital"
+    ],
+    "indesign": [
+      "Work in Preview mode when adjusting maps after data merge",
+      "Do not edit preview text directly - modify text frames and styles instead",
+      "Keep Data Merge panel open to prevent accidental text editing",
+      "Use MapMonkey script for quick map option changes",
+      "Save customized writing system styles as import source for future maps",
+      "Check for overset text using Preflight Panel at bottom of window",
+      "Turn off title layer when placing maps in Scripture text, use caption instead"
+    ],
+    "map_creator": [
+      "Use custom SIL repository versions of built-in maps for better consistency",
+      "Contact help@fmosoft.org for excellent support",
+      "Remember to include Map Creator attribution even when using non-Map Creator source maps"
+    ]
+  },
+  "common_issues": {
+    "pink_highlight_text": {
+      "problem": "Pink highlight appears behind text even with fonts installed",
+      "solution": "Check for applied Character Styles and remove them"
+    },
+    "windows_search_not_finding_keywords": {
+      "problem": "Windows Search Index returns filenames but not key terms",
+      "solutions": [
+        "Open File Explorer > Options > Search tab > Check 'Always search file names and contents'",
+        "Use 'tags:' prefix in searches: 'tags:sheep AND tags:LUK02'"
+      ]
+    },
+    "jpg_placed_instead_of_indd": {
+      "problem": "Publishing Assistant places JPG instead of INDD map",
+      "solution": "Edit \\fig markup in Paratext and change filename extension to .indd, then use PubAssist to place again"
+    },
+    "missing_translations": {
+      "problem": "Fields display English within parentheses after data merge",
+      "causes": [
+        "Blank verse in corresponding Paratext chapter",
+        "Mismatch between English name expected on map and name in translation data file (report to maps-illustrationsrepository_intl@sil.org)"
+      ]
+    }
+  },
+  "glossary": {
+    "data_merge": "InDesign feature that automatically populates text fields with data from external source files",
+    "IDML": "InDesign Markup Language - XML-based file format readable by InDesign CS4 and later",
+    "MAPX": "Map Creator's native file format for editable maps",
+    "overset_text": "Text that doesn't fit within its text box, indicated by red + symbol",
+    "paragraph_styles": "InDesign styles that control text formatting, font, size, and other properties",
+    "BBF": "Blue & Brown, Flat - map coloring style",
+    "BBR": "Blue & Brown, Relief - map coloring style with elevation shading",
+    "BWF": "Black & White, Flat - monochrome map without elevation",
+    "BWR": "Black & White, Relief - monochrome map with elevation shading",
+    "FCF": "Full Color, Flat - full color map without elevation",
+    "FCR": "Full Color, Relief - full color map with elevation shading",
+    "MCR": "Muted Color, Relief - subdued color map with elevation shading",
+    "sensitive_area": "Geographic region where associating publication with certain organizations could be problematic",
+    "vernacular": "The local language of a translation project",
+    "typesetter": "Person responsible for formatting and laying out publication for printing",
+    "attribution": "Credit given to copyright holders and creators of maps/illustrations",
+    "fig_markup": "Paratext markup (\\fig) used to indicate where figures should be placed in text"
+  }
+}
