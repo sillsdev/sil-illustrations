@@ -1839,7 +1839,8 @@ class SiteManager {
             
             <div class="content-section">
                 <div class="info-card">
-                    <p>Please use the appropriate form below to contact us:</p>
+                    <p>If you weren't able to find the answer you needed by asking our AI agent (in the bottom right corner of this page), 
+                    please use the appropriate form below to contact us:</p>
                     
                     <div class="collapsible-form">
                         <h3 onclick="toggleForm('form1')" style="cursor: pointer; user-select: none;">
