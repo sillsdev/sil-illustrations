@@ -868,7 +868,7 @@ class SiteManager {
                 <p>In addition to a compact Spanish edition, the map repository also comes in two English editions, due to some unresolved uncertainty:</p>
 <ul type="disc">
   <li><strong>Compact Edition: (570 MB) </strong><br />All the maps are directly in the &ldquo;SIL Map Repository&rdquo; folder (or the &ldquo;HK Supplementary Maps&rdquo; folder, if applicable).&nbsp;</li>
-  <li><strong>Expanded Edition: (930 MB)</strong> <i>(Note: This edition does not contain the FMOSoft maps. See <a href="#accessing-repo">next page</a> for details.)</i>
+  <li><strong>Expanded IDML Edition: (930 MB)</strong> <i>(Note: This edition does not contain any Map Creator maps. See <a href="#accessing-repo">next page</a> for details.)</i>
   <br />All the included maps are in sub-folders under the &ldquo;SIL Map Repository&rdquo; folder (or under the &ldquo;HK Supplementary Maps&rdquo; folder, if applicable). <br />
     Those sub-folders also contain:</li>
   <ul type="circle">
@@ -904,15 +904,15 @@ class SiteManager {
                 <p>If all you need is the main SIL Map Repository (without the supplementary maps), you can download it here:</p>
                     <ul type="disc">
                     <li>SIL Map Repository Compact (English): <a href="https://tiny.cc/sil-map-repo" target="_blank">tiny.cc/sil-map-repo</a></li>
-                    <li>SIL Map Repository Expanded (English): <a href="https://tiny.cc/sil-map-repo-red" target="_blank">tiny.cc/sil-map-repo-red</a></li>
+                    <li>SIL Map Repository IDML-only Expanded (English): <a href="https://tiny.cc/sil-map-repo-red" target="_blank">tiny.cc/sil-map-repo-red</a></li>
                     <li>SIL Map Repository Compact (Spanish): <a href="http://tiny.cc/sil-map-repo-es" target="_blank">tiny.cc/sil-map-repo-es</a></li>
                     </ul>
                     <p>If you&rsquo;re a bonafide typesetter also needing access to the three HK maps for SIL-supported projects, please submit your request for access to the &ldquo;full repository&rdquo; at <a href="https://tiny.cc/requestimages" target="_blank">tiny.cc/requestimages</a>. (Maps cannot yet be requested by map ID, as you can do with Scripture illustrations.)</p>
                 </div>
                 <div class="info-card">
-                    <p>If you are using Paratext Diagram Labeler to prepare labels for Map Creator's built-in maps, the Compact editions of the repository contain
-                    our own edition of several of these maps and diagrams. Use these instead of the built-in ones, for better consistency and alignment with the Labeler terms.
-                    They are identified by the rules code "fmo" for FMOSoft.</p>
+                    <p>Map Creator maps are included only in the Compact editions.</p>
+                    <p>These include our own edition of several of Map Creator's built-in maps and diagrams.
+                    Use these, and not the corresponding maps built into Map Creator. They are identified by the rules code "fmo" for FMOSoft.</p>
                 </div>
             </div>
         `;
